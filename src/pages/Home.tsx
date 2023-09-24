@@ -1,5 +1,5 @@
 import styles from "../style";
-import { Carousal, Hero, Services } from "../components";
+import { Blogs, Carousal, Hero, Services } from "../components";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -34,7 +34,7 @@ const Home = () => {
       {/* blog updates */}
       <div className={`bg-backgroudgreen  ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-          <Services />
+          <Blogs />
         </div>
       </div>
     </motion.div>

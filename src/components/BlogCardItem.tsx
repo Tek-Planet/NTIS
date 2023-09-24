@@ -9,22 +9,22 @@ interface Props {
   };
 }
 
-function ServiceCardItem({ item }: Props) {
+function BlogCardItem({ item }: Props) {
   const { content, img } = item;
   return (
     <motion.div
       variants={hoverVariant}
       whileHover={"hover"}
-      className="flex flex-col px-5 py-5 items-center rounded-[20px] feedback-card hover:bg-white  hover:text-black hover:m-5 border-white border-2 mx-3 "
+      className="flex flex-col   rounded-[20px]  bg-white  hover:text-black hover:m-5 border-white border-2 mx-3 "
     >
       <div className="flex flex-row">
         <img
           src={img}
           alt={"pp"}
-          className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] "
+          className="w-[100%] h-[250px] rounded-[20px]"
         />
       </div>
-      <p className="font-poppins font-normal text-[12px] sm:text-[14px] ] my-5 text-center">
+      <p className="font-poppins font-normal text-[12px] sm:text-[14px] ] my-5 ">
         {content}
       </p>
 
@@ -38,4 +38,4 @@ function ServiceCardItem({ item }: Props) {
   );
 }
 
-export default ServiceCardItem;
+export default BlogCardItem;

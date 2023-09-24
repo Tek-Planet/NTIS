@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import { feedback } from "../constants";
+import { feedback, lastest } from "../constants";
 import styles from "../style";
 
 import Slider from "react-slick";
-import { ServiceCardItem } from ".";
+import { BlogCardItem, ServiceCardItem } from ".";
 
-const Services = () => {
+const Blog = () => {
   const sliderRef = useRef(null);
 
   var settings = {
@@ -54,18 +54,26 @@ const Services = () => {
     ],
   };
 
+  const nextSlide = () => {
+    sliderRef.current.slickNext();
+  };
+  const previous = () => {
+    sliderRef.current.slickPrev();
+  };
   return (
     <div id="clients" className={` flex flex-col relative ${styles.marginY} `}>
       <div className="   sm:mb-10 mb-6 ">
-        <p className={` ${styles.heading2} text-center `}>Our Services</p>
+        <p className={` text-white ${styles.heading2} text-center `}>
+          Latest Update
+        </p>
       </div>
       <Slider ref={sliderRef} {...settings}>
-        <ServiceCardItem item={feedback[0]} />
-        <ServiceCardItem item={feedback[1]} />
-        <ServiceCardItem item={feedback[2]} />
+        <BlogCardItem item={lastest[0]} />
+        <BlogCardItem item={lastest[1]} />
+        <BlogCardItem item={lastest[2]} />
       </Slider>
     </div>
   );
 };
 
-export default Services;
+export default Blog;

@@ -1,4 +1,4 @@
-import { analyze, chemistry, office } from "../assets";
+import { analyze, blog, chemistry, office } from "../assets";
 
 export const navLinks = [
   {
@@ -36,6 +36,29 @@ export const feedback = [
       "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
 
     img: chemistry,
+  },
+  {
+    id: "feedback-3",
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+    img: analyze,
+  },
+];
+
+export const lastest = [
+  {
+    id: "feedback-1",
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+
+    img: blog,
+  },
+  {
+    id: "feedback-2",
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+
+    img: blog,
   },
   {
     id: "feedback-3",

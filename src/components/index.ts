@@ -5,3 +5,5 @@ export { default as Hero } from "./Hero";
 export { default as Carousal } from "./Carousal";
 export { default as ServiceCardItem } from "./ServiceCardItem";
 export { default as Services } from "./Services";
+export { default as Blogs } from "./Blogs";
+export { default as BlogCardItem } from "./BlogCardItem";

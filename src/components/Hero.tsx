@@ -16,7 +16,7 @@ const Hero = () => {
         id="left"
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 `}
       >
-        <h1 className="font-poppins font-semibold text-[32px] md:text-[58px]   md:leading-[80.8px] leading-[55px] w-full">
+        <h1 className="font-poppins font-semibold text-[32px] md:text-[58px]   md:leading-[80.8px] leading-[45px] w-full">
           <span className="text-gradient">Lorem ipsum</span>
           <br className="sm:block hidden" /> dolor quis justo consectetur.
         </h1>
@@ -29,7 +29,7 @@ const Hero = () => {
         id="right"
         className={`flex-1 flex md:my-0  `}
       >
-        <p className={`max-w-[400px] font-thin mt-5 leading-6`}>
+        <p className={`px-5 md:p-0 max-w-[400px] font-thin mt-5 leading-6`}>
           Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis
           varius sodales at mauris et. Ipsum vel senectus mauris augue massa.
           Sapien pulvinar molestie orci senectus pellentesque aliquet. Tincidunt
