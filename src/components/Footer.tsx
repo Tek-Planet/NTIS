@@ -1,11 +1,7 @@
-import React from 'react'
-
-type Props = {}
+type Props = {};
 
 const Footer = (props: Props) => {
-  return (
-    <div>Footer</div>
-  )
-}
+  return <div>U[pdate to git</div>;
+};
 
-export default Footer
+export default Footer;

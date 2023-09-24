@@ -1,11 +1,11 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { feedback } from "../constants";
 import styles from "../style";
 
 import Slider from "react-slick";
 import { ServiceCardItem } from ".";
 
-const Testimonials = () => {
+const Services = () => {
   const sliderRef = useRef(null);
 
   var settings = {
@@ -62,27 +62,16 @@ const Testimonials = () => {
   };
   return (
     <div id="clients" className={` flex flex-col relative ${styles.marginY} `}>
-      {/* <div className="absolute z-[0] w-[60%] h-[60%] -right-[50%] rounded-full blue__gradient bottom-40" /> */}
-
       <div className="   sm:mb-10 mb-6 ">
-        <p className={`text-white ${styles.heading2} text-center `}>
-          The Network's Impact
-        </p>
+        <p className={` ${styles.heading2} text-center `}>Our Services</p>
       </div>
-
-      {/* <div className="flex flex-wrap sm:justify-start justify-center  w-full feedback-container relative z-[1]"> */}
       <Slider ref={sliderRef} {...settings}>
         <ServiceCardItem item={feedback[0]} />
         <ServiceCardItem item={feedback[1]} />
         <ServiceCardItem item={feedback[2]} />
       </Slider>
-      {/* </div> */}
-      {/* <div className="flex gap-10 items-center justify-center mt-5">
-        <ImageButton image={prev} onClick={previous} />
-        <ImageButton image={next} onClick={nextSlide} />
-      </div> */}
     </div>
   );
 };
 
-export default Testimonials;
+export default Services;
