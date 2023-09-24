@@ -1,7 +1,5 @@
 import styles from "../style";
-import {
-  
-} from "../components";
+import { Carousal, Hero } from "../components";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -15,16 +13,16 @@ const Home = () => {
     >
       <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          {/* <Hero /> */}
+          <Hero />
         </div>
       </div>
-      
-     
 
-     
-
-     
-
+      {/* carousal */}
+      <div className={` ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Carousal />
+        </div>
+      </div>
 
       {/* footer */}
     </motion.div>

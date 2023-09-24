@@ -30,7 +30,7 @@ const Navbar = () => {
     "font-poppins font-normal cursor-pointer text-[16px] mr-5 hover:text-linkactive text-white";
 
   return (
-    <nav className="w-full flex py-4 justify-between items-center navbar">
+    <nav className="w-full flex py-4 justify-between items-center border-b border-gray-300">
       <NavLink to={`/`}>
         <motion.img
           variants={hoverVariant}
