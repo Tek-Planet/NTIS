@@ -1,5 +1,5 @@
 import styles from "../style";
-import { Carousal, Hero, Projects } from "../components";
+import { Carousal, Projects } from "../components";
 import { motion } from "framer-motion";
 
 const Cooperation = () => {
@@ -11,15 +11,20 @@ const Cooperation = () => {
       }}
       className="bg-primary w-full overflow-hidden"
     >
-      <div className={` ${styles.flexStart}`}>
+      <motion.div
+        initial={{ y: "100vw" }}
+        animate={{ y: 1 }}
+        transition={{ type: "spring", stiffness: 35 }}
+        className={` ${styles.flexStart}`}
+      >
         <div className={`${styles.boxWidth}`}>
           <p
             className={` ${styles.heading2} pt-10 text-center text-backgroudgreen`}
           >
-            Our Services
+            Ongoing Projects
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* carousal */}
       <div className={` ${styles.flexStart}`}>
