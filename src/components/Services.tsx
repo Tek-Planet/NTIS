@@ -55,9 +55,22 @@ const Services = () => {
   };
 
   return (
-    <div id="clients" className={` flex flex-col relative ${styles.marginY} `}>
-      <div className="   sm:mb-10 mb-6 ">
-        <p className={` ${styles.heading2} text-center `}>Our Services</p>
+    <div id="clients" className={`flex flex-col  ${styles.marginY} `}>
+      <div className="flex flex-col items-center sm:mb-10 mb-6 ">
+        <p className={` ${styles.heading2} text-center text-linkactive`}>
+          Our Services
+        </p>
+        <div
+          id="center"
+          className="flex flex-row max-w-lg align-middle justify-items-center"
+        >
+          <p className="font-poppins font-normal text-[12px] sm:text-[14px] ] my-5  text-center ">
+            Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo
+            quis varius sodales at mauris et. Ipsum vel senectus mauris augue
+            massa. Sapien pulvinar molestie orci senectus pellentesque aliquet.
+            Tincidunt diam pellentesque nulla amet pretium ac nisl.
+          </p>
+        </div>
       </div>
       <Slider ref={sliderRef} {...settings}>
         <ServiceCardItem item={feedback[0]} />

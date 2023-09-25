@@ -15,7 +15,7 @@ function BlogCardItem({ item }: Props) {
     <motion.div
       variants={hoverVariant}
       whileHover={"hover"}
-      className="flex flex-col   rounded-[20px]  bg-white  hover:text-black hover:m-5 border-white border-2 mx-3 "
+      className="flex flex-col   rounded-[20px]  bg-white  hover:text-black hover:m-5  mx-3 "
     >
       <div className="flex flex-row">
         <img
@@ -24,16 +24,21 @@ function BlogCardItem({ item }: Props) {
           className="w-[100%] h-[250px] rounded-[20px]"
         />
       </div>
-      <p className="font-poppins font-normal text-[12px] sm:text-[14px] ] my-5 ">
-        {content}
-      </p>
+      <div className="p-4">
+        <p className="font-poppins font-bold text-[12px] sm:text-[16px] ]  ">
+          Title
+        </p>
+        <p className="font-poppins font-normal text-[12px] sm:text-[14px] my-3 ">
+          {content}
+        </p>
 
-      <NavLink
-        to={`/constactus`}
-        className={` text-linkactive text-center p-2`}
-      >
-        <span className="capitalize  text-md  text-center">See More</span>
-      </NavLink>
+        <NavLink
+          to={`/constactus`}
+          className={`flex flex-row-reverse  text-linkactive  p-2 `}
+        >
+          <span className="capitalize text-sm  md:text-md ">See Details</span>
+        </NavLink>
+      </div>
     </motion.div>
   );
 }

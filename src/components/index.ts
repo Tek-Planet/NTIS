@@ -7,3 +7,7 @@ export { default as ServiceCardItem } from "./ServiceCardItem";
 export { default as Services } from "./Services";
 export { default as Blogs } from "./Blogs";
 export { default as BlogCardItem } from "./BlogCardItem";
+export { default as Research } from "./Research";
+export { default as ResearchCardItem } from "./ResearchCardItem";
+export { default as Projects } from "./Projects";
+export { default as ProjectCardItem } from "./ProjectCardItem";

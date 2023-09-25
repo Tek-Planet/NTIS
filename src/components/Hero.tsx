@@ -11,7 +11,10 @@ const Hero = () => {
     navigate(`/contactus`);
   };
   return (
-    <section id="home" className={`flex sm:flex-row flex-col `}>
+    <section
+      id="home"
+      className={`flex sm:flex-row flex-col ${styles.marginY} `}
+    >
       <div
         id="left"
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 `}

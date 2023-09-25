@@ -7,3 +7,6 @@ export { default as analyze } from "./analyze.png";
 export { default as office } from "./office.png";
 export { default as chemistry } from "./chemistry.png";
 export { default as blog } from "./blog.png";
+export { default as twitter } from "./twitter.png";
+export { default as facebook } from "./facebook.png";
+export { default as instagram } from "./instagram.png";

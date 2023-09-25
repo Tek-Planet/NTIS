@@ -1,11 +1,9 @@
-
 import Root from "./Root";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Home } from "./pages";
+import { Cooperation, Home } from "./pages";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -21,12 +19,10 @@ const App = () => (
   <BrowserRouter>
     <ScrollToTop />
     <Routes>
-    
       <Route path="/" element={<Root />}>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-       
-     
+        <Route path="/cooperation" element={<Cooperation />} />
       </Route>
     </Routes>
   </BrowserRouter>

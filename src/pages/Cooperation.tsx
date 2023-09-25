@@ -1,8 +1,8 @@
 import styles from "../style";
-import { Blogs, Carousal, Hero, Research, Services } from "../components";
+import { Carousal, Hero, Projects } from "../components";
 import { motion } from "framer-motion";
 
-const Home = () => {
+const Cooperation = () => {
   return (
     <motion.div
       transition={{
@@ -13,7 +13,11 @@ const Home = () => {
     >
       <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Hero />
+          <p
+            className={` ${styles.heading2} pt-10 text-center text-backgroudgreen`}
+          >
+            Our Services
+          </p>
         </div>
       </div>
 
@@ -23,28 +27,15 @@ const Home = () => {
           <Carousal />
         </div>
       </div>
+      {/* ongoing project  */}
 
-      {/* services */}
       <div className={`  ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-          <Services />
-        </div>
-      </div>
-
-      {/* blog updates */}
-      <div className={`bg-backgroudgreen  ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Blogs />
-        </div>
-      </div>
-      {/* research firm data */}
-      <div className={`  ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Research />
+          <Projects />
         </div>
       </div>
     </motion.div>
   );
 };
 
-export default Home;
+export default Cooperation;

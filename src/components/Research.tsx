@@ -1,21 +1,22 @@
 import { useRef } from "react";
-import { feedback, lastest } from "../constants";
+import { feedback } from "../constants";
 import styles from "../style";
 
 import Slider from "react-slick";
-import { BlogCardItem, ServiceCardItem } from ".";
+import { ResearchCardItem } from ".";
 
-const Blog = () => {
+const Research = () => {
   const sliderRef = useRef(null);
 
   var settings = {
+    dots: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    rtl: true,
-    arrows: true,
+    // rtl: true,
+    arrows: false,
     centerMode: true,
     responsive: [
       {
@@ -23,8 +24,8 @@ const Blog = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: true,
-          dots: true,
+          // infinite: false,
+          // dots: true,
         },
       },
       {
@@ -53,26 +54,20 @@ const Blog = () => {
     ],
   };
 
-  const nextSlide = () => {
-    sliderRef.current.slickNext();
-  };
-  const previous = () => {
-    sliderRef.current.slickPrev();
-  };
   return (
-    <div id="clients" className={` flex flex-col relative ${styles.marginY} `}>
-      <div className="   sm:mb-10 mb-6 ">
-        <p className={` text-white ${styles.heading2} text-center `}>
-          Latest Update
+    <div id="clients" className={`flex flex-col  ${styles.marginY} `}>
+      <div className="flex flex-col items-center sm:mb-10 mb-6 ">
+        <p className={` ${styles.heading2} text-center text-linkactive `}>
+          Research Firm Data
         </p>
       </div>
-      <Slider className="md:m-28 md:mt-4" ref={sliderRef} {...settings}>
-        <BlogCardItem item={lastest[2]} />
-        <BlogCardItem item={lastest[0]} />
-        <BlogCardItem item={lastest[0]} />
+      <Slider ref={sliderRef} {...settings}>
+        <ResearchCardItem item={feedback[0]} />
+        <ResearchCardItem item={feedback[1]} />
+        <ResearchCardItem item={feedback[2]} />
       </Slider>
     </div>
   );
 };
 
-export default Blog;
+export default Research;

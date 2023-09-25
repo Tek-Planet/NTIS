@@ -22,17 +22,11 @@ const Root = () => (
     </div>
 
     <div
-      className={`bg-[#FFFAF4] ${styles.paddingX} ${styles.flexCenter} mt-10`}
+      className={`bg-backgroudgreen ${styles.paddingX} ${styles.flexCenter} mt-10`}
     >
       <div className={`${styles.boxWidth}`}>
         <Footer />
       </div>
-    </div>
-
-    <div className="w-full flex justify-center items-center md:flex-row flex-col p-3 bg-primaryYello">
-      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white ">
-        2023 Young Women in Governance Network
-      </p>
     </div>
   </motion.div>
 );

@@ -9,7 +9,7 @@ interface Props {
   };
 }
 
-function ServiceCardItem({ item }: Props) {
+function ProjectCardItem({ item }: Props) {
   const { content, img } = item;
   return (
     <motion.div
@@ -38,4 +38,4 @@ function ServiceCardItem({ item }: Props) {
   );
 }
 
-export default ServiceCardItem;
+export default ProjectCardItem;
