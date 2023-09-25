@@ -22,6 +22,7 @@ const styles = {
 
   marginX: "sm:mx-16 mx-6",
   marginY: "sm:my-16 my-6",
+  textSize: "text-[14px] sm:text-md lg:text-lg",
 };
 
 export const layout = {
