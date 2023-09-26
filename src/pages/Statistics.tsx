@@ -1,5 +1,4 @@
 import styles from "../style";
-import { Carousal, Projects } from "../components";
 import { motion } from "framer-motion";
 
 const Statistics = () => {
@@ -14,15 +13,27 @@ const Statistics = () => {
       <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <div className={`flex flex-col md:flex-row ${styles.marginX} `}>
-            <div className="flex  md:max-w-sm w-full ">
+            {/* rigth */}
+            <motion.div
+              initial={{ x: "-100vw" }}
+              animate={{ x: 0 }}
+              transition={{ type: "spring", stiffness: 35 }}
+              className="flex md:max-w-xs w-full "
+            >
               <p
                 className={` ${styles.heading2} p-5 text-backgroudgreen text-center`}
               >
                 Statistics
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-1 h-screen m-10 md:m-0 relative content-center items-center justify-center">
+            {/* left */}
+            <motion.div
+              initial={{ x: "100vw" }}
+              animate={{ x: 0 }}
+              transition={{ type: "spring", stiffness: 35 }}
+              className="flex flex-1 h-screen m-10 md:m-0 relative content-center items-center justify-center"
+            >
               <div className="w-full  bg-white max-w-lg my-4 rounded-lg p-6 shadow-md relative z-50">
                 <h2 className={`${styles.textSize} font-poppins font-bold `}>
                   Lorem Ipsium
@@ -49,7 +60,7 @@ const Statistics = () => {
                 </div>
               </div>
               <div className="h-[300px] w-[300px] sm:h-[250px] sm:w-[250px] md:h-[350px] md:w-[350px] rounded-full bg-backgroudgreen absolute"></div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

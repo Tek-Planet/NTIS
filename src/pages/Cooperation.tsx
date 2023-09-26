@@ -12,7 +12,7 @@ const Cooperation = () => {
       className="bg-primary w-full overflow-hidden"
     >
       <motion.div
-        initial={{ y: "100vw" }}
+        initial={{ y: "-100vw" }}
         animate={{ y: 1 }}
         transition={{ type: "spring", stiffness: 35 }}
         className={` ${styles.flexStart}`}

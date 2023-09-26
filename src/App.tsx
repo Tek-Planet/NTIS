@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Cooperation, Home, Statistics } from "./pages";
+import { AboutUs, Cooperation, Home, NTIS, Statistics, Vision } from "./pages";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -24,6 +24,11 @@ const App = () => (
         <Route path="/home" element={<Home />} />
         <Route path="/cooperation" element={<Cooperation />} />
         <Route path="/statistics" element={<Statistics />} />
+        <Route path="/aboutus" element={<AboutUs />}>
+          <Route path="/aboutus" element={<NTIS />} />
+          <Route path="/aboutus/NTIS" element={<NTIS />} />
+          <Route path="/aboutus/vision" element={<Vision />} />
+        </Route>
       </Route>
     </Routes>
   </BrowserRouter>

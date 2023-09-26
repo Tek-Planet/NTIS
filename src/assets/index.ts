@@ -11,3 +11,8 @@ export { default as twitter } from "./twitter.png";
 export { default as facebook } from "./facebook.png";
 export { default as instagram } from "./instagram.png";
 export { default as projecticon } from "./projecticon.png";
+export { default as dataicon } from "./dataicon.png";
+export { default as aiicon } from "./aiicon.png";
+export { default as knowledgeicon } from "./knowledgeicon.png";
+export { default as spreadicon } from "./spreadicon.png";
+export { default as supporticon } from "./supporticon.png";

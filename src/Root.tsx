@@ -17,7 +17,7 @@ const Root = () => (
       </div>
     </div>
 
-    <div className={``}>
+    <div>
       <Outlet />
     </div>
 

@@ -15,7 +15,10 @@ const Hero = () => {
       id="home"
       className={`flex sm:flex-row flex-col ${styles.marginY} `}
     >
-      <div
+      <motion.div
+        initial={{ x: "-100vw" }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 35 }}
         id="left"
         className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 `}
       >
@@ -23,7 +26,7 @@ const Hero = () => {
           <span className="text-gradient">Lorem ipsum</span>
           <br className="sm:block hidden" /> dolor quis justo consectetur.
         </h1>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ x: "100vw" }}
