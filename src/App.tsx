@@ -8,7 +8,9 @@ import {
   Cooperation,
   Home,
   Implementation,
+  MainServices,
   NTIS,
+  ProgramDetails,
   Statistics,
   Vision,
 } from "./pages";
@@ -37,6 +39,8 @@ const App = () => (
           <Route path="/aboutus/NTIS" element={<NTIS />} />
           <Route path="/aboutus/vision" element={<Vision />} />
           <Route path="/aboutus/implementation" element={<Implementation />} />
+          <Route path="/aboutus/programdetails" element={<ProgramDetails />} />
+          <Route path="/aboutus/services" element={<MainServices />} />
         </Route>
       </Route>
     </Routes>

@@ -19,3 +19,4 @@ export { default as supporticon } from "./supporticon.png";
 export { default as caretright } from "./caretright.png";
 export { default as ai } from "./ai.png";
 export { default as laptop } from "./laptop.png";
+export { default as services } from "./services.svg";

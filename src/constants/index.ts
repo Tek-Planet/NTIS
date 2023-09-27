@@ -114,8 +114,8 @@ export const aboutsMenu: Menus[] = [
   { id: "aboutus/NTIS", title: "What is NTIS?" },
   { id: "aboutus/vision", title: "Vision & Mission" },
   { id: "aboutus/implementation", title: "Implementation" },
-  { id: "4", title: "Program Details" },
-  { id: "5", title: "Main Services" },
+  { id: "aboutus/programdetails", title: "Program Details" },
+  { id: "aboutus/services", title: "Main Services" },
   { id: "6", title: "Gallery" },
   { id: "7", title: "News" },
 ];
@@ -312,7 +312,7 @@ export const strategy = [
   },
 ];
 
-export const implementation = [
+export const implementation: GeneralListModel[] = [
   {
     id: "1",
     title:
@@ -333,5 +333,43 @@ export const implementation = [
     title: "Enhancement of a demand-responsive data analysis services",
     content:
       "It provides customized analysis information according to the analysis demand by user (researchers, ministries, general users, etc.). Provide customized analysis information. It lays the foundation for analysis automation, such as building a Data Lake** platform for integrated data analysis with Data Warehouse*, which is the basis of the service. It supports easier use of analysis information and raw data by major issues. * A high quality database with integrated data to efficiently support the information processing functions required for decision-making of the users. ** A system that effectively collects, manages, and analyzes large-scale data of various types.",
+  },
+];
+
+export const mainServices: GeneralListModel[] = [
+  {
+    id: "1",
+    title: "Enhancement of data analysis services",
+    img: dataicon,
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa.",
+  },
+  {
+    id: "2",
+    title: "User-centered intelligence advancement",
+    img: aiicon,
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa.",
+  },
+  {
+    id: "3",
+    title: "Knowledge sharing collaborating system",
+    img: knowledgeicon,
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa.",
+  },
+  {
+    id: "4",
+    title: "Spread of national R&D results",
+    img: spreadicon,
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa.",
+  },
+  {
+    id: "5",
+    title: "Advancement of national R&D cycle support",
+    img: supporticon,
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa.",
   },
 ];

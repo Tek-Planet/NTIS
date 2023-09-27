@@ -32,7 +32,7 @@ const NHIS = () => {
           interested in scientific and technological knowledge and information.
         </p>
       </div>
-      <div className={`flex flex-wrap w-full`}>
+      <div className={`flex flex-wrap`}>
         {NTISList.map((item) => (
           <NTISCardItem item={item} />
         ))}
