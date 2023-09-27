@@ -10,7 +10,7 @@ const NHIS = () => {
       initial={{ x: "100vw" }}
       animate={{ x: 0 }}
       transition={{ type: "spring", stiffness: 35 }}
-      className={`flex flex-col mt-5  mx-0 md:mx-10`}
+      className={`flex flex-col mt-5  mx-0 lg:mx-10`}
     >
       <div className="flex flex-col   ">
         <div className="flex flex-col sm:flex-row gap-3 items-center">

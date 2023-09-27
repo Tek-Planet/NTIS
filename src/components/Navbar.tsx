@@ -40,7 +40,7 @@ const Navbar = () => {
           className="w-[10] h-[10] object-center "
         />
       </NavLink>
-      <ul className="list-none md:flex hidden gap-5 justify-end items-center flex-1">
+      <ul className="list-none lg:flex hidden gap-5 justify-end items-center flex-1">
         {navLinks.map((nav, index) => {
           return (
             <motion.li
@@ -77,7 +77,7 @@ const Navbar = () => {
         </motion.li>
       </ul>
 
-      <div className="md:hidden flex flex-1 justify-end items-center">
+      <div className="lg:hidden flex flex-1 justify-end items-center">
         <img
           src={toggle ? close : menu}
           alt="menu"

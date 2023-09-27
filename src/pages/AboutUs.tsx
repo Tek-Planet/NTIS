@@ -19,13 +19,13 @@ const AboutUs = () => {
     >
       <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <div className={`flex flex-col md:flex-row ${styles.marginX} `}>
+          <div className={`flex flex-col lg:flex-row ${styles.marginX} `}>
             {/* rigth */}
             <motion.div
               initial={{ x: "-100vw" }}
               animate={{ x: 0 }}
               transition={{ type: "spring", stiffness: 35 }}
-              className="flex md:max-w-[190px] w-full bg-slate-300"
+              className="flex lg:max-w-[190px] w-full bg-slate-300"
             >
               <ul className="flex flex-col list-none gap-5 p-5">
                 {aboutsMenu.map((nav, index) => {

@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
-import { Menus } from "../types";
+import { GeneralListModel } from "../types";
 import { hoverVariant } from "../variants";
 
 interface Props {
-  item: Menus;
+  item: GeneralListModel;
 }
 
 function ImplementationCardItems({ item }: Props) {
-  const { title, img } = item;
+  const { title, img, content } = item;
   return (
     <motion.div
       variants={hoverVariant}
       whileHover={"hover"}
-      className="flex flex-col max-w-xs md:max-w-[300px] w-full p-5 items-center rounded-[20px] bg- m-2"
+      className="  w-full  md:w-1/1 lg:w-1/2 xl:w-1/4 mb-3 lg:px-3 bg-white shadow-lg rounded-lg"
     >
-      <div className="flex flex-row">
-        <img
-          src={img}
-          // alt={"pp"}
-          className="w-[80px] h-[80px] md:w-[220px] md:h-[180px] "
-        />
-      </div>
-      <p className="font-poppins font-semibold text-[20px] sm:text-[14px] my-5 text-center">
-        {title}
-      </p>
+      {title ? (
+        <div className="p-3">
+          <p className="font-poppins font-semibold text-[16px] md:text-[20px] sm:text-[14px] my-5">
+            {title}
+          </p>
+
+          <p className="font-poppins text-[14px] md:text-[16px]  ">{content}</p>
+        </div>
+      ) : (
+        <img src={img} className="w-full h-full " />
+      )}
     </motion.div>
   );
 }

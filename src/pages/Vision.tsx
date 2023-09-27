@@ -11,7 +11,7 @@ const Vision = () => {
       initial={{ x: "100vw" }}
       animate={{ x: 0 }}
       transition={{ type: "spring", stiffness: 35 }}
-      className={`flex flex-col mt-5  mx-0 md:mx-10`}
+      className={`flex flex-col mt-5  mx-0 lg:mx-10`}
     >
       <div className="flex flex-col   ">
         <p
@@ -20,7 +20,7 @@ const Vision = () => {
           Vision & Mission
         </p>
 
-        <div className="flex flex-col  items-center mt-8">
+        <div className="flex flex-col  items-center mt-5">
           <p className={`${styles.heading3} text-linkactive text-center`}>
             Vision
           </p>
@@ -30,7 +30,7 @@ const Vision = () => {
           </p>
         </div>
       </div>
-      <div className="hidden md:flex flex-col shadow-lg bg-white p-4 m-2 rounded-lg">
+      <div className="hidden lg:flex flex-col shadow-lg bg-white p-4 m-2 rounded-lg">
         {vision.map((item, index) => (
           <div className="flex  items-center">
             {/* left side */}
