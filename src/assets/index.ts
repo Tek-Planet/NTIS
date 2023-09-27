@@ -16,3 +16,4 @@ export { default as aiicon } from "./aiicon.png";
 export { default as knowledgeicon } from "./knowledgeicon.png";
 export { default as spreadicon } from "./spreadicon.png";
 export { default as supporticon } from "./supporticon.png";
+export { default as caretright } from "./caretright.png";

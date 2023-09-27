@@ -176,3 +176,136 @@ export const infoPartners: GeneralListModel[] = [
     content: "",
   },
 ];
+
+export const vision = [
+  {
+    id: "1",
+    title: "User Group",
+    content: [
+      {
+        id: "1",
+        title:
+          "Researcher + General user + Ministry and agency (specialized institution) officer",
+      },
+    ],
+  },
+
+  {
+    id: "2",
+    title: "Key Element",
+    content: [
+      {
+        id: "1",
+        title: "Opening & Sharing",
+      },
+      {
+        id: "2",
+        title: "Cooperation",
+      },
+      {
+        id: "3",
+        title: "Intelligent Advancement",
+      },
+      {
+        id: "4",
+        title: "Spread of performance utilization",
+      },
+      {
+        id: "5",
+        title: "Link",
+      },
+    ],
+  },
+
+  {
+    id: "3",
+    title: "Innovative Growth Support",
+    content: [
+      {
+        id: "1",
+        title: "Intelligent cooperative ecosystem",
+      },
+
+      {
+        id: "2",
+        title: "Acceleration of innovation",
+      },
+
+      {
+        id: "3",
+        title: "Acceleration system of virtuous cycle",
+      },
+    ],
+  },
+  {
+    id: "4",
+    title: "Goal",
+    content: [
+      {
+        id: "1",
+        title:
+          "Providing innovative growth engines through sharing scientific data. knowledge and experiences and cooperation",
+      },
+    ],
+  },
+];
+
+export const strategy = [
+  {
+    id: "1",
+    title:
+      "Advancement of intelligent NTIS through opening, sharing, and collaboration",
+    content: [
+      {
+        id: "1",
+        title: "Strengthening demand-responsive data analysis services",
+      },
+
+      {
+        id: "2",
+        title:
+          "Establishment of knowledge sharing services in which users participate",
+      },
+
+      {
+        id: "3",
+        title:
+          "Strengthening public experience services for the spread of national R&D achievements",
+      },
+
+      {
+        id: "4",
+        title: "Easy and convenient advancement of intelligent NTIS",
+      },
+    ],
+  },
+
+  {
+    id: "2",
+    title:
+      "Advancement of intelligent NTIS through opening, sharing, and collaboration",
+    content: [
+      {
+        id: "1",
+        title: "Strengthening national R&D decision-making support",
+      },
+    ],
+  },
+
+  {
+    id: "3",
+    title:
+      "Advancement of intelligent NTIS through opening, sharing, and collaboration",
+    content: [
+      {
+        id: "1",
+        title:
+          "Establishment of NTIS information resources through cloud conversion",
+      },
+      {
+        id: "2",
+        title: "Building a Data Lake for Intelligent Data Analytics",
+      },
+    ],
+  },
+];

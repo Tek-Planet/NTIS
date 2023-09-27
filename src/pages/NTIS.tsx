@@ -2,10 +2,16 @@ import { infoPartners, NTISList } from "../constants";
 import styles from "../style";
 
 import { NTISCardItem } from "../components";
+import { motion } from "framer-motion";
 
 const NHIS = () => {
   return (
-    <div className={`flex flex-col mt-5  mx-0 md:mx-10`}>
+    <motion.div
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      transition={{ type: "spring", stiffness: 35 }}
+      className={`flex flex-col mt-5  mx-0 md:mx-10`}
+    >
       <div className="flex flex-col   ">
         <div className="flex flex-col sm:flex-row gap-3 items-center">
           <p
@@ -46,7 +52,7 @@ const NHIS = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
