@@ -3,7 +3,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { AboutUs, Cooperation, Home, NTIS, Statistics, Vision } from "./pages";
+import {
+  AboutUs,
+  Cooperation,
+  Home,
+  Implementation,
+  NTIS,
+  Statistics,
+  Vision,
+} from "./pages";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -28,6 +36,7 @@ const App = () => (
           <Route path="/aboutus" element={<NTIS />} />
           <Route path="/aboutus/NTIS" element={<NTIS />} />
           <Route path="/aboutus/vision" element={<Vision />} />
+          <Route path="/aboutus/implementation" element={<Implementation />} />
         </Route>
       </Route>
     </Routes>

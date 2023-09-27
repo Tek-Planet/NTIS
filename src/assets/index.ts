@@ -17,3 +17,5 @@ export { default as knowledgeicon } from "./knowledgeicon.png";
 export { default as spreadicon } from "./spreadicon.png";
 export { default as supporticon } from "./supporticon.png";
 export { default as caretright } from "./caretright.png";
+export { default as ai } from "./ai.png";
+export { default as laptop } from "./laptop.png";

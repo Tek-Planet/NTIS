@@ -1,10 +1,12 @@
 import {
+  ai,
   aiicon,
   analyze,
   blog,
   chemistry,
   dataicon,
   knowledgeicon,
+  laptop,
   office,
   spreadicon,
   supporticon,
@@ -111,7 +113,7 @@ export const projects: GeneralListModel[] = [
 export const aboutsMenu: Menus[] = [
   { id: "aboutus/NTIS", title: "What is NTIS?" },
   { id: "aboutus/vision", title: "Vision & Mission" },
-  { id: "3", title: "Implementation" },
+  { id: "aboutus/implementation", title: "Implementation" },
   { id: "4", title: "Program Details" },
   { id: "5", title: "Main Services" },
   { id: "6", title: "Gallery" },
@@ -307,5 +309,29 @@ export const strategy = [
         title: "Building a Data Lake for Intelligent Data Analytics",
       },
     ],
+  },
+];
+
+export const implementation = [
+  {
+    id: "1",
+    title:
+      "Open science-based establishment of an intelligent cooperation system",
+    content:
+      "It contributes to digital transformation by sharing secondary information and machine learning data that combines national R&D information, scientific information, external data (overseas R&D, regional R&D, trends, top journal/conference information by field, etc.).It contributes to digital transformation by sharing machine learning data. It expands the venue for user participation in various ways and provides a knowledge-sharing cooperation system so that the public can actually experience the results of national R&D.",
+  },
+  {
+    id: "2",
+    img: ai,
+  },
+  {
+    id: "3",
+    img: laptop,
+  },
+  {
+    id: "4",
+    title: "Enhancement of a demand-responsive data analysis services",
+    content:
+      "It provides customized analysis information according to the analysis demand by user (researchers, ministries, general users, etc.). Provide customized analysis information. It lays the foundation for analysis automation, such as building a Data Lake** platform for integrated data analysis with Data Warehouse*, which is the basis of the service. It supports easier use of analysis information and raw data by major issues. * A high quality database with integrated data to efficiently support the information processing functions required for decision-making of the users. ** A system that effectively collects, manages, and analyzes large-scale data of various types.",
   },
 ];
