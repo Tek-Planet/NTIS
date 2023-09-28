@@ -7,3 +7,4 @@ export { default as Vision } from "./Vision";
 export { default as Implementation } from "./Implementation";
 export { default as ProgramDetails } from "./ProgramDetails";
 export { default as MainServices } from "./MainServices";
+export { default as Gallery } from "./Gallery";

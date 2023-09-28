@@ -45,24 +45,9 @@ const MainServices = () => {
         </motion.div>
       </div>
 
-      <div className={`flex flex-wrap w-full  justify-center  `}>
+      <div className={`flex flex-wrap w-full  `}>
         {mainServices.map((item) => (
           <MainServiceCardItem item={item} />
-        ))}
-      </div>
-      {/* informational partner section */}
-      <div className="flex flex-col mt-6 ">
-        <p className={` ${styles.heading2} text-center text-linkactive my-4`}>
-          Informational Partner
-        </p>
-
-        {infoPartners.map((item) => (
-          <div key={item.id} className=" sm:flex justify-between border p-3 ">
-            <p className={`${styles.textSize}  font-light`}>{item.title}</p>
-            <p className={`${styles.textSize}  font-thin opacity-50`}>
-              {item.content}
-            </p>
-          </div>
         ))}
       </div>
     </motion.div>

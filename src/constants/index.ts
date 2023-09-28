@@ -116,7 +116,7 @@ export const aboutsMenu: Menus[] = [
   { id: "aboutus/implementation", title: "Implementation" },
   { id: "aboutus/programdetails", title: "Program Details" },
   { id: "aboutus/services", title: "Main Services" },
-  { id: "6", title: "Gallery" },
+  { id: "/aboutus/gallery", title: "Gallery" },
   { id: "7", title: "News" },
 ];
 

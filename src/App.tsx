@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import {
   AboutUs,
   Cooperation,
+  Gallery,
   Home,
   Implementation,
   MainServices,
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/aboutus/implementation" element={<Implementation />} />
           <Route path="/aboutus/programdetails" element={<ProgramDetails />} />
           <Route path="/aboutus/services" element={<MainServices />} />
+          <Route path="/aboutus/gallery" element={<Gallery />} />
         </Route>
       </Route>
     </Routes>
