@@ -4,6 +4,6 @@
   },
   "hosting": {
     "target": "nits-gh",
-    "public": "build"
+    "public": "dist"
   }
 }
