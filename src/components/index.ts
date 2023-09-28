@@ -13,3 +13,4 @@ export { default as Projects } from "./Projects";
 export { default as ProjectCardItem } from "./ProjectCardItem";
 export { default as NTISCardItem } from "./NTISCardItem";
 export { default as MainServiceCardItem } from "./MainServiceCardItem";
+export { default as GalleryCardItem } from "./GalleryCardItem";

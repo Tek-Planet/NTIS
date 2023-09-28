@@ -3,13 +3,19 @@ import {
   aiicon,
   analyze,
   blog,
+  bond,
+  brain,
   chemistry,
   dataicon,
   knowledgeicon,
+  lab,
   laptop,
   office,
+  solar,
   spreadicon,
+  stars,
   supporticon,
+  virus,
 } from "../assets";
 import { GeneralListModel, Menus } from "../types";
 
@@ -116,7 +122,7 @@ export const aboutsMenu: Menus[] = [
   { id: "aboutus/implementation", title: "Implementation" },
   { id: "aboutus/programdetails", title: "Program Details" },
   { id: "aboutus/services", title: "Main Services" },
-  { id: "/aboutus/gallery", title: "Gallery" },
+  { id: "aboutus/gallery", title: "Gallery" },
   { id: "7", title: "News" },
 ];
 
@@ -371,5 +377,31 @@ export const mainServices: GeneralListModel[] = [
     img: supporticon,
     content:
       "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa.",
+  },
+];
+
+export const gallery: GeneralListModel[] = [
+  {
+    id: "1",
+    img: stars,
+
+    subdata: [
+      { id: "1", img: bond },
+      { id: "1", img: virus },
+      { id: "1", img: lab },
+      { id: "1", img: brain },
+    ],
+  },
+  {
+    id: "2",
+    img: ai,
+  },
+  {
+    id: "3",
+    img: laptop,
+  },
+  {
+    id: "4",
+    img: solar,
   },
 ];

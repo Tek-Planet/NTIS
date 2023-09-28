@@ -10,4 +10,5 @@ export type GeneralListModel = {
   content?: string;
   img?: string;
   createdAt?: string;
+  subdata?: GeneralListModel[];
 };
