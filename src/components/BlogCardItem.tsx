@@ -25,7 +25,7 @@ function BlogCardItem({ item }: Props) {
         />
       </div>
       <div className="p-4">
-        <p className="font-poppins font-bold text-[12px] sm:text-[16px] ]  ">
+        <p className="font-poppins font-bold text-[12px] sm:text-[16px]  ">
           Title
         </p>
         <p className="font-poppins font-normal text-[12px] sm:text-[14px] my-3 ">

@@ -10,7 +10,7 @@ const Gallery = () => {
       initial={{ x: "100vw" }}
       animate={{ x: 0 }}
       transition={{ type: "spring", stiffness: 35 }}
-      className={`flex flex-col mt-5  mx-0 lg:mx-10`}
+      className={`flex flex-col mt-5  mx-0 lg:ml-10`}
     >
       <div className="flex flex-col mb-4  ">
         <p

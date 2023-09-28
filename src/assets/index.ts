@@ -26,3 +26,4 @@ export { default as lab } from "./lab.svg";
 export { default as solar } from "./solar.svg";
 export { default as stars } from "./stars.svg";
 export { default as virus } from "./virus.svg";
+export { default as carausal } from "./carausal.svg";

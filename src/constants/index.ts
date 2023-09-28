@@ -123,7 +123,7 @@ export const aboutsMenu: Menus[] = [
   { id: "aboutus/programdetails", title: "Program Details" },
   { id: "aboutus/services", title: "Main Services" },
   { id: "aboutus/gallery", title: "Gallery" },
-  { id: "7", title: "News" },
+  { id: "aboutus/news", title: "News" },
 ];
 
 export const NTISList: Menus[] = [
@@ -403,5 +403,36 @@ export const gallery: GeneralListModel[] = [
   {
     id: "4",
     img: solar,
+  },
+];
+
+export const news: GeneralListModel[] = [
+  {
+    id: "1",
+    img: bond,
+    title: "Lorem ipsum dolor sit amet consectetur.",
+    content: "It contributes to digital transformation by sharing secondary",
+  },
+
+  {
+    id: "2",
+    img: lab,
+    title: "Lorem ipsum dolor sit amet consectetur.",
+    content:
+      "It contributes to digital trans by sharing secondary It contributes to digital trans by sharing secondary  It contributes to digital trans by sharing secondary",
+  },
+
+  {
+    id: "3",
+    img: brain,
+    title: "Lorem ipsum dolor sit amet consectetur.",
+    content: "It contributes to digital transformation by sharing secondary",
+  },
+
+  {
+    id: "4",
+    img: virus,
+    title: "Lorem ipsum dolor sit amet consectetur.",
+    content: "It contributes to digital transformation by sharing secondary",
   },
 ];

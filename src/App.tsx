@@ -11,6 +11,7 @@ import {
   Implementation,
   MainServices,
   NTIS,
+  News,
   ProgramDetails,
   Statistics,
   Vision,
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/aboutus/programdetails" element={<ProgramDetails />} />
           <Route path="/aboutus/services" element={<MainServices />} />
           <Route path="/aboutus/gallery" element={<Gallery />} />
+          <Route path="/aboutus/news" element={<News />} />
         </Route>
       </Route>
     </Routes>

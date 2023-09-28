@@ -1,11 +1,7 @@
-import { infoPartners, mainServices, NTISList } from "../constants";
+import { mainServices } from "../constants";
 import styles from "../style";
 
-import {
-  MainServiceCardItem,
-  NTISCardItem,
-  ServiceCardItem,
-} from "../components";
+import { MainServiceCardItem } from "../components";
 import { motion } from "framer-motion";
 import { services } from "../assets";
 
@@ -15,7 +11,7 @@ const MainServices = () => {
       initial={{ x: "100vw" }}
       animate={{ x: 0 }}
       transition={{ type: "spring", stiffness: 35 }}
-      className={`flex flex-col mt-5  mx-0 lg:mx-10`}
+      className={`flex flex-col mt-5  mx-0 lg:ml-10`}
     >
       <div id="home" className={`flex sm:flex-row flex-col `}>
         <div id="left" className={`flex-1 flex  flex-col xl:px-0   `}>
