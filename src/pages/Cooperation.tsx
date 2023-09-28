@@ -29,7 +29,7 @@ const Cooperation = () => {
       {/* carousal */}
       <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Carousal />
+          <Carousal placeholder="Latest ongoing" />
         </div>
       </div>
       {/* ongoing project  */}

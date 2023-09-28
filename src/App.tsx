@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   AboutUs,
+  ContactUs,
   Cooperation,
   Gallery,
   Home,
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/aboutus/gallery" element={<Gallery />} />
           <Route path="/aboutus/news" element={<News />} />
         </Route>
+        <Route path="/contactus" element={<ContactUs />} />
       </Route>
     </Routes>
   </BrowserRouter>

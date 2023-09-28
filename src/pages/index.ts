@@ -9,3 +9,4 @@ export { default as ProgramDetails } from "./ProgramDetails";
 export { default as MainServices } from "./MainServices";
 export { default as Gallery } from "./Gallery";
 export { default as News } from "./News";
+export { default as ContactUs } from "./ContactUs";

@@ -42,39 +42,47 @@ const Navbar = () => {
       </NavLink>
       <ul className="list-none lg:flex hidden gap-5 justify-end items-center flex-1">
         {navLinks.map((nav, index) => {
-          return (
-            <motion.li
-              key={index.toString()}
-              whileHover={{
-                scale: 1.2,
-                originY: 0,
-                color: "#FF9810",
-              }}
-              transition={{ type: "spring", stiffness: 150 }}
-            >
-              <NavLink
-                to={`/${nav.id}`}
-                className={({ isActive }) =>
-                  isActive ? activeLink : normalLink
-                }
+          if (nav.id === "contactus")
+            return (
+              <motion.li
+                key={index.toString()}
+                whileHover={{
+                  scale: 1.1,
+                  originY: 0,
+                }}
+                transition={{ type: "spring", stiffness: 150 }}
+                className="bg-buttongreen p-1 rounded-lg items-center"
               >
-                <span className="capitalize  text-sm ">{nav.title}</span>
-              </NavLink>
-            </motion.li>
-          );
+                <NavLink
+                  to={`/${nav.id}`}
+                  className={` text-white text-center p-2`}
+                >
+                  <span className="capitalize  text-sm ">{nav.title}</span>
+                </NavLink>
+              </motion.li>
+            );
+          else
+            return (
+              <motion.li
+                key={index.toString()}
+                whileHover={{
+                  scale: 1.2,
+                  originY: 0,
+                  color: "#FF9810",
+                }}
+                transition={{ type: "spring", stiffness: 150 }}
+              >
+                <NavLink
+                  to={`/${nav.id}`}
+                  className={({ isActive }) =>
+                    isActive ? activeLink : normalLink
+                  }
+                >
+                  <span className="capitalize  text-sm ">{nav.title}</span>
+                </NavLink>
+              </motion.li>
+            );
         })}
-        <motion.li
-          whileHover={{
-            scale: 1.1,
-            originY: 0,
-          }}
-          transition={{ type: "spring", stiffness: 150 }}
-          className="bg-buttongreen p-1 rounded-lg items-center"
-        >
-          <NavLink to={`/constactus`} className={` text-white text-center p-2`}>
-            <span className="capitalize  text-sm  text-center">Contact Us</span>
-          </NavLink>
-        </motion.li>
       </ul>
 
       <div className="lg:hidden flex flex-1 justify-end items-center">

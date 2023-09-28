@@ -12,7 +12,7 @@ function ImplementationCardItems({ item }: Props) {
     <motion.div
       variants={hoverVariant}
       whileHover={"hover"}
-      className="  w-full  md:w-1/1 lg:w-[47%] xl:w-[48%] mb-3 m-2 shadow-lg rounded-lg"
+      className="  w-full  md:w-1/1 lg:w-[47%] xl:w-[48%]  mr-0 mb-3 lg:mr-4 shadow-lg rounded-lg"
     >
       {title ? (
         <div className="p-3">

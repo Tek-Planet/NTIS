@@ -39,6 +39,11 @@ export const navLinks: Menus[] = [
     id: "aboutus",
     title: "About Us",
   },
+
+  {
+    id: "contactus",
+    title: "Contact Us",
+  },
 ];
 
 export const feedback: GeneralListModel[] = [
@@ -398,11 +403,11 @@ export const gallery: GeneralListModel[] = [
   },
   {
     id: "3",
-    img: laptop,
+    img: brain,
   },
   {
     id: "4",
-    img: solar,
+    img: bond,
   },
 ];
 

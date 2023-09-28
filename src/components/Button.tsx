@@ -10,7 +10,6 @@ interface ButtonProps {
   location?: string;
 }
 
-
 const Button = (props: ButtonProps) => {
   let {
     styles,
@@ -20,24 +19,24 @@ const Button = (props: ButtonProps) => {
     onclick,
     isLink,
     location,
-  } = props
+  } = props;
   return (
     <motion.button
-    onClick={() => {
-      onclick();
-    }}
-    disabled={disabled}
-    type={type}
-    className={`bg-green-400 py-3 px-3 md:py-4 md:px-6 font-poppins font-medium text-[14px] 
+      onClick={() => {
+        onclick();
+      }}
+      disabled={disabled}
+      type={type}
+      className={`bg-buttongreen py-3 px-3 md:py-4 md:px-6 font-poppins font-medium text-[14px] 
     rounded-[10px] outline-none ${styles}`}
-    whileHover={{
-      scale: 1.1,
-      boxShadow: "0px 0px 8px rgb(255,255,255)",
-    }}
-  >
-    {isLink ? <a href={`#${location}`}>{text}</a> : text}
-  </motion.button>
-  )
-}
+      whileHover={{
+        scale: 1.1,
+        boxShadow: "0px 0px 8px rgb(255,255,255)",
+      }}
+    >
+      {isLink ? <a href={`#${location}`}>{text}</a> : text}
+    </motion.button>
+  );
+};
 
-export default Button
+export default Button;

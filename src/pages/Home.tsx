@@ -19,8 +19,8 @@ const Home = () => {
 
       {/* carousal */}
       <div className={` ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Carousal />
+        <div className={`${styles.boxWidth} `}>
+          <Carousal placeholder="Explore More" />
         </div>
       </div>
 
@@ -31,16 +31,17 @@ const Home = () => {
         </div>
       </div>
 
-      {/* blog updates */}
-      <div className={`bg-backgroudgreen  ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          <Blogs />
-        </div>
-      </div>
       {/* research firm data */}
       <div className={`  ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Research />
+        </div>
+      </div>
+
+      {/* blog updates */}
+      <div className={`bg-backgroudgreen  ${styles.flexCenter}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Blogs />
         </div>
       </div>
     </motion.div>

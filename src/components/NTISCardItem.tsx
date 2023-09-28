@@ -12,7 +12,7 @@ function NTISCardItem({ item }: Props) {
     <motion.div
       variants={hoverVariant}
       whileHover={"hover"}
-      className="flex flex-col md:w-[47%] lg:w-[30%] xl:w-[33%] w-full p-5 m-2 items-center rounded-[20px] bg-white  shadow-md shadow-gray-150"
+      className="flex flex-col md:w-[47%] lg:w-[32%] xl:w-[33%] w-full p-5 sm:mr-4 lg:mr-2 mb-3  items-center rounded-[20px] bg-white  shadow-md shadow-gray-150"
     >
       <div className="flex flex-row">
         <img
