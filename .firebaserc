@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "projectmanagement-2d19a"
+  },
+  "hosting": {
+    "target": "nits-gh",
+    "public": "build"
+  }
+}

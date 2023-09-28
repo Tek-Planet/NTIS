@@ -66,7 +66,7 @@ const Blog = () => {
           Latest Update
         </p>
       </div>
-      <Slider className=" md:mt-4" ref={sliderRef} {...settings}>
+      <Slider className="md:m-28 md:mt-4" ref={sliderRef} {...settings}>
         <BlogCardItem item={lastest[2]} />
         <BlogCardItem item={lastest[0]} />
         <BlogCardItem item={lastest[0]} />
