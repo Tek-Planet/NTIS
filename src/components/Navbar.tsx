@@ -3,23 +3,11 @@ import { useState } from "react";
 import { navLinks } from "../constants";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { hoverVariant } from "../variants";
-import { caret, menu, close, logo } from "../assets";
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
+import { menu, close, logo } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-
-  let navigate = useNavigate();
-
-  const handleNavigate = () => {
-    navigate(`/conferences/#partners`);
-  };
 
   const activeLink =
     "font-poppins font-normal cursor-pointer  mr-5 hover:text-linkactive text-linkactive";
@@ -37,7 +25,7 @@ const Navbar = () => {
           whileHover={"hover"}
           src={logo}
           alt="menu"
-          className="w-[10] h-[10] object-center "
+          className="w-[70px] h-[70px] object-center "
         />
       </NavLink>
       <ul className="list-none lg:flex hidden gap-5 justify-end items-center flex-1">
@@ -110,7 +98,6 @@ const Navbar = () => {
                   transition={{ type: "spring", stiffness: 150 }}
                   key={nav.id}
                   onClick={() => {
-                    setActive(nav.title);
                     setToggle(!toggle);
                   }}
                 >

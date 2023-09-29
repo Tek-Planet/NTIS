@@ -1,6 +1,6 @@
 export { default as caret } from "./caret.png";
 export { default as close } from "./close.svg";
-export { default as logo } from "./logo.svg";
+export { default as logo } from "./logo.png";
 export { default as menu } from "./menu.svg";
 export { default as hero } from "./hero.png";
 export { default as analyze } from "./analyze.png";
@@ -28,3 +28,5 @@ export { default as stars } from "./stars.svg";
 export { default as virus } from "./virus.svg";
 export { default as carausal } from "./carausal.svg";
 export { default as statshero } from "./statshero.png";
+export { default as graph } from "./graph.png";
+export { default as arrowup } from "./arrowup.png";

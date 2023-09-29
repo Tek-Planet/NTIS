@@ -3,7 +3,9 @@ import { feedback } from "../constants";
 import styles from "../style";
 
 import Slider from "react-slick";
-import { ResearchCardItem } from ".";
+import { Graph, ResearchCardItem } from ".";
+import { graph } from "../assets";
+import { motion } from "framer-motion";
 
 const Research = () => {
   const sliderRef = useRef(null);
@@ -58,9 +60,12 @@ const Research = () => {
     <div id="clients" className={`flex flex-col  ${styles.marginY} `}>
       <div className="flex flex-col items-center sm:mb-10 mb-6 ">
         <p className={` ${styles.heading2} text-center text-linkactive `}>
-          Research Firm Data
+          Research Data
         </p>
       </div>
+
+      <Graph />
+
       <Slider ref={sliderRef} {...settings}>
         <ResearchCardItem item={feedback[0]} />
         <ResearchCardItem item={feedback[1]} />

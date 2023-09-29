@@ -8,8 +8,7 @@ const Statistics = () => {
   return (
     <section className={`flex flex-col justify-center items-center `}>
       <motion.div
-        // variants={hoverVariant}
-        // whileHover={"hover"}
+        id="home"
         className="relative p-6 bg-center bg-cover h-[500px]  w-full"
         style={{ backgroundImage: `url(${statshero})` }}
       >

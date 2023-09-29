@@ -23,8 +23,9 @@ const Hero = () => {
         className={`flex-1 `}
       >
         <h1 className="font-poppins font-semibold text-[32px] lg:text-[58px]   lg:leading-[80.8px] leading-[45px] ">
-          <span className="text-gradient">Lorem ipsum</span>
-          <br className="sm:block hidden" /> dolor quis justo consectetur.
+          <span className="text-gradient">Your research and data partner</span>
+          <br className="sm:block hidden" />
+          Visit the MIS
         </h1>
       </motion.div>
 

@@ -21,7 +21,7 @@ function BlogCardItem({ item }: Props) {
         <img
           src={img}
           alt={"pp"}
-          className="w-[100%] h-[250px] rounded-[20px]"
+          className="w-[100%] object-cover rounded-[20px]"
         />
       </div>
       <div className="p-4">

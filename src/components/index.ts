@@ -15,3 +15,4 @@ export { default as NTISCardItem } from "./NTISCardItem";
 export { default as MainServiceCardItem } from "./MainServiceCardItem";
 export { default as GalleryCardItem } from "./GalleryCardItem";
 export { default as CustomTextInput } from "./CustomTextInput";
+export { default as Graph } from "./Graph";

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 const Home = () => {
   return (
     <motion.div
+      id="home"
       transition={{
         when: "beforeChildren",
         staggerChildren: 2,

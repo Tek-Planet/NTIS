@@ -3,23 +3,20 @@ import { NavLink } from "react-router-dom";
 import { projecticon } from "../assets";
 import styles from "../style";
 import { hoverVariant } from "../variants";
+import { GeneralListModel } from "../types";
 
 interface Props {
-  item: {
-    content: string;
-    img: string;
-    title: string;
-    created: string;
-  };
+  item: GeneralListModel;
+  onClick: (val: GeneralListModel) => void;
 }
 
-function ProjectCardItem({ item }: Props) {
-  const { content, img, title, created } = item;
+function ProjectCardItem({ item, onClick }: Props) {
+  const { content, img, title, createdAt } = item;
 
   return (
     <motion.div
       onClick={() => {
-        // onClick(item);
+        onClick(item);
       }}
       variants={hoverVariant}
       whileHover={"hover"}
@@ -35,24 +32,26 @@ function ProjectCardItem({ item }: Props) {
         <div className="flex items-center justify-between">
           <div>
             <p className={`  text-buttongreen`}>{title}</p>
-            <p className=" text-gray-400  ">{created}</p>
+            <p className=" text-gray-400  ">{createdAt}</p>
           </div>
           <img src={projecticon} />
         </div>
 
         <div className="flex flex-col gap-2 mt-5 ">
           <p className=" text-gray-500  ">Overview</p>
-          <p className=" text-gray-400  ">
-            <span className="sm:hidden">
-              {content.substring(0, 60) + " ..."}
-            </span>
-            <span className="hidden sm:flex md:hidden">
-              {content.substring(0, 100) + " ..."}
-            </span>
-            <span className="hidden md:flex">
-              {content.substring(0, 200) + " ..."}
-            </span>
-          </p>
+          {content && (
+            <p className=" text-gray-400  ">
+              <span className="sm:hidden">
+                {content.substring(0, 60) + " ..."}
+              </span>
+              <span className="hidden sm:flex md:hidden">
+                {content.substring(0, 100) + " ..."}
+              </span>
+              <span className="hidden md:flex">
+                {content.substring(0, 200) + " ..."}
+              </span>
+            </p>
+          )}
         </div>
       </div>
     </motion.div>

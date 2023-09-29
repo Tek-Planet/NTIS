@@ -88,7 +88,21 @@ export const lastest: GeneralListModel[] = [
     id: "feedback-3",
     content:
       "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-    img: analyze,
+    img: lab,
+  },
+
+  {
+    id: "feedback-4",
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+    img: bond,
+  },
+
+  {
+    id: "feedback-5",
+    content:
+      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+    img: solar,
   },
 ];
 

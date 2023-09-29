@@ -7,6 +7,7 @@ import {
   AboutUs,
   ContactUs,
   Cooperation,
+  CooperationDetails,
   Gallery,
   Home,
   Implementation,
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/cooperation" element={<Cooperation />} />
+        <Route path="/cooperation/:name" element={<CooperationDetails />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/aboutus" element={<AboutUs />}>
           <Route path="/aboutus" element={<NTIS />} />

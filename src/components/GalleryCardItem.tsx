@@ -7,7 +7,7 @@ interface Props {
 }
 
 function ImplementationCardItems({ item }: Props) {
-  const { title, img, content, subdata } = item;
+  const { img, subdata } = item;
   return (
     <motion.div
       variants={hoverVariant}
@@ -17,7 +17,7 @@ function ImplementationCardItems({ item }: Props) {
       {subdata ? (
         <div className={`flex flex-wrap`}>
           {subdata.map((item) => (
-            <img src={item.img} className="w-[48%] m-1 " />
+            <img src={item.img} className="w-[47%] sm:w-[48%] m-1 " />
           ))}
         </div>
       ) : (

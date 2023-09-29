@@ -67,9 +67,11 @@ const Blog = () => {
         </p>
       </div>
       <Slider className="md:m-28 md:mt-4" ref={sliderRef} {...settings}>
+        <BlogCardItem item={lastest[0]} />
+        <BlogCardItem item={lastest[1]} />
         <BlogCardItem item={lastest[2]} />
-        <BlogCardItem item={lastest[0]} />
-        <BlogCardItem item={lastest[0]} />
+        <BlogCardItem item={lastest[4]} />
+        <BlogCardItem item={lastest[4]} />
       </Slider>
     </div>
   );

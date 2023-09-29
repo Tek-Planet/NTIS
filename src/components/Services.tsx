@@ -62,9 +62,9 @@ const Services = () => {
         </p>
         <div
           id="center"
-          className="flex flex-row max-w-lg align-middle justify-items-center"
+          className="flex flex-row max-w-[600px] align-middle justify-items-center"
         >
-          <p className={`${styles.textSize} px-5  my-3 sm:px-0`}>
+          <p className={`${styles.textSize} px-5  my-3 sm:px-0 text-center`}>
             Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo
             quis varius sodales at mauris et. Ipsum vel senectus mauris augue
             massa. Sapien pulvinar molestie orci senectus pellentesque aliquet.
