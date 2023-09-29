@@ -53,15 +53,16 @@ const Footer = () => {
             <img src={instagram} alt="fb" className=" object-contain" />
           </div>
         </div>
-
+        {/* big screen */}
         <div
           onClick={() => {}}
-          className=" absolute flex items-center  justify-center right-10  top-[-20px] bg-buttongreen  rounded-full h-14 w-14 border-2"
+          className=" flex absolute  items-center  justify-center right-0 sm:right-10  top-[-18px]  sm:top-[-30px] bg-buttongreen  rounded-full h-10 w-10 md:h-14 sm:w-14 border-2"
         >
           <a href={`#home`}>
             <img src={arrowup} />
           </a>
         </div>
+        {/* mobile */}
       </div>
     </section>
   );
