@@ -17,22 +17,24 @@ const NHIS = () => {
           <p
             className={` font-poppins font-semibold md:text-[33px] text-[25px] md:leading-[38.5px] leading-[30px]  text-buttongreen`}
           >
-            NTIS
+            STI MISI
           </p>
 
-          <span className="font-poppins font-semibold text-sm text-buttongreen">
+          {/* <span className="font-poppins font-semibold text-sm text-buttongreen">
             (National Science & Technology Information Service)
-          </span>
+          </span> */}
         </div>
 
         <p className={`${styles.textSize} mt-2 font-light`}>
-          NTIS is the national R&D portal that integrates and provides
-          information,including programs, projects, human resources, and
-          outcomes of national R&D programs.It is open to all citizens who are
-          interested in scientific and technological knowledge and information.
+          The STIMIS is an information portal that integrates and provides
+          information on programs, projects, human resources, and outcomes of
+          national R&D programs. The portal seeks to provide both statistical
+          and analytical data on Ghana’s National System of Innovation. It is
+          open to all citizens who are interested in scientific and
+          technological knowledge and information.
         </p>
       </div>
-      <div className={`flex flex-wrap`}>
+      <div className={`flex flex-wrap mt-2`}>
         {NTISList.map((item) => (
           <NTISCardItem item={item} />
         ))}

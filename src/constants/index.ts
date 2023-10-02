@@ -2,6 +2,7 @@ import {
   ai,
   aiicon,
   analyze,
+  award,
   blog,
   bond,
   brain,
@@ -10,9 +11,15 @@ import {
   knowledgeicon,
   lab,
   laptop,
+  meeting,
+  moseum,
   office,
+  present,
+  selfie,
   solar,
+  speaker,
   spreadicon,
+  stadium,
   stars,
   supporticon,
   virus,
@@ -49,22 +56,18 @@ export const navLinks: Menus[] = [
 export const feedback: GeneralListModel[] = [
   {
     id: "feedback-1",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-
+    content: "Research Information",
+    title: "Research Information",
     img: office,
   },
   {
     id: "feedback-2",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-
+    title: "Strategic planning",
     img: chemistry,
   },
   {
     id: "feedback-3",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+    title: "Data Analysis",
     img: analyze,
   },
 ];
@@ -109,29 +112,49 @@ export const lastest: GeneralListModel[] = [
 export const projects: GeneralListModel[] = [
   {
     id: "1",
-    title: "Lorem ipsum dolor sit amet",
-    createdAt: "20 Sep,2023",
+    title: "The K-Innovation Partnership Project",
+    createdAt: "",
     img: "https://picsum.photos/200",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus. Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus. Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+    content: `In 2021, the Government of Ghana through the Ministry of Environment, Science, Technology and Innovation (MESTI) and the Science and Technology and Policy Institute (STEPI) of the Republic of Korea launched the K-Innovation Partnership Program between Ghana and Korea, to support the development of a robust and economically viable technological innovation system in Ghana, through the effective operationalisation of the Ghana Innovation and Research Commercialisation Centre (GIRC-Center).
+      Through this partnership: 
+      
+        •	A detailed analysis of Technological Innovation Support Programs (TISPs) in Ghana and Sharing the Korean Experiences.
+        •	A masterplan for the establishment of the GIRC Centre / GIA has been developed with investment plan.
+        •	Capacity Building Workshops has been held. 
+        •	A study tour and capacity building has been held for a Ghanaian delegation in Korea.`,
   },
 
   {
     id: "2",
-    title: "Lorem ipsum dolor sit amet",
-    createdAt: "20 Sep,2023",
+    title: "The Ghana Digital Innovation Week (GDIW)",
+    createdAt: "",
     img: "https://picsum.photos/200",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus. Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus. Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+    content: `Ghana Digital Innovation Week (GDIW) is a nationwide series of events, showcasing and celebrating milestones in Ghana’s Digital Innovation Ecosystem. GDIW provides a platform for various actors to learn, share ideas and create connections to enhance the progress of the landscape.
+
+      The week is co-created and co-owned by actors from private sectors, academia, policymakers, Development Partners, and Civil Society Organizations.
+      
+      It is much more than a festival; it is an unforgettable and impactful lifetime experience for the 
+      innovators and stakeholders who take part.
+      
+      The intention behind it is as simple as fostering the growth of technology and innovation that have been growing rapidly in Ghana. Workshops, competitions, and company visits are some of the activities involved during the event. With numerous event options, there’s something for everyone!
+      
+      The Ghana Digital Innovation Week (GDIW) is borne out of a Trilateral Cooperation of Ghana, Germany, and Israel through MESTI, German Development Organisation (GIZ) and Embassy of Israel (MASHAV) and in its 3rd year of celebration`,
   },
 
   {
     id: "3",
-    title: "Lorem ipsum dolor sit amet",
-    createdAt: "20 Sep,2023",
+    title: "STRENGTHENING STI SYSTEMS FOR SUSTAINABLE DEVELOPMENT IN AFRICA",
+    createdAt: "",
     img: "https://picsum.photos/200",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus. Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus. Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
+    content: `Strengthening Science, Technology and Innovation (STI) is an initiative within UNESCO’s global framework for monitoring, policy support and advocacy for the “UNESCO Recommendation on Science and Scientific Researchers” (November 2017). Phase I: 2020-2022. Phase II: 2022-2025. The 2017 RS|SR defines both the values on the basis of which science can contribute to sustainable development in all its dimensions, and the institutional organization that can enable science institutions in each UNESCO Member State to perform their required role. Responding to the requirements of the 2017 RS|SR is directly and operationally relevant to SDG achievement at national level in the developing countries. The initiative thus includes a vital component of advocacy, conducted Africa-wide, in direct synergy with the specific national interventions in a necessarily limited number of countries.`,
+  },
+
+  {
+    id: "4",
+    title: "THE GHANA UK STI STRATEGY",
+    createdAt: "",
+    img: "https://picsum.photos/200",
+    content: `The UK and Ghana have a history of successful alliances and partnerships that have strengthened the capability of both nations to deliver impactful outputs in ST&I. As the UK renews its commitments to advancing ST&I, both countries envision a sustainable partnership that is founded on mutual respect, transparency, trust, equity, and shared knowledge. Ghana shares the UK’s conviction that these fields are imperative for the success of our socio-economic agendas and to support the health, wellbeing, wealth, prosperity, and security of our respective citizenry. This strategy puts forward ambitions for joint efforts in the ST&I space and sets out how these could be achieved using HMG’s own-collaborate-access model to achieve our respective developmental goals.  `,
   },
 ];
 
@@ -164,28 +187,29 @@ export const NTISList: Menus[] = [
 export const infoPartners: GeneralListModel[] = [
   {
     id: "1",
-    title: "Representative research management institutes",
-    content: "18 relevant ministers and institutes",
+    title: "GSS",
+    content: "Ghana Statistical Service",
   },
   {
     id: "2",
-    title: "Project management institutes",
-    content: "",
+    title: "GTEC",
+    content: "Ghana Tertiary Education Commission",
   },
   {
     id: "3",
-    title: "Research & Development outcome management institutes",
-    content: "",
+    title: "CTVET",
+    content: "Council for Technical and Vocational Education and Training",
   },
   {
     id: "4",
-    title: "National Research Council of S&T",
-    content: "Government funded research instutues",
+    title: "RGD",
+    content:
+      "Registrar Generals Department. GIPO - Ghana Intellectual Property Office",
   },
   {
     id: "5",
-    title: "Open Science",
-    content: "ScienceON, EDISON, DataON",
+    title: "VCTF",
+    content: "Venture Capital Trust Fund",
   },
   {
     id: "6",
@@ -194,13 +218,23 @@ export const infoPartners: GeneralListModel[] = [
   },
   {
     id: "7",
-    title: "Integrated Research Support System (IRIS)",
-    content: "PMS, NRI",
+    title: "GEPA",
+    content: "Ghana Export Promotion Authority",
   },
   {
     id: "8",
-    title: "Regional R&D information system",
-    content: "",
+    title: "CAGD - ",
+    content: "Controller and Accountant General Department",
+  },
+  {
+    id: "8",
+    title: "MoF",
+    content: "Ministry of Finance",
+  },
+  {
+    id: "8",
+    title: "AGI",
+    content: "Association of Ghana Industries",
   },
 ];
 
@@ -402,40 +436,45 @@ export const mainServices: GeneralListModel[] = [
 export const gallery: GeneralListModel[] = [
   {
     id: "1",
-    img: stars,
-
-    subdata: [
-      { id: "1", img: bond },
-      { id: "1", img: virus },
-      { id: "1", img: lab },
-      { id: "1", img: brain },
-    ],
+    img: speaker,
   },
   {
     id: "2",
-    img: ai,
+    img: stadium,
   },
   {
     id: "3",
-    img: brain,
+    img: selfie,
   },
   {
     id: "4",
-    img: bond,
+    img: award,
+  },
+  {
+    id: "5",
+    img: meeting,
+  },
+  {
+    id: "6",
+    img: present,
+  },
+  {
+    id: "7",
+    img: moseum,
   },
 ];
 
 export const news: GeneralListModel[] = [
   {
     id: "1",
-    img: bond,
+    img: moseum,
     title: "Lorem ipsum dolor sit amet consectetur.",
     content: "It contributes to digital transformation by sharing secondary",
   },
 
   {
     id: "2",
-    img: lab,
+    img: meeting,
     title: "Lorem ipsum dolor sit amet consectetur.",
     content:
       "It contributes to digital trans by sharing secondary It contributes to digital trans by sharing secondary  It contributes to digital trans by sharing secondary",
@@ -443,14 +482,14 @@ export const news: GeneralListModel[] = [
 
   {
     id: "3",
-    img: brain,
+    img: present,
     title: "Lorem ipsum dolor sit amet consectetur.",
     content: "It contributes to digital transformation by sharing secondary",
   },
 
   {
     id: "4",
-    img: virus,
+    img: selfie,
     title: "Lorem ipsum dolor sit amet consectetur.",
     content: "It contributes to digital transformation by sharing secondary",
   },

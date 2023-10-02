@@ -18,9 +18,13 @@ const Projects = () => {
       className={`flex flex-col  ${styles.marginY} ${styles.marginX} `}
     >
       <div>
-        <ProjectCardItem onClick={handleNavigate} item={projects[0]} />
-        <ProjectCardItem onClick={handleNavigate} item={projects[1]} />
-        <ProjectCardItem onClick={handleNavigate} item={projects[2]} />
+        {projects.map((item, index) => (
+          <ProjectCardItem
+            key={index.toString()}
+            onClick={handleNavigate}
+            item={item}
+          />
+        ))}
       </div>
     </div>
   );

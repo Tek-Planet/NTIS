@@ -22,7 +22,11 @@ const Cooperation = () => {
           <p
             className={` ${styles.heading2} pt-10 text-center text-backgroudgreen`}
           >
-            Ongoing Projects
+            Co-Projects
+          </p>
+          <p className={`${styles.textSize} mt-2 font-light text-center`}>
+            National or International Projects that have assisted STI MIS
+            implemented. 
           </p>
         </div>
       </motion.div>
@@ -38,6 +42,15 @@ const Cooperation = () => {
       <div className={`  ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Projects />
+          {/* 
+          <iframe
+            src="https://mesti.gov.gh/news/"
+            title="Embedded Content"
+            width="100%"
+            height="800px"
+            frameborder="0"
+            allowfullscreen
+          ></iframe> */}
         </div>
       </div>
     </motion.div>

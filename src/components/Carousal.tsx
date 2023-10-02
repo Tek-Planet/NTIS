@@ -16,7 +16,7 @@ const Carousal = (props: Props) => {
         initial={{ y: "100vw" }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 35 }}
-        className={`bg-center bg-cover h-96 my-6 rounded-2xl w-full ${styles.marginX}`}
+        className={`bg-center bg-cover h-[80vh] my-6 object-scale-down rounded-2xl w-full ${styles.marginX}`}
         style={{ backgroundImage: `url(${hero})` }}
       >
         <div className="absolute flex items-center  justify-center right-10 md:right-20 top-[-30px] bg-buttongreen  rounded-full h-20 w-20 border-2">

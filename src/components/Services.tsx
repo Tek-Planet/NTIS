@@ -65,10 +65,12 @@ const Services = () => {
           className="flex flex-row max-w-[600px] align-middle justify-items-center"
         >
           <p className={`${styles.textSize} px-5  my-3 sm:px-0 text-center`}>
-            Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo
-            quis varius sodales at mauris et. Ipsum vel senectus mauris augue
-            massa. Sapien pulvinar molestie orci senectus pellentesque aliquet.
-            Tincidunt diam pellentesque nulla amet pretium ac nisl.
+            We offer comprehensive research and data services driven by our
+            mission to provide accessible, trustworthy information. Our
+            commitment to reliability empowers individuals, researchers, and
+            decision-makers with valuable insights, fostering informed decisions
+            and positive societal change. Explore our services to access the
+            knowledge you need for a brighter future.
           </p>
         </div>
       </div>

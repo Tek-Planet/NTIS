@@ -2,7 +2,7 @@ export { default as caret } from "./caret.png";
 export { default as close } from "./close.svg";
 export { default as logo } from "./logo.png";
 export { default as menu } from "./menu.svg";
-export { default as hero } from "./hero.png";
+export { default as hero } from "./hero.jpeg";
 export { default as analyze } from "./analyze.png";
 export { default as office } from "./office.png";
 export { default as chemistry } from "./chemistry.png";
@@ -30,3 +30,12 @@ export { default as carausal } from "./carausal.svg";
 export { default as statshero } from "./statshero.png";
 export { default as graph } from "./graph.png";
 export { default as arrowup } from "./arrowup.png";
+export { default as stadium } from "./stadium.jpeg";
+export { default as selfie } from "./selfie.jpeg";
+export { default as speaker } from "./speaker.jpeg";
+export { default as award } from "./award.jpeg";
+
+export { default as meeting } from "./meeting.jpeg";
+export { default as moseum } from "./moseum.jpeg";
+
+export { default as present } from "./present.jpeg";

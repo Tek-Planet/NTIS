@@ -3,7 +3,7 @@ import { news } from "../constants";
 import { motion } from "framer-motion";
 import styles from "../style";
 import { hoverVariant } from "../variants";
-import { carausal } from "../assets";
+import { moseum } from "../assets";
 
 const SideNewsItem = ({ item }) => (
   <div className="flex flex-col gap-2 mb-3">
@@ -39,7 +39,7 @@ const News = () => {
         variants={hoverVariant}
         whileHover={"hover"}
         className="relative p-6 bg-center bg-cover h-96 my-6 rounded-2xl w-full"
-        style={{ backgroundImage: `url(${carausal})` }}
+        style={{ backgroundImage: `url(${moseum})` }}
       >
         <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div>
         <div className="absolute z-10 p-6 top-0 lg:top-10 left-0 lg:left-10 w-full  lg:max-w-md">
@@ -79,9 +79,6 @@ const News = () => {
                 </p>
                 <p className="font-poppins font-normal text-[12px] sm:text-[14px] mt-2 text-center ">
                   {news[3].content}
-                  Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit
-                  amet consectetur. Lorem ipsum dolor sit amet consectetur.
-                  Lorem ipsum dolor sit amet consectetur.
                 </p>
               </div>
             </div>
@@ -90,7 +87,7 @@ const News = () => {
           <div className="flex flex-col w-full flex-1  m-2  mb-10 lg:mb-0 ">
             <div
               className=" bg-center bg-cover h-80 my-3 w-full "
-              style={{ backgroundImage: `url(${news[2].img})` }}
+              style={{ backgroundImage: `url(${news[3].img})` }}
             ></div>
             <div className="m-2">
               <p className="font-poppins font-bold text-[12px] sm:text-[16px]  text-center ">

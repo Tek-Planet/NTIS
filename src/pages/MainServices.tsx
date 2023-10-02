@@ -22,11 +22,12 @@ const MainServices = () => {
           </p>
 
           <p className={`${styles.textSize} mt-2 font-light`}>
-            NTIS is the national R&D portal that integrates and provides
-            information,including programs, projects, human resources, and
-            outcomes of national R&D programs.It is open to all citizens who are
-            interested in scientific and technological knowledge and
-            information.
+            We offer comprehensive research and data services driven by our
+            mission to provide accessible, trustworthy information. Our
+            commitment to reliability empowers individuals, researchers, and
+            decision-makers with valuable insights, fostering informed decisions
+            and positive societal change. Explore our services to access the
+            knowledge you need for a brighter future.
           </p>
         </div>
 

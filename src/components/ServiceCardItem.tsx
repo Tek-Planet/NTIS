@@ -1,16 +1,15 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { hoverVariant } from "../variants";
+import { GeneralListModel } from "../types";
+import styles from "../style";
 
 interface Props {
-  item: {
-    content: string;
-    img: string;
-  };
+  item: GeneralListModel;
 }
 
 function ServiceCardItem({ item }: Props) {
-  const { content, img } = item;
+  const { title, img } = item;
   return (
     <motion.div
       variants={hoverVariant}
@@ -24,8 +23,8 @@ function ServiceCardItem({ item }: Props) {
           className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] "
         />
       </div>
-      <p className="font-poppins font-normal text-[12px] sm:text-[14px] ] my-5 text-center">
-        {content}
+      <p className={`${styles.textSize}  my-5 text-center font-semibold`}>
+        {title}
       </p>
 
       <NavLink
