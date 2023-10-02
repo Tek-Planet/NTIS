@@ -27,7 +27,7 @@ const Hero = () => {
             alert("welcome");
           }}
           styles={"text-primary w-1/2  lg:w-1/3 p-2 mt-4  lg:text-[20px]"}
-          text="Visit the STI MISI"
+          text="Visit the STI MSI"
         />
       </motion.div>
 

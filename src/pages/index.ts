@@ -12,3 +12,5 @@ export { default as News } from "./News";
 export { default as ContactUs } from "./ContactUs";
 export { default as Splash } from "./Splash";
 export { default as CooperationDetails } from "./CooperationDetails";
+export { default as NewsDetails } from "./NewsDetails";
+export { default as ServicesDetails } from "./ServicesDetails";

@@ -1,12 +1,21 @@
 import { useRef } from "react";
-import { feedback, lastest } from "../constants";
+import { news } from "../constants";
 import styles from "../style";
 
 import Slider from "react-slick";
-import { BlogCardItem, ServiceCardItem } from ".";
+import { BlogCardItem } from ".";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
   const sliderRef = useRef(null);
+
+  let navigate = useNavigate();
+
+  const handleNavigate = (item: any) => {
+    navigate(`/aboutus/news/${item.title}`, {
+      state: { state: item },
+    });
+  };
 
   var settings = {
     infinite: true,
@@ -41,24 +50,11 @@ const Blog = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-
-          // infinite: false,
-          // dots: true,
         },
       },
-
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ],
   };
 
-  const nextSlide = () => {
-    sliderRef.current.slickNext();
-  };
-  const previous = () => {
-    sliderRef.current.slickPrev();
-  };
   return (
     <div id="clients" className={` flex flex-col relative ${styles.marginY} `}>
       <div className="   sm:mb-10 mb-6 ">
@@ -67,11 +63,11 @@ const Blog = () => {
         </p>
       </div>
       <Slider className="md:m-28 md:mt-4" ref={sliderRef} {...settings}>
-        <BlogCardItem item={lastest[0]} />
-        <BlogCardItem item={lastest[1]} />
-        <BlogCardItem item={lastest[2]} />
-        <BlogCardItem item={lastest[4]} />
-        <BlogCardItem item={lastest[4]} />
+        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[0]} />
+        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[1]} />
+        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[3]} />
+        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[7]} />
+        {/* <BlogCardItem item={news[4]} /> */}
       </Slider>
     </div>
   );

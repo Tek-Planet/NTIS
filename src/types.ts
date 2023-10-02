@@ -12,3 +12,13 @@ export type GeneralListModel = {
   createdAt?: string;
   subdata?: GeneralListModel[];
 };
+
+export type NewModel = {
+  id: number;
+  title?: string;
+  content?: string;
+  image?: string;
+  imageTwo?: string;
+  imageThree?: string;
+  createdAt?: string;
+};

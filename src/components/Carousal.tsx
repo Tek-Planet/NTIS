@@ -1,18 +1,20 @@
 import styles from "../style";
 import { hero } from "../assets";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 
 type Props = {
   placeholder: string;
+  onclick?: () => void;
 };
 
 const Carousal = (props: Props) => {
-  let navigate = useNavigate();
-  const { placeholder } = props;
+  const { placeholder, onclick } = props;
   return (
     <section className={`flex justify-center items-center mt-8 md:mt-5`}>
       <motion.div
+        onClick={() => {
+          if (onclick) onclick();
+        }}
         initial={{ y: "100vw" }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 35 }}

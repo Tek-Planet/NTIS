@@ -14,7 +14,9 @@ import {
   MainServices,
   NTIS,
   News,
+  NewsDetails,
   ProgramDetails,
+  ServicesDetails,
   Statistics,
   Vision,
 } from "./pages";
@@ -38,6 +40,7 @@ const App = () => (
         <Route path="/home" element={<Home />} />
         <Route path="/cooperation" element={<Cooperation />} />
         <Route path="/cooperation/:name" element={<CooperationDetails />} />
+        <Route path="/services/:name" element={<ServicesDetails />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/aboutus" element={<AboutUs />}>
           <Route path="/aboutus" element={<NTIS />} />
@@ -48,6 +51,7 @@ const App = () => (
           <Route path="/aboutus/services" element={<MainServices />} />
           <Route path="/aboutus/gallery" element={<Gallery />} />
           <Route path="/aboutus/news" element={<News />} />
+          <Route path="/aboutus/news/:name" element={<NewsDetails />} />
         </Route>
         <Route path="/contactus" element={<ContactUs />} />
       </Route>

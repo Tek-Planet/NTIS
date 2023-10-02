@@ -1,8 +1,14 @@
 import styles from "../style";
 import { Blogs, Carousal, Hero, Research, Services } from "../components";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  let navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(`/aboutus/news`);
+  };
   return (
     <motion.div
       id="home"
@@ -21,7 +27,7 @@ const Home = () => {
       {/* carousal */}
       <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth} `}>
-          <Carousal placeholder="Explore More" />
+          <Carousal onclick={handleNavigate} placeholder="Explore More" />
         </div>
       </div>
 

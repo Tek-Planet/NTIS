@@ -17,7 +17,7 @@ const NHIS = () => {
           <p
             className={` font-poppins font-semibold md:text-[33px] text-[25px] md:leading-[38.5px] leading-[30px]  text-buttongreen`}
           >
-            STI MISI
+            STI MIS
           </p>
 
           {/* <span className="font-poppins font-semibold text-sm text-buttongreen">

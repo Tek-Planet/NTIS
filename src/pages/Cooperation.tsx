@@ -42,15 +42,6 @@ const Cooperation = () => {
       <div className={`  ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Projects />
-          {/* 
-          <iframe
-            src="https://mesti.gov.gh/news/"
-            title="Embedded Content"
-            width="100%"
-            height="800px"
-            frameborder="0"
-            allowfullscreen
-          ></iframe> */}
         </div>
       </div>
     </motion.div>

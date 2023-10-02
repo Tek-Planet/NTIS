@@ -1,12 +1,20 @@
 import { useRef } from "react";
-import { feedback } from "../constants";
+import { services } from "../constants";
 import styles from "../style";
 
 import Slider from "react-slick";
 import { ServiceCardItem } from ".";
+import { useNavigate } from "react-router-dom";
 
 const Services = () => {
   const sliderRef = useRef(null);
+  let navigate = useNavigate();
+
+  const handleNavigate = (item: any) => {
+    navigate(`/services/${item.title}`, {
+      state: { state: item },
+    });
+  };
 
   var settings = {
     dots: false,
@@ -75,9 +83,9 @@ const Services = () => {
         </div>
       </div>
       <Slider ref={sliderRef} {...settings}>
-        <ServiceCardItem item={feedback[0]} />
-        <ServiceCardItem item={feedback[1]} />
-        <ServiceCardItem item={feedback[2]} />
+        <ServiceCardItem onClick={handleNavigate} item={services[0]} />
+        <ServiceCardItem onClick={handleNavigate} item={services[1]} />
+        <ServiceCardItem onClick={handleNavigate} item={services[2]} />
       </Slider>
     </div>
   );

@@ -20,7 +20,8 @@ const Gallery = () => {
         </p>
 
         <p className={`${styles.textSize} mt-2 font-light`}>
-          Lorem ipsum dolor sit amet consectetur.
+          In a picture gallery, every frame tells a story, and every image
+          whispers secrets of its captured moment.
         </p>
       </div>
       <div className={`flex flex-wrap`}>

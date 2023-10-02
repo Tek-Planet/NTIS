@@ -57,7 +57,7 @@ const Research = () => {
   };
 
   return (
-    <div id="clients" className={`flex flex-col  ${styles.marginY} `}>
+    <div id="clients" className={`flex flex-col h-screen ${styles.marginY} `}>
       <div className="flex flex-col items-center sm:mb-10 mb-6 ">
         <p className={` ${styles.heading2} text-center text-linkactive `}>
           Research Data
@@ -66,11 +66,11 @@ const Research = () => {
 
       <Graph />
 
-      <Slider ref={sliderRef} {...settings}>
+      {/* <Slider ref={sliderRef} {...settings}>
         <ResearchCardItem item={feedback[0]} />
         <ResearchCardItem item={feedback[1]} />
         <ResearchCardItem item={feedback[2]} />
-      </Slider>
+      </Slider> */}
     </div>
   );
 };
