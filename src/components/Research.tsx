@@ -1,11 +1,7 @@
 import { useRef } from "react";
-import { feedback } from "../constants";
 import styles from "../style";
 
-import Slider from "react-slick";
-import { Graph, ResearchCardItem } from ".";
-import { graph } from "../assets";
-import { motion } from "framer-motion";
+import { Graph } from ".";
 
 const Research = () => {
   const sliderRef = useRef(null);

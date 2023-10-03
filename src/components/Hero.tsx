@@ -1,3 +1,4 @@
+import { handleOpenLinkInNewTab } from "../constants";
 import styles from "../style";
 import Button from "./Button";
 import { motion } from "framer-motion";
@@ -24,10 +25,10 @@ const Hero = () => {
 
         <Button
           onclick={() => {
-            alert("welcome");
+            handleOpenLinkInNewTab();
           }}
-          styles={"text-primary w-1/2  lg:w-1/3 p-2 mt-4  lg:text-[20px]"}
-          text="Visit the STI MSI"
+          styles={"text-primary  lg:max-w-1/2 p-2 mt-4  lg:text-[20px]"}
+          text="Visit the STI-MIS Dashboard"
         />
       </motion.div>
 

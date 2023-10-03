@@ -34,22 +34,22 @@ export const navLinks: Menus[] = [
 
   {
     id: "cooperation",
-    title: "cooperation",
+    title: "Cooperation",
   },
 
   {
     id: "statistics",
-    title: "statistics",
+    title: "Statistics",
   },
 
   {
     id: "aboutus",
-    title: "About Us",
+    title: "About us",
   },
 
   {
     id: "contactus",
-    title: "Contact Us",
+    title: "Contact us",
   },
 ];
 
@@ -177,7 +177,7 @@ export const projects: GeneralListModel[] = [
 ];
 
 export const aboutsMenu: Menus[] = [
-  { id: "aboutus/NTIS", title: "What is NTIS?" },
+  { id: "aboutus/NTIS", title: "What is STI MIS?" },
   { id: "aboutus/vision", title: "Vision & Mission" },
   { id: "aboutus/implementation", title: "Implementation" },
   { id: "aboutus/programdetails", title: "Program Details" },
@@ -333,7 +333,7 @@ export const strategy = [
   {
     id: "1",
     title:
-      "Advancement of intelligent NTIS through opening, sharing, and collaboration",
+      "Advancement of intelligent STI MIS through opening, sharing, and collaboration",
     content: [
       {
         id: "1",
@@ -354,7 +354,7 @@ export const strategy = [
 
       {
         id: "4",
-        title: "Easy and convenient advancement of intelligent NTIS",
+        title: "Easy and convenient advancement of intelligent STI MIS",
       },
     ],
   },
@@ -362,7 +362,7 @@ export const strategy = [
   {
     id: "2",
     title:
-      "Advancement of intelligent NTIS through opening, sharing, and collaboration",
+      "Advancement of intelligent STI MIS through opening, sharing, and collaboration",
     content: [
       {
         id: "1",
@@ -374,12 +374,12 @@ export const strategy = [
   {
     id: "3",
     title:
-      "Advancement of intelligent NTIS through opening, sharing, and collaboration",
+      "Advancement of intelligent STI MIS through opening, sharing, and collaboration",
     content: [
       {
         id: "1",
         title:
-          "Establishment of NTIS information resources through cloud conversion",
+          "Establishment of STI MIS information resources through cloud conversion",
       },
       {
         id: "2",
@@ -688,3 +688,8 @@ export const news: NewModel[] = [
     createdAt: "Nairobi, 5th September 2023",
   },
 ];
+
+export const handleOpenLinkInNewTab = () => {
+  const urlToOpen = "https://83.229.69.76:91/webLogin.aspx";
+  window.open(urlToOpen, "_blank");
+};

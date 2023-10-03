@@ -1,14 +1,10 @@
-import { carausal, hero, statshero } from "../assets";
+import { statshero } from "../assets";
 import styles from "../style";
 import { motion } from "framer-motion";
-import { hoverVariant } from "../variants";
 import { Button } from "../components";
+import { handleOpenLinkInNewTab } from "../constants";
 
 const Statistics = () => {
-  const handleOpenLink = () => {
-    const urlToOpen = "https://83.229.69.76:91/webLogin.aspx";
-    window.open(urlToOpen, "_blank");
-  };
   return (
     <section className={`flex flex-col justify-center items-center `}>
       <motion.div
@@ -31,7 +27,7 @@ const Statistics = () => {
       <div className="mt-10">
         <Button
           onclick={() => {
-            handleOpenLink();
+            handleOpenLinkInNewTab();
           }}
           styles={"text-primary w-full p-2"}
           text="View Statistics"
