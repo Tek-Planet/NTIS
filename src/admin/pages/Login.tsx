@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Button, CustomLoader, CustomTextInput } from "../components";
-import styles from "../style";
+import { CustomError, CustomLoader, CustomTextInput } from "../../components";
+import styles from "../../style";
 import { motion } from "framer-motion";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auths } from "../firebase";
+import { auths } from "../../firebase";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -11,6 +12,8 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const { state } = useLocation();
+  let navigate = useNavigate();
 
   const signIn = async (e: any) => {
     e.preventDefault();
@@ -30,8 +33,7 @@ const Login = () => {
       const user = res.user;
 
       // set header
-      const token = await user.getIdToken();
-      console.log(token);
+      navigate(state?.prev ? state?.prev : "/dashboard");
     } catch (error: any) {
       setLoading(false);
       setError(error.message);
@@ -102,11 +104,7 @@ const Login = () => {
                 handleChange={setPassword}
               />
 
-              {error !== null && (
-                <p className="text-center mt-2 text-red-500">
-                  {error !== null && error}
-                </p>
-              )}
+              {error.length > 0 && <CustomError error={error} />}
 
               <motion.button
                 whileHover={{

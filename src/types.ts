@@ -22,3 +22,20 @@ export type NewModel = {
   imageThree?: string;
   createdAt?: string;
 };
+
+export interface LoginModel {
+  UserName: string;
+  Password: String;
+}
+
+export interface UserState {
+  token: string;
+  error: string | undefined;
+  authenticated: Boolean;
+  loading: Boolean;
+  currency: string;
+  currentRoute: string;
+  loadingUI: boolean;
+  authError: string | undefined;
+  //orders
+}

@@ -17,3 +17,4 @@ export { default as GalleryCardItem } from "./GalleryCardItem";
 export { default as CustomTextInput } from "./CustomTextInput";
 export { default as Graph } from "./Graph";
 export { default as CustomLoader } from "./CustomLoader";
+export { default as CustomError } from "./CustomError";

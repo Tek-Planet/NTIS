@@ -62,6 +62,17 @@ export const navLinks: Menus[] = [
     title: "Contact us",
   },
 ];
+export const adminNavLinks: Menus[] = [
+  {
+    id: "dashboard",
+    title: "Dashboard",
+  },
+
+  {
+    id: "news",
+    title: "news",
+  },
+];
 
 export const services: GeneralListModel[] = [
   {

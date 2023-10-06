@@ -1,4 +1,5 @@
 import Root from "./Root";
+import RootContainer from "../src/admin/Root";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useEffect } from "react";
@@ -23,7 +24,7 @@ import {
   Technologies,
   Vision,
 } from "./pages";
-import { Login } from "./adminpages";
+import { DashBoard, Login } from "./admin/pages";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -68,6 +69,9 @@ const App = () => (
       <Route path="*" element={<ErrorPage />} />
       {/* admin routes */}
       <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<RootContainer />}>
+        <Route path="/dashboard" element={<DashBoard />} />
+      </Route>
     </Routes>
   </BrowserRouter>
 );

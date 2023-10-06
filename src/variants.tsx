@@ -1,6 +1,6 @@
 export const hoverVariant = {
   hover: {
-    scale: [1, 1.06, 1, 1.06, 1.06, 1, 1.06],
+    scale: [1, 1.04, 1, 1.04, 1.04],
   },
 };
 
