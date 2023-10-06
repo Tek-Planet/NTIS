@@ -14,3 +14,6 @@ export { default as Splash } from "./Splash";
 export { default as CooperationDetails } from "./CooperationDetails";
 export { default as NewsDetails } from "./NewsDetails";
 export { default as ServicesDetails } from "./ServicesDetails";
+export { default as Projects } from "./Projects";
+export { default as Technologies } from "./Technologies";
+export { default as ErrorPage } from "./ErrorPage";

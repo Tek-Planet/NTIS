@@ -43,8 +43,18 @@ export const navLinks: Menus[] = [
   },
 
   {
+    id: "projects",
+    title: "projects",
+  },
+
+  {
     id: "aboutus",
     title: "About us",
+  },
+
+  {
+    id: "technologies",
+    title: "Technology Areas",
   },
 
   {
@@ -184,6 +194,23 @@ export const aboutsMenu: Menus[] = [
   { id: "aboutus/services", title: "Main Services" },
   { id: "aboutus/gallery", title: "Gallery" },
   { id: "aboutus/news", title: "News" },
+];
+
+export const technologyMenu: Menus[] = [
+  { id: "technologies/NTIS", title: "Agriculture and food processing" },
+  {
+    id: "technologies/vision",
+    title: "environment, waste management and circular economy",
+  },
+  { id: "technologies/implementation", title: "Manufacturing" },
+  {
+    id: "technologies/programdetails",
+    title: "information and communication technology (ICT)",
+  },
+  { id: "technologies/services", title: "Renewable energy" },
+  { id: "technologies/gallery", title: "Health and Pharmaceuticals" },
+  { id: "technologies/news", title: "Mining & Mineral Processing" },
+  { id: "technologies/news", title: "Oil and Gas" },
 ];
 
 export const NTISList: Menus[] = [

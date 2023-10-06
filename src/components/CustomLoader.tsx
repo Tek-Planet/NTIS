@@ -1,0 +1,32 @@
+const CustomLoader = () => {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        position: "fixed",
+        backgroundColor: "transparent",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 1000,
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: 15,
+          borderRadius: 8,
+        }}
+      >
+        {/* Replace CustomActivityIndicator with an equivalent web component */}
+        <div
+          style={{ borderColor: "red" }}
+          className="w-8 h-8 border-b-2  rounded-full animate-spin"
+        ></div>
+      </div>
+    </div>
+  );
+};
+
+export default CustomLoader;

@@ -8,6 +8,7 @@ import {
   ContactUs,
   Cooperation,
   CooperationDetails,
+  ErrorPage,
   Gallery,
   Home,
   Implementation,
@@ -16,10 +17,13 @@ import {
   News,
   NewsDetails,
   ProgramDetails,
+  Projects,
   ServicesDetails,
   Statistics,
+  Technologies,
   Vision,
 } from "./pages";
+import { Login } from "./adminpages";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -42,6 +46,7 @@ const App = () => (
         <Route path="/cooperation/:name" element={<CooperationDetails />} />
         <Route path="/services/:name" element={<ServicesDetails />} />
         <Route path="/statistics" element={<Statistics />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/aboutus" element={<AboutUs />}>
           <Route path="/aboutus" element={<NTIS />} />
           <Route path="/aboutus/NTIS" element={<NTIS />} />
@@ -53,8 +58,16 @@ const App = () => (
           <Route path="/aboutus/news" element={<News />} />
           <Route path="/aboutus/news/:name" element={<NewsDetails />} />
         </Route>
+
+        <Route path="/technologies" element={<Technologies />}>
+          <Route path="/technologies" element={<NTIS />} />
+        </Route>
+
         <Route path="/contactus" element={<ContactUs />} />
       </Route>
+      <Route path="*" element={<ErrorPage />} />
+      {/* admin routes */}
+      <Route path="/login" element={<Login />} />
     </Routes>
   </BrowserRouter>
 );
