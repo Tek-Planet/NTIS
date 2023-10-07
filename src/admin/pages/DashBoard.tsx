@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { fetchNews } from "../../rtk/features/news/newsSlice";
 import { CustomLoader } from "../../components";
-import { arrowup, plus } from "../../assets";
+import { plus } from "../../assets";
 
 const Blog = () => {
   let navigate = useNavigate();

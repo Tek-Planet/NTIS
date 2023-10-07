@@ -30,7 +30,9 @@ const CustomTextInput = (props: Props) => {
           // onChange={handleChange}
           rows={row ? row : 5}
           placeholder={placeholder}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e: any) => {
+            handleChange(e.target.value);
+          }}
           className="p-[8px] py-3 rounded-lg  outline-none  bg-transparent font-epilogue text-black  text-[14px] placeholder:text-[#4b5264]  sm:min-w-[300px] border"
         />
       ) : (
@@ -38,7 +40,11 @@ const CustomTextInput = (props: Props) => {
           name={name}
           required={required}
           value={value}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e: any) => {
+            handleChange(
+              inputType === "file" ? e.target.files[0] : e.target.value
+            );
+          }}
           type={inputType}
           step="0.1"
           placeholder={placeholder}

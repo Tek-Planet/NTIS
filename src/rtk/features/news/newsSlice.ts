@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NewModel } from "../../../types";
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../../firebase";
+import { getDocs, collection, addDoc } from "firebase/firestore";
+import { db, storage } from "../../../firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 type InitialState = {
   news: NewModel[];
@@ -28,6 +29,35 @@ export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
   }
 });
 
+export const addNews = createAsyncThunk("news/addNews", async (news: any) => {
+  try {
+    // if upload file if any
+    const storageRef = ref(storage, `/files/${news.image.name}`);
+
+    // progress can be paused and resumed. It also exposes progress updates.
+    // Receives the storage reference and the file to upload.
+    const uploadTask = uploadBytesResumable(storageRef, news.image);
+
+    const snapshot = await uploadTask;
+
+    // Get the download URL after the upload is complete
+    const imageurl = await getDownloadURL(snapshot.ref);
+
+    news.image = imageurl;
+    console.log(news);
+    // You can now use `imageurl` for further processing or store it in your Redux state
+    const docRef = await addDoc(collection(db, "news"), news);
+    news.id = docRef.id;
+    console.log(news);
+    // Assuming you want to return `imageurl` as the result of the async action
+    return news;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    // You might want to handle the error here or rethrow it.
+    throw e;
+  }
+});
+
 const newsSlice = createSlice({
   name: "news",
   initialState,
@@ -40,6 +70,7 @@ const newsSlice = createSlice({
     // },
   },
   extraReducers: (builder) => {
+    // fetching new case
     builder.addCase(
       fetchNews.fulfilled,
       (state, action: PayloadAction<NewModel[]>) => {
@@ -48,6 +79,17 @@ const newsSlice = createSlice({
       }
     );
     builder.addCase(fetchNews.pending, (state) => {
+      state.isFetching = true;
+    });
+
+    // adding news cases
+
+    builder.addCase(addNews.fulfilled, (state, action) => {
+      state.news = [...initialState.news, action.payload];
+      state.isFetching = false;
+      console.log(action.payload, "final url");
+    });
+    builder.addCase(addNews.pending, (state) => {
       state.isFetching = true;
     });
   },

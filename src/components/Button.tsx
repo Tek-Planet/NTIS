@@ -5,7 +5,7 @@ interface ButtonProps {
   text: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
-  onclick: () => void;
+  onclick?: () => void;
   isLink?: boolean;
   location?: string;
 }
@@ -23,7 +23,7 @@ const Button = (props: ButtonProps) => {
   return (
     <motion.button
       onClick={() => {
-        onclick();
+        if (onclick) onclick();
       }}
       disabled={disabled}
       type={type}

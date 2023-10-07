@@ -1,16 +1,39 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-import { CustomTextInput } from "..";
+import { CustomLoader, CustomTextInput } from "..";
 import { Button } from "../";
+import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
+import { NewModel } from "../../types";
+import { addNews } from "../../rtk/features/news/newsSlice";
+import { useAlert } from "react-alert";
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
 }
 
 const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
-  const [email, setEmail] = useState("");
-  const [body, setBody] = useState("");
+  const { isFetching } = useAppSelector((state) => state.news);
+  const alert = useAlert();
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [file, setFile] = useState<any>("");
+  const dispatch = useAppDispatch();
+
+  const signIn = async (e: any) => {
+    e.preventDefault();
+    const body: NewModel = {
+      title: title,
+      content: content,
+      image: file,
+      createdAt: new Date().getTime().toString(),
+    };
+
+    const response = await dispatch(addNews(body));
+    if (response.payload)
+      alert.show("News added successfully!", { type: "success" });
+  };
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -44,50 +67,43 @@ const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
                 >
                   Add News
                 </Dialog.Title>
-                <div className=" flex flex-col gap-3 my-3 text-xs sm:text-sm">
+                {isFetching && <CustomLoader />}
+                <form
+                  onSubmit={signIn}
+                  className=" flex flex-col gap-3 my-3 text-xs sm:text-sm"
+                >
                   <CustomTextInput
+                    required
                     name="name"
                     placeholder="title"
                     inputType="text"
-                    value={email}
-                    handleChange={setEmail}
+                    value={title}
+                    handleChange={setTitle}
                   />
 
                   <CustomTextInput
-                    name="email"
-                    placeholder="Your Email"
-                    inputType="text"
-                    value={email}
-                    handleChange={setEmail}
-                  />
-
-                  <CustomTextInput
-                    name="email"
-                    placeholder="Your Email"
+                    required
                     inputType="file"
-                    value={email}
-                    handleChange={setEmail}
+                    handleChange={setFile}
                   />
 
                   <CustomTextInput
-                    name="body"
+                    required
                     placeholder="Message"
                     inputType="text"
                     isTextArea={true}
-                    value={body}
-                    handleChange={setBody}
+                    value={content}
+                    handleChange={setContent}
                     row={12}
                   />
                   <div className="flex  justify-center">
                     <Button
-                      onclick={() => {
-                        alert("welcome");
-                      }}
+                      type="submit"
                       styles={"text-primary w-1/2 p-2 "}
                       text="Submit"
                     />
                   </div>
-                </div>
+                </form>
 
                 <div className="mt-4">
                   <button

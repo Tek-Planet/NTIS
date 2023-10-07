@@ -16,13 +16,13 @@ function BlogCardItem({ item, onClick }: Props) {
       }}
       variants={hoverVariant}
       whileHover={"hover"}
-      className="flex flex-col md:w-[47%] lg:w-[33%] xl:w-[30%] w-full justify-between  rounded-[20px]  bg-white  hover:text-black hover:m-5  mx-3  lg:h-[450px]"
+      className="flex flex-col md:w-[47%] lg:w-[33%] xl:w-[30%] w-full justify-between  rounded-[20px]  bg-white    mx-3 mb-3  lg:h-[480px] shadow-lg"
     >
       <div className="flex flex-row">
         <img
           src={image}
           alt={"pp"}
-          className="w-[100%] object-cover rounded-[20px]"
+          className="w-[100%] h-64 object-cover rounded-[20px]"
         />
       </div>
       <div className="p-4">
