@@ -22,18 +22,3 @@ export const addNewBlog = async () => {
 //   }
 //   console.log("Done and dusted");
 // };
-
-export const fetchNews = async () => {
-  let news: any = [];
-  try {
-    const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
-      var item = doc.data();
-      item.id = doc.id;
-      news.push(item);
-    });
-    return news;
-  } catch (error) {
-    return news;
-  }
-};

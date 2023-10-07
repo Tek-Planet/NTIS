@@ -71,6 +71,7 @@ const App = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<RootContainer />}>
         <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/dashboard/news" element={<DashBoard />} />
       </Route>
     </Routes>
   </BrowserRouter>

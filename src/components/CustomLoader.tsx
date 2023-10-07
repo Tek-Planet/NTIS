@@ -22,7 +22,7 @@ const CustomLoader = () => {
         {/* Replace CustomActivityIndicator with an equivalent web component */}
         <div
           style={{ borderColor: "red" }}
-          className="w-8 h-8 border-b-2  rounded-full animate-spin"
+          className="w-16 h-16 border-b-2  rounded-full animate-spin"
         ></div>
       </div>
     </div>

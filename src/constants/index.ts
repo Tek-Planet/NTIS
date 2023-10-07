@@ -5,7 +5,6 @@ import {
   award,
   blog,
   bond,
-  brain,
   chemistry,
   dataicon,
   knowledgeicon,
@@ -20,9 +19,7 @@ import {
   speaker,
   spreadicon,
   stadium,
-  stars,
   supporticon,
-  virus,
 } from "../assets";
 import { GeneralListModel, Menus, NewModel } from "../types";
 
@@ -69,7 +66,7 @@ export const adminNavLinks: Menus[] = [
   },
 
   {
-    id: "news",
+    id: "dashboard/news",
     title: "news",
   },
 ];
