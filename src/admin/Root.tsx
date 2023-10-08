@@ -26,9 +26,7 @@ function Root({}: Props) {
       >
         <Navbar />
 
-        <div>
-          {/* where the childeren elements will be displayed */}
-
+        <div className="p-3">
           <Outlet />
         </div>
         {/* <Footer /> */}

@@ -45,8 +45,6 @@ const userSlice = createSlice({
       }
 
       state.loading = false;
-
-      console.log("Dispatching this", action.payload);
     },
 
     logoutUser: (state) => {},

@@ -38,3 +38,13 @@ export interface UserState {
   user: any;
   //orders
 }
+
+export interface DashBoardModel {
+  id: string;
+  title: string;
+  subTitle: string;
+  imageName?: string;
+  image?: any | string;
+  updatedAt?: string;
+  lastUpdateBy?: string;
+}

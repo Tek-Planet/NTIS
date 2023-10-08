@@ -28,11 +28,14 @@ import { DashBoard, Login, NewsManager } from "./admin/pages";
 import { ProtectedRoutes } from "./routes";
 import { onAuthStateChanged } from "firebase/auth";
 import { auths } from "./firebase";
-import { useAppDispatch } from "./rtk/hooks";
+import { useAppDispatch, useAppSelector } from "./rtk/hooks";
 import { authenticateUser } from "./rtk/features/user/userSlice";
+import { isObjectEmpty } from "./constants";
+import { fetchDashboard } from "./rtk/features/dashBoard/dashBoardSlice";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+  const { dashboardItem } = useAppSelector((state) => state.dashboard);
   const dispatch = useAppDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,6 +51,11 @@ const ScrollToTop = () => {
             email: user.email,
           };
         }
+
+        // we want to fetch the most important data before release the UI
+
+        if (isObjectEmpty(dashboardItem)) await dispatch(fetchDashboard());
+
         setTimeout(() => {
           dispatch(authenticateUser(authUser));
         }, 3000);

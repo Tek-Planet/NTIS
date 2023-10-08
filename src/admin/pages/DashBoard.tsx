@@ -1,19 +1,20 @@
-import { BlogCardItem, CreateNewsModal } from "../../components/admin";
-
 import styles from "../../style";
-
-import { useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
-import { fetchNews } from "../../rtk/features/news/newsSlice";
 import { CustomLoader } from "../../components";
-import { plus } from "../../assets";
+import { pencil } from "../../assets";
 
-const Blog = () => {
-  let navigate = useNavigate();
-  const { news, isFetching } = useAppSelector((state) => state.news);
-  const [isOpen, setIsOpen] = useState(false);
+import { DashBoardModal } from "../../components/admin";
+import { fetchDashboard } from "../../rtk/features/dashBoard/dashBoardSlice";
+import { isObjectEmpty } from "../../constants";
+
+const Dashboard = () => {
+  const { dashboardItem, isFetching } = useAppSelector(
+    (state) => state.dashboard
+  );
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const dispatch = useAppDispatch();
 
   function closeModal() {
@@ -21,32 +22,48 @@ const Blog = () => {
   }
 
   useEffect(() => {
-    // if (news.length === 0) dispatch(fetchNews());
+    if (isObjectEmpty(dashboardItem)) dispatch(fetchDashboard());
   }, []);
-  // <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
+
   return (
     <div className="flex flex-col relative">
+      {isFetching && <CustomLoader />}
       <div className="fixed flex  items-center  right-4 bottom-5  bg-buttongreen rounded-full h-10 w-10 md:h-14 sm:w-14 border-2 z-50">
         <button
           onClick={() => {
             setIsOpen(true);
           }}
         >
-          <img src={plus} />
+          <img src={pencil} />
         </button>
       </div>
       <div id="clients" className={` flex  flex-col  mt-4  `}>
         <div className="   sm:mb-10 mb-6 ">
           <p className={`  ${styles.heading2} text-center  te`}>Dashboard</p>
+          {/* hero txt */}
+          <p className={`${styles.textSize} mt-2 font-bold `}>Hero Text</p>
+          <p className={`${styles.textSize} mt-2 font-light `}>
+            {dashboardItem?.title}
+          </p>
+          {/* sub hero Text */}
+
+          <p className={`${styles.textSize} mt-2 font-bold `}>Sub Hero Text</p>
+          <p className={`${styles.textSize} mt-2 font-light `}>
+            {dashboardItem.subTitle}
+          </p>
+
+          {/* image */}
+          <div
+            className={`bg-center bg-cover h-[80vh] my-6  rounded-2xl w-full`}
+            style={{ backgroundImage: `url(${dashboardItem?.image})` }}
+          ></div>
         </div>
 
-        {isFetching && <CustomLoader />}
-
         {/* create new button  */}
-        <CreateNewsModal isOpen={isOpen} closeModal={closeModal} />
+        <DashBoardModal isOpen={isOpen} closeModal={closeModal} />
       </div>
     </div>
   );
 };
 
-export default Blog;
+export default Dashboard;

@@ -728,3 +728,7 @@ export const handleOpenLinkInNewTab = () => {
   const urlToOpen = "https://83.229.69.76:91/webLogin.aspx";
   window.open(urlToOpen, "_blank");
 };
+
+export function isObjectEmpty(obj: {}) {
+  return Object.keys(obj).length === 0;
+}
