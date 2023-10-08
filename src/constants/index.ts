@@ -1,3 +1,5 @@
+import { addDoc, collection } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {
   ai,
   aiicon,
@@ -21,8 +23,10 @@ import {
   stadium,
   supporticon,
 } from "../assets";
+import { storage, db } from "../firebase";
 import { GeneralListModel, Menus, NewModel } from "../types";
 
+export const adminRootPath = "app";
 export const navLinks: Menus[] = [
   {
     id: "home",
@@ -61,13 +65,17 @@ export const navLinks: Menus[] = [
 ];
 export const adminNavLinks: Menus[] = [
   {
-    id: "app",
+    id: adminRootPath + "/",
     title: "Dashboard",
   },
 
   {
-    id: "app/news",
+    id: adminRootPath + "/news",
     title: "news",
+  },
+  {
+    id: "app/projects",
+    title: "projects",
   },
 ];
 
@@ -149,8 +157,8 @@ export const projects: GeneralListModel[] = [
   {
     id: "1",
     title: "The K-Innovation Partnership Project",
-    createdAt: "",
-    img: "https://picsum.photos/200",
+    createdAt: 1696776986852,
+    image: "https://picsum.photos/200",
     content: `In 2021, the Government of Ghana through the Ministry of Environment, Science, Technology and Innovation (MESTI) and the Science and Technology and Policy Institute (STEPI) of the Republic of Korea launched the K-Innovation Partnership Program between Ghana and Korea, to support the development of a robust and economically viable technological innovation system in Ghana, through the effective operationalisation of the Ghana Innovation and Research Commercialisation Centre (GIRC-Center).
       Through this partnership: 
       
@@ -163,8 +171,8 @@ export const projects: GeneralListModel[] = [
   {
     id: "2",
     title: "The Ghana Digital Innovation Week (GDIW)",
-    createdAt: "",
-    img: "https://picsum.photos/200",
+    createdAt: 1696776986842,
+    image: "https://picsum.photos/200",
     content: `Ghana Digital Innovation Week (GDIW) is a nationwide series of events, showcasing and celebrating milestones in Ghana’s Digital Innovation Ecosystem. GDIW provides a platform for various actors to learn, share ideas and create connections to enhance the progress of the landscape.
 
       The week is co-created and co-owned by actors from private sectors, academia, policymakers, Development Partners, and Civil Society Organizations.
@@ -180,16 +188,16 @@ export const projects: GeneralListModel[] = [
   {
     id: "3",
     title: "STRENGTHENING STI SYSTEMS FOR SUSTAINABLE DEVELOPMENT IN AFRICA",
-    createdAt: "",
-    img: "https://picsum.photos/200",
+    createdAt: 1696776986857,
+    image: "https://picsum.photos/200",
     content: `Strengthening Science, Technology and Innovation (STI) is an initiative within UNESCO’s global framework for monitoring, policy support and advocacy for the “UNESCO Recommendation on Science and Scientific Researchers” (November 2017). Phase I: 2020-2022. Phase II: 2022-2025. The 2017 RS|SR defines both the values on the basis of which science can contribute to sustainable development in all its dimensions, and the institutional organization that can enable science institutions in each UNESCO Member State to perform their required role. Responding to the requirements of the 2017 RS|SR is directly and operationally relevant to SDG achievement at national level in the developing countries. The initiative thus includes a vital component of advocacy, conducted Africa-wide, in direct synergy with the specific national interventions in a necessarily limited number of countries.`,
   },
 
   {
     id: "4",
     title: "THE GHANA UK STI STRATEGY",
-    createdAt: "",
-    img: "https://picsum.photos/200",
+    createdAt: 1696776986850,
+    image: "https://picsum.photos/200",
     content: `The UK and Ghana have a history of successful alliances and partnerships that have strengthened the capability of both nations to deliver impactful outputs in ST&I. As the UK renews its commitments to advancing ST&I, both countries envision a sustainable partnership that is founded on mutual respect, transparency, trust, equity, and shared knowledge. Ghana shares the UK’s conviction that these fields are imperative for the success of our socio-economic agendas and to support the health, wellbeing, wealth, prosperity, and security of our respective citizenry. This strategy puts forward ambitions for joint efforts in the ST&I space and sets out how these could be achieved using HMG’s own-collaborate-access model to achieve our respective developmental goals.  `,
   },
 ];
@@ -732,3 +740,25 @@ export const handleOpenLinkInNewTab = () => {
 export function isObjectEmpty(obj: {}) {
   return Object.keys(obj).length === 0;
 }
+
+export const uploadImage = async (image: any, imageName: string) => {
+  try {
+    // if upload file if any
+    const storageRef = ref(storage, `/files/${imageName}`);
+
+    // progress can be paused and resumed. It also exposes progress updates.
+    // Receives the storage reference and the file to upload.
+    const uploadTask = uploadBytesResumable(storageRef, image);
+
+    const snapshot = await uploadTask;
+
+    // Get the download URL after the upload is complete
+    const imageurl = await getDownloadURL(snapshot.ref);
+
+    return imageurl;
+  } catch (e) {
+    console.error("Error uploading: ", e);
+
+    throw e;
+  }
+};

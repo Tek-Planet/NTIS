@@ -19,7 +19,6 @@ const initialState: InitialState = {
 export const fetchDashboard = createAsyncThunk(
   "dashboard/fetchDashboard",
   async () => {
-    console.log("dispathcing dashboard");
     let dashboard: any = [];
     try {
       const querySnapshot = await getDocs(collection(db, "dashboard"));
@@ -28,7 +27,7 @@ export const fetchDashboard = createAsyncThunk(
         item.id = doc.id;
         dashboard.push(item);
       });
-      console.log(dashboard, "dashboard");
+
       return dashboard[0];
     } catch (error) {
       console.log(error);

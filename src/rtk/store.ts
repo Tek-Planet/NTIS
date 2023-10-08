@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/user/userSlice";
 import newsReducer from "./features/news/newsSlice";
 import dashBoardReducer from "./features/dashBoard/dashBoardSlice";
+import projectReducer from "./features/project/projectSlice";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     news: newsReducer,
     dashboard: dashBoardReducer,
+    project: projectReducer,
   },
 
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),

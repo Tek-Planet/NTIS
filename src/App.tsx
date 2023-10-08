@@ -24,13 +24,13 @@ import {
   Technologies,
   Vision,
 } from "./pages";
-import { DashBoard, Login, NewsManager } from "./admin/pages";
+import { DashBoard, Login, NewsManager, ProjectsManager } from "./admin/pages";
 import { ProtectedRoutes } from "./routes";
 import { onAuthStateChanged } from "firebase/auth";
 import { auths } from "./firebase";
 import { useAppDispatch, useAppSelector } from "./rtk/hooks";
 import { authenticateUser } from "./rtk/features/user/userSlice";
-import { isObjectEmpty } from "./constants";
+import { adminRootPath, isObjectEmpty } from "./constants";
 import { fetchDashboard } from "./rtk/features/dashBoard/dashBoardSlice";
 
 const ScrollToTop = () => {
@@ -102,11 +102,16 @@ const App = () => (
       {/* admin routes */}
       <Route path="/login" element={<Login />} />
       <Route
-        path="/app"
+        path={`/${adminRootPath}`}
         element={<ProtectedRoutes children={<RootContainer />} />}
       >
-        <Route path="/app" element={<DashBoard />} />
-        <Route path="/app/news" element={<NewsManager />} />
+        <Route path={`/${adminRootPath}`} element={<DashBoard />} />
+
+        <Route path={`/${adminRootPath}/news`} element={<NewsManager />} />
+        <Route
+          path={`/${adminRootPath}/projects`}
+          element={<ProjectsManager />}
+        />
       </Route>
     </Routes>
   </BrowserRouter>

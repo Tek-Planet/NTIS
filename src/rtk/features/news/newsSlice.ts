@@ -44,11 +44,11 @@ export const addNews = createAsyncThunk("news/addNews", async (news: any) => {
     const imageurl = await getDownloadURL(snapshot.ref);
 
     news.image = imageurl;
-    console.log(news);
+
     // You can now use `imageurl` for further processing or store it in your Redux state
     const docRef = await addDoc(collection(db, "news"), news);
     news.id = docRef.id;
-    console.log(news);
+
     // Assuming you want to return `imageurl` as the result of the async action
     return news;
   } catch (e) {
@@ -87,7 +87,6 @@ const newsSlice = createSlice({
     builder.addCase(addNews.fulfilled, (state, action) => {
       state.news = [...initialState.news, action.payload];
       state.isFetching = false;
-      console.log(action.payload, "final url");
     });
     builder.addCase(addNews.pending, (state) => {
       state.isFetching = true;

@@ -1,6 +1,6 @@
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { news } from "../../constants";
+import { projects } from "../../constants";
 import { NewModel } from "../../types";
 
 export const addNewBlog = async () => {
@@ -16,9 +16,9 @@ export const addNewBlog = async () => {
   }
 };
 
-// export const saveBlog = async () => {
-//   for (const blog of news) {
-//     await addDoc(collection(db, "news"), blog);
-//   }
-//   console.log("Done and dusted");
-// };
+export const saveBlog = async () => {
+  for (const blog of projects) {
+    await addDoc(collection(db, "projects"), blog);
+  }
+  console.log("Done and dusted");
+};

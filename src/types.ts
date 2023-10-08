@@ -21,6 +21,7 @@ export type NewModel = {
   imageTwo?: string;
   imageThree?: string;
   createdAt?: string;
+  imageName?: string;
 };
 
 export interface LoginModel {
