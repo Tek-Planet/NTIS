@@ -61,12 +61,12 @@ export const navLinks: Menus[] = [
 ];
 export const adminNavLinks: Menus[] = [
   {
-    id: "dashboard",
+    id: "app",
     title: "Dashboard",
   },
 
   {
-    id: "dashboard/news",
+    id: "app/news",
     title: "news",
   },
 ];

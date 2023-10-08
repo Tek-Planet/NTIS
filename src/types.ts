@@ -25,7 +25,7 @@ export type NewModel = {
 
 export interface LoginModel {
   UserName: string;
-  Password: String;
+  Password: string;
 }
 
 export interface UserState {
@@ -33,9 +33,8 @@ export interface UserState {
   error: string | undefined;
   authenticated: Boolean;
   loading: Boolean;
-  currency: string;
-  currentRoute: string;
   loadingUI: boolean;
   authError: string | undefined;
+  user: any;
   //orders
 }

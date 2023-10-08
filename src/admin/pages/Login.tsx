@@ -2,9 +2,10 @@ import { useState } from "react";
 import { CustomError, CustomLoader, CustomTextInput } from "../../components";
 import styles from "../../style";
 import { motion } from "framer-motion";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auths } from "../../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
+import { loginUser } from "../../rtk/features/user/userSlice";
+import { LoginModel } from "../../types";
+import { useAppDispatch } from "../../rtk/hooks";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -13,8 +14,9 @@ const Login = () => {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const { state } = useLocation();
-  let navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
+  let navigate = useNavigate();
   const signIn = async (e: any) => {
     e.preventDefault();
     if (email === null) {
@@ -28,28 +30,19 @@ const Login = () => {
     }
     setLoading(true);
     setError("");
-    try {
-      var res = await signInWithEmailAndPassword(auths, email, password);
-      const user = res.user;
-
-      // set header
-      navigate(state?.prev ? state?.prev : "/dashboard");
-    } catch (error: any) {
+    const body: LoginModel = {
+      UserName: email,
+      Password: password,
+    };
+    let response: any = await dispatch(loginUser(body));
+    if (!response.payload) {
+      setError(response.error.code);
       setLoading(false);
-      setError(error.message);
-      if (error.code === "auth/user-not-found") {
-        setError("There is no user record corresponding to this mail!");
-      }
-
-      if (error.code === "auth/invalid-email") {
-        setError("invalid login details!");
-      }
-
-      if (error.code === "auth/wrong-password") {
-        setError("invalid login details!");
-      }
+      return;
     }
+    navigate(state?.prev ? state?.prev : "/dashboard");
   };
+
   return (
     <motion.div
       transition={{

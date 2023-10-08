@@ -24,14 +24,38 @@ import {
   Technologies,
   Vision,
 } from "./pages";
-import { DashBoard, Login } from "./admin/pages";
+import { DashBoard, Login, NewsManager } from "./admin/pages";
+import { ProtectedRoutes } from "./routes";
+import { onAuthStateChanged } from "firebase/auth";
+import { auths } from "./firebase";
+import { useAppDispatch } from "./rtk/hooks";
+import { authenticateUser } from "./rtk/features/user/userSlice";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
+  const dispatch = useAppDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    try {
+      onAuthStateChanged(auths, async (user) => {
+        let authUser: any = null;
+        if (user) {
+          authUser = {
+            uid: user.uid,
+            email: user.email,
+          };
+        }
+        setTimeout(() => {
+          dispatch(authenticateUser(authUser));
+        }, 3000);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   return null;
 };
@@ -69,9 +93,12 @@ const App = () => (
       <Route path="*" element={<ErrorPage />} />
       {/* admin routes */}
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<RootContainer />}>
-        <Route path="/dashboard" element={<DashBoard />} />
-        <Route path="/dashboard/news" element={<DashBoard />} />
+      <Route
+        path="/app"
+        element={<ProtectedRoutes children={<RootContainer />} />}
+      >
+        <Route path="/app" element={<DashBoard />} />
+        <Route path="/app/news" element={<NewsManager />} />
       </Route>
     </Routes>
   </BrowserRouter>

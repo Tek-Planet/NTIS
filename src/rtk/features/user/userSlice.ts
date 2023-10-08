@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { UserState, LoginModel } from "../../../types";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auths } from "../../../firebase";
 
 const initialState: UserState = {
   token: "",
@@ -7,25 +9,27 @@ const initialState: UserState = {
   authError: "",
   authenticated: false,
   loading: true,
-  currency: "$",
-  currentRoute: "General",
   loadingUI: false,
+  user: {},
 };
 
 // Generates pending, fulfilled and rejected action types
-// export const loginUser = createAsyncThunk(
-//   "user/loginUser",
-//   async (body: LoginModel) => {
-//     const response = await axios.post(`${AUTH_BASE_URL}login`, body);
-//     if (response.data) {
-//       // set axios heade
-//       await setHeaders(response.data.token);
-//       await storeAuthToken(response.data);
-//       await storeUserName(body.UserName);
-//     }
-//     return response.data;
-//   }
-// );
+export const loginUser = createAsyncThunk(
+  "user/loginUser",
+  async (body: LoginModel) => {
+    try {
+      var res = await signInWithEmailAndPassword(
+        auths,
+        body.UserName,
+        body.Password
+      );
+
+      return res.user;
+    } catch (error: any) {
+      throw error;
+    }
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -34,11 +38,26 @@ const userSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
+    authenticateUser: (state, action) => {
+      if (action.payload) {
+        state.authenticated = true;
+        state.user = action.payload;
+      }
+
+      state.loading = false;
+
+      console.log("Dispatching this", action.payload);
+    },
 
     logoutUser: (state) => {},
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.authenticated = true;
+    });
+  },
 });
 
 export default userSlice.reducer;
-export const { logoutUser } = userSlice.actions;
+export const { logoutUser, authenticateUser } = userSlice.actions;

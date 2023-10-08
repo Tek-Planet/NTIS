@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import { Splash } from "../pages";
+import { useAppSelector } from "../rtk/hooks";
 
 type Props = {
   children?: ReactNode;
@@ -10,18 +11,18 @@ type Props = {
 
 const ProtectedRoutes = (props: Props) => {
   const { children, redirectPath = "/login" } = props;
-  const auth = false,
-    isLoading = false;
+  const { authenticated, loading } = useAppSelector((state) => state.user);
 
   const location = useLocation();
 
-  if (isLoading) return <Splash />;
+  if (loading) return <Splash />;
 
-  if (!auth) {
+  if (!authenticated) {
     return <Navigate to={redirectPath} state={{ prev: location.pathname }} />;
   }
 
-  return children ? children : <Outlet state={{ prev: location.pathname }} />;
+  if (children) return children;
+  return <Outlet state={{ prev: location.pathname }} />;
 };
 
 export default ProtectedRoutes;
