@@ -1,40 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { navLinks } from "../../constants";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { hoverVariant } from "../../variants";
-import { menu, close, logo } from "../../assets";
+import { menu, shutdown } from "../../assets";
+import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
+import {
+  setActiveMenu,
+  setScreenSize,
+} from "../../rtk/features/user/userSlice";
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
+  const { screenSize, activeMenu } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
-  const activeLink =
-    "font-poppins font-normal cursor-pointer  mr-5 hover:text-linkactive text-linkactive";
-  const normalLink =
-    "font-poppins font-normal cursor-pointer  mr-5 hover:text-linkactive text-secondaryGray";
+  useEffect(() => {
+    const handleResize = () => dispatch(setScreenSize(window.innerWidth));
 
-  const normalLinkMobile =
-    "font-poppins font-normal cursor-pointer text-[16px] mr-5 hover:text-linkactive text-white";
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      dispatch(setActiveMenu(false));
+    } else {
+      dispatch(setActiveMenu(true));
+    }
+  }, [screenSize]);
+
+  const handleActiveMenu = () => dispatch(setActiveMenu(!activeMenu));
 
   return (
     <nav className="flex justify-between p-2 py-6  relative shadow-lg">
-      <motion.img
-        variants={hoverVariant}
-        whileHover={"hover"}
-        src={menu}
-        alt="menu"
-        // className="w-[70px] h-[70px] object-center "
-      />
-
-      <NavLink to={`/`}>
+      <button onClick={() => handleActiveMenu()}>
         <motion.img
           variants={hoverVariant}
           whileHover={"hover"}
           src={menu}
           alt="menu"
+          // className="w-[70px] h-[70px] object-center "
         />
-      </NavLink>
+      </button>
+
+      <motion.img
+        variants={hoverVariant}
+        whileHover={"hover"}
+        src={shutdown}
+        alt="menu"
+        className="h-8 w-8 mr-2"
+      />
     </nav>
   );
 };

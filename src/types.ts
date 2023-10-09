@@ -31,12 +31,11 @@ export interface LoginModel {
 
 export interface UserState {
   token: string;
-  error: string | undefined;
   authenticated: Boolean;
   loading: Boolean;
-  loadingUI: boolean;
-  authError: string | undefined;
   user: any;
+  screenSize: number;
+  activeMenu: Boolean;
   //orders
 }
 

@@ -1,19 +1,18 @@
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { logo, menu } from "../../assets";
 import { motion } from "framer-motion";
 import { hoverVariant } from "../../variants";
-import { aboutsMenu, adminNavLinks } from "../../constants";
-import { NavGroup } from ".";
+import { adminNavLinks } from "../../constants";
+import { useAppSelector, useAppDispatch } from "../../rtk/hooks";
+import { setActiveMenu } from "../../rtk/features/user/userSlice";
 
-type Props = {};
+const Sidebar = () => {
+  const { screenSize, activeMenu } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
-const Sidebar = (props: Props) => {
-  const screenSize = 1024;
-  const [activeMenu, setActiveMenu] = useState(true);
   const handleCloseSideBar = () => {
     if (activeMenu !== undefined && screenSize <= 900) {
-      setActiveMenu(false);
+      dispatch(setActiveMenu(false));
     }
   };
   const activeLink =
@@ -21,25 +20,25 @@ const Sidebar = (props: Props) => {
   const normalLink =
     "font-poppins font-normal cursor-pointer  hover:text-linkactive ";
 
-  const normalLinkMobile =
-    "font-poppins font-normal cursor-pointer text-[16px] mr-5 hover:text-linkactive text-white";
   return (
-    <div className=" h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 shadow-lg">
+    <div
+      style={{ zIndex: 100 }}
+      className=" h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 shadow-lg "
+    >
       {activeMenu && (
         <>
           <div className="flex justify-between items-center">
             <Link
-              to="/"
-              onClick={handleCloseSideBar}
+              to="/app"
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight "
             >
               <img className="h-8 w-8" src={logo} alt="logo" />
-              <span>PM</span>
+              <span>STI MIS</span>
             </Link>
 
             <button
               type="button"
-              onClick={() => setActiveMenu(!activeMenu)}
+              onClick={() => dispatch(setActiveMenu(!activeMenu))}
               className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
             >
               <motion.img
@@ -47,7 +46,6 @@ const Sidebar = (props: Props) => {
                 whileHover={"hover"}
                 src={menu}
                 alt="menu"
-                className="w-[70px] h-[70px] object-center "
               />
             </button>
           </div>
@@ -71,6 +69,7 @@ const Sidebar = (props: Props) => {
                   >
                     <NavLink
                       to={`/${nav.id}`}
+                      onClick={handleCloseSideBar}
                       className={({ isActive }) =>
                         isActive ? activeLink : normalLink
                       }

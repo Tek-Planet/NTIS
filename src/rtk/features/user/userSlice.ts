@@ -5,12 +5,11 @@ import { auths } from "../../../firebase";
 
 const initialState: UserState = {
   token: "",
-  error: undefined,
-  authError: "",
   authenticated: false,
   loading: true,
-  loadingUI: false,
   user: {},
+  activeMenu: true,
+  screenSize: 0,
 };
 
 // Generates pending, fulfilled and rejected action types
@@ -43,11 +42,16 @@ const userSlice = createSlice({
         state.authenticated = true;
         state.user = action.payload;
       }
-
       state.loading = false;
     },
 
-    logoutUser: (state) => {},
+    logoutUser: (state, action) => {},
+    setScreenSize: (state, action) => {
+      state.screenSize = action.payload;
+    },
+    setActiveMenu: (state, action) => {
+      state.activeMenu = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(loginUser.fulfilled, (state, action) => {
@@ -58,4 +62,5 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { logoutUser, authenticateUser } = userSlice.actions;
+export const { logoutUser, authenticateUser, setActiveMenu, setScreenSize } =
+  userSlice.actions;
