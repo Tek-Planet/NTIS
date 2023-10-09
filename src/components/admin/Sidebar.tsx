@@ -24,7 +24,7 @@ const Sidebar = (props: Props) => {
   const normalLinkMobile =
     "font-poppins font-normal cursor-pointer text-[16px] mr-5 hover:text-linkactive text-white";
   return (
-    <div className=" h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 bg-red-200">
+    <div className=" h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 shadow-lg">
       {activeMenu && (
         <>
           <div className="flex justify-between items-center">

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   AboutUs,
+  Agriculture,
   ContactUs,
   Cooperation,
   CooperationDetails,
@@ -30,6 +31,7 @@ import {
   Login,
   NewsManager,
   ProjectsManager,
+  TechnologyManager,
 } from "./admin/pages";
 import { ProtectedRoutes } from "./routes";
 import { onAuthStateChanged } from "firebase/auth";
@@ -98,8 +100,9 @@ const App = () => (
           <Route path="/aboutus/news/:name" element={<NewsDetails />} />
         </Route>
 
-        <Route path="/technologies" element={<Technologies />}>
-          <Route path="/technologies" element={<NTIS />} />
+        <Route path="/technologies/" element={<Technologies />}>
+          <Route path="/technologies/" element={<Agriculture />} />
+          <Route path="/technologies/agriculture" element={<Agriculture />} />
         </Route>
 
         <Route path="/contactus" element={<ContactUs />} />
@@ -121,6 +124,11 @@ const App = () => (
         <Route
           path={`/${adminRootPath}/gallery`}
           element={<GalleryManager />}
+        />
+
+        <Route
+          path={`/${adminRootPath}/technology`}
+          element={<TechnologyManager />}
         />
       </Route>
     </Routes>

@@ -40,7 +40,7 @@ const Login = () => {
       setLoading(false);
       return;
     }
-    navigate(state?.prev ? state?.prev : "/dashboard");
+    navigate(state?.prev ? state?.prev : "/app");
   };
 
   return (

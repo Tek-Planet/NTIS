@@ -23,7 +23,7 @@ import {
   supporticon,
 } from "../assets";
 import { storage } from "../firebase";
-import { GaleryModel, GeneralListModel, Menus } from "../types";
+import { GeneralListModel, Menus } from "../types";
 
 export const adminRootPath = "app";
 export const navLinks: Menus[] = [
@@ -80,6 +80,11 @@ export const adminNavLinks: Menus[] = [
   {
     id: adminRootPath + "/gallery",
     title: "Gallery",
+  },
+
+  {
+    id: adminRootPath + "/technology",
+    title: "Technology",
   },
 ];
 
@@ -168,7 +173,7 @@ export const aboutsMenu: Menus[] = [
 ];
 
 export const technologyMenu: Menus[] = [
-  { id: "technologies/NTIS", title: "Agriculture and food processing" },
+  { id: "technologies/agriculture", title: "Agriculture and food processing" },
   {
     id: "technologies/vision",
     title: "environment, waste management and circular economy",
@@ -446,33 +451,6 @@ export const mainServices: GeneralListModel[] = [
     img: supporticon,
     content:
       "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa.",
-  },
-];
-
-export const gallery: GaleryModel[] = [
-  {
-    image: speaker,
-    createdAt: 1696776986850,
-  },
-  {
-    image: stadium,
-    createdAt: 1696776986810,
-  },
-  {
-    image: selfie,
-    createdAt: 1696776986850,
-  },
-  {
-    image: award,
-  },
-  {
-    image: meeting,
-  },
-  {
-    image: present,
-  },
-  {
-    image: moseum,
   },
 ];
 

@@ -17,3 +17,4 @@ export { default as ServicesDetails } from "./ServicesDetails";
 export { default as Projects } from "./Projects";
 export { default as Technologies } from "./Technologies";
 export { default as ErrorPage } from "./ErrorPage";
+export { default as Agriculture } from "./Agriculture";

@@ -18,7 +18,7 @@ const Navbar = () => {
     "font-poppins font-normal cursor-pointer text-[16px] mr-5 hover:text-linkactive text-white";
 
   return (
-    <nav className="flex justify-between p-2 py-4 md:ml-6 md:mr-6 relative">
+    <nav className="flex justify-between p-2 py-6  relative shadow-lg">
       <motion.img
         variants={hoverVariant}
         whileHover={"hover"}
