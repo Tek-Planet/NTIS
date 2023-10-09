@@ -49,3 +49,11 @@ export interface DashBoardModel {
   updatedAt?: string;
   lastUpdateBy?: string;
 }
+
+export interface GalleryModel {
+  id?: string;
+  image: string;
+  caption?: string;
+  imageName?: string;
+  createdAt: number;
+}

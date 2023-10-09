@@ -1,34 +1,25 @@
-import { BlogCardItem, CreateProjectModal } from "../../components/admin";
+import { CreateGalleryModal } from "../../components/admin";
 
 import styles from "../../style";
 
-import { useNavigate } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
-import { CustomLoader } from "../../components";
+import { CustomLoader, GalleryCardItem } from "../../components";
 import { plus } from "../../assets";
-import { fetchProjects } from "../../rtk/features/project/projectSlice";
+import { fetchGallery } from "../../rtk/features/gallery/gallerySlice";
 
-const ProjectsManager = () => {
-  let navigate = useNavigate();
-  const { projects, isFetching } = useAppSelector((state) => state.project);
+const GalleryManager = () => {
+  const { gallery, isFetching } = useAppSelector((state) => state.gallery);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-
-  const handleNavigate = (item: any) => {
-    navigate(`/aboutus/news/${item.title}`, {
-      state: { state: item },
-    });
-  };
 
   function closeModal() {
     setIsOpen(false);
   }
 
   useEffect(() => {
-    if (projects.length === 0) {
-      dispatch(fetchProjects());
+    if (gallery.length === 0) {
+      dispatch(fetchGallery());
     }
   }, []);
   // <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
@@ -45,7 +36,7 @@ const ProjectsManager = () => {
       </div>
       <div id="clients" className={` flex  flex-col  mt-4  `}>
         <div className="   sm:mb-10 mb-6 ">
-          <p className={`  ${styles.heading2} text-center  te`}>Projects</p>
+          <p className={`  ${styles.heading2} text-center  te`}>Gallery</p>
         </div>
 
         {/* <Button
@@ -57,18 +48,18 @@ const ProjectsManager = () => {
 
         {isFetching && <CustomLoader />}
 
-        {projects && (
+        {gallery && (
           <div className={`flex flex-wrap mt-2`}>
-            {projects.map((item) => (
-              <BlogCardItem key={item.id} onClick={() => {}} item={item} />
+            {gallery.map((item) => (
+              <GalleryCardItem key={item.id} item={item} />
             ))}
           </div>
         )}
         {/* create new button  */}
-        <CreateProjectModal isOpen={isOpen} closeModal={closeModal} />
+        <CreateGalleryModal isOpen={isOpen} closeModal={closeModal} />
       </div>
     </div>
   );
 };
 
-export default ProjectsManager;
+export default GalleryManager;

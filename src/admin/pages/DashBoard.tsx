@@ -49,7 +49,7 @@ const Dashboard = () => {
 
           <p className={`${styles.textSize} mt-2 font-bold `}>Sub Hero Text</p>
           <p className={`${styles.textSize} mt-2 font-light `}>
-            {dashboardItem.subTitle}
+            {dashboardItem?.subTitle}
           </p>
 
           {/* image */}
@@ -60,7 +60,7 @@ const Dashboard = () => {
         </div>
 
         {/* create new button  */}
-        <DashBoardModal isOpen={isOpen} closeModal={closeModal} />
+        {isOpen && <DashBoardModal isOpen={isOpen} closeModal={closeModal} />}
       </div>
     </div>
   );

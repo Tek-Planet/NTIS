@@ -8,13 +8,12 @@ const CustomLoader = () => {
         backgroundColor: "transparent",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+
         zIndex: 1000,
       }}
     >
       <div
         style={{
-          backgroundColor: "white",
           padding: 15,
           borderRadius: 8,
         }}

@@ -1,12 +1,15 @@
 import { useRef } from "react";
-import { news } from "../constants";
+
 import styles from "../style";
 
 import Slider from "react-slick";
 import { BlogCardItem } from ".";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../rtk/hooks";
 
 const Blog = () => {
+  const { news } = useAppSelector((state) => state.news);
+
   const sliderRef = useRef(null);
 
   let navigate = useNavigate();
@@ -62,13 +65,27 @@ const Blog = () => {
           Latest Update
         </p>
       </div>
-      <Slider className="md:m-28 md:mt-4" ref={sliderRef} {...settings}>
-        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[0]} />
-        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[1]} />
-        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[3]} />
-        <BlogCardItem onClick={() => handleNavigate(news[0])} item={news[7]} />
-        {/* <BlogCardItem item={news[4]} /> */}
-      </Slider>
+      {news.length > 0 && (
+        <Slider className="md:m-28 md:mt-4" ref={sliderRef} {...settings}>
+          <BlogCardItem
+            onClick={() => handleNavigate(news[0])}
+            item={news[0]}
+          />
+          <BlogCardItem
+            onClick={() => handleNavigate(news[0])}
+            item={news[1]}
+          />
+          <BlogCardItem
+            onClick={() => handleNavigate(news[0])}
+            item={news[3]}
+          />
+          <BlogCardItem
+            onClick={() => handleNavigate(news[0])}
+            item={news[7]}
+          />
+          {/* <BlogCardItem item={news[4]} /> */}
+        </Slider>
+      )}
     </div>
   );
 };

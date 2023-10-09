@@ -96,7 +96,7 @@ const dashBoardSlice = createSlice({
     // adding dashboard cases
 
     builder.addCase(updateDashboard.fulfilled, (state, action) => {
-      state.dashboardItem = action.payload;
+      if (action.payload) state.dashboardItem = action.payload;
       state.isLoading = false;
     });
     builder.addCase(updateDashboard.pending, (state) => {

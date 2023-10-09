@@ -1,8 +1,9 @@
 import styles from "../style";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { news } from "../constants";
+
 import { NewModel } from "../types";
+import { useAppSelector } from "../rtk/hooks";
 
 interface Props {
   item: NewModel;
@@ -30,6 +31,8 @@ const SideNewsItem = ({ item, setItem }: Props) => (
 const NewsDetails = () => {
   const params = useLocation();
   const { state } = params.state;
+  const { news } = useAppSelector((state) => state.news);
+
   const [item, setItem] = useState(state);
 
   return (

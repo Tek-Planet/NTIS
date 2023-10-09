@@ -1,10 +1,19 @@
-import { gallery } from "../constants";
-
 import { motion } from "framer-motion";
-import { GalleryCardItem } from "../components";
+import { CustomLoader, GalleryCardItem } from "../components";
 import styles from "../style";
+import { useEffect } from "react";
+import { fetchGallery } from "../rtk/features/gallery/gallerySlice";
+import { useAppDispatch, useAppSelector } from "../rtk/hooks";
 
 const Gallery = () => {
+  const { gallery, isFetching } = useAppSelector((state) => state.gallery);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (gallery.length === 0) {
+      dispatch(fetchGallery());
+    }
+  }, []);
   return (
     <motion.div
       initial={{ x: "100vw" }}
@@ -24,6 +33,8 @@ const Gallery = () => {
           whispers secrets of its captured moment.
         </p>
       </div>
+      {isFetching && <CustomLoader />}
+
       <div className={`flex flex-wrap`}>
         {gallery.map((item) => (
           <GalleryCardItem item={item} />

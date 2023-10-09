@@ -24,7 +24,13 @@ import {
   Technologies,
   Vision,
 } from "./pages";
-import { DashBoard, Login, NewsManager, ProjectsManager } from "./admin/pages";
+import {
+  DashBoard,
+  GalleryManager,
+  Login,
+  NewsManager,
+  ProjectsManager,
+} from "./admin/pages";
 import { ProtectedRoutes } from "./routes";
 import { onAuthStateChanged } from "firebase/auth";
 import { auths } from "./firebase";
@@ -111,6 +117,10 @@ const App = () => (
         <Route
           path={`/${adminRootPath}/projects`}
           element={<ProjectsManager />}
+        />
+        <Route
+          path={`/${adminRootPath}/gallery`}
+          element={<GalleryManager />}
         />
       </Route>
     </Routes>

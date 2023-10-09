@@ -4,34 +4,36 @@ import { Fragment, useState } from "react";
 import { CustomLoader, CustomTextInput } from "..";
 import { Button } from "..";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
-import { NewModel } from "../../types";
-import { addNews } from "../../rtk/features/news/newsSlice";
+import { GalleryModel } from "../../types";
 import { useAlert } from "react-alert";
+import { addGallery } from "../../rtk/features/gallery/gallerySlice";
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
 }
 
-const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
-  const { isFetching } = useAppSelector((state) => state.news);
+const CreateGalleryModal = ({ isOpen, closeModal }: Props) => {
+  const { isLoading } = useAppSelector((state) => state.project);
   const alert = useAlert();
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+
   const [file, setFile] = useState<any>("");
   const dispatch = useAppDispatch();
 
   const signIn = async (e: any) => {
     e.preventDefault();
-    const body: NewModel = {
-      title: title,
-      content: content,
+    const body: GalleryModel = {
+      caption: title,
       image: file,
-      createdAt: new Date().getTime().toString(),
+      imageName: file.name,
+      createdAt: new Date().getTime(),
     };
 
-    const response = await dispatch(addNews(body));
-    if (response.payload)
-      alert.show("News added successfully!", { type: "success" });
+    const response = await dispatch(addGallery(body));
+    if (response.payload) {
+      alert.show("image added successfully!", { type: "success" });
+      closeModal();
+    } else alert.show("Unable to upload image!", { type: "error" });
   };
 
   return (
@@ -65,17 +67,16 @@ const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
                   as="h3"
                   className="text-sm sm:text-lg  font-medium leading-6 text-gray-900 max-w-[250px] sm:max-w-[400px] w-full"
                 >
-                  Add News
+                  Add New Image
                 </Dialog.Title>
-                {isFetching && <CustomLoader />}
+                {isLoading && <CustomLoader />}
                 <form
                   onSubmit={signIn}
                   className=" flex flex-col gap-3 my-3 text-xs sm:text-sm"
                 >
                   <CustomTextInput
-                    required
-                    name="name"
-                    placeholder="title"
+                    required={false}
+                    placeholder="caption"
                     inputType="text"
                     value={title}
                     handleChange={setTitle}
@@ -87,15 +88,6 @@ const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
                     handleChange={setFile}
                   />
 
-                  <CustomTextInput
-                    required
-                    placeholder="Message"
-                    inputType="text"
-                    isTextArea={true}
-                    value={content}
-                    handleChange={setContent}
-                    row={12}
-                  />
                   <div className="flex  justify-center">
                     <Button
                       type="submit"
@@ -123,4 +115,4 @@ const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
   );
 };
 
-export default CreateNewsModal;
+export default CreateGalleryModal;

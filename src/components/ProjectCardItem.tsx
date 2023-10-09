@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import { projecticon } from "../assets";
 import styles from "../style";
 import { hoverVariant } from "../variants";
-import { GeneralListModel } from "../types";
+import { NewModel } from "../types";
+import moment from "moment";
 
 interface Props {
-  item: GeneralListModel;
-  onClick: (val: GeneralListModel) => void;
+  item: NewModel;
+  onClick: (val: NewModel) => void;
 }
 
 function ProjectCardItem({ item, onClick }: Props) {
-  const { content, img, title, createdAt } = item;
+  const { content, image, title, createdAt } = item;
 
   return (
     <motion.div
@@ -23,7 +23,7 @@ function ProjectCardItem({ item, onClick }: Props) {
       className="flex flex-col sm:flex-row  my-5 gap-4 w-full  min-h-[120px]   shadow-md cursor-pointer rounded-md"
     >
       <div className="">
-        <img src={img} className={"w-full  h-[250px]    md:w-[300px] "} />
+        <img src={image} className={"w-full  h-[250px]    md:w-[300px] "} />
       </div>
 
       <div
@@ -32,7 +32,7 @@ function ProjectCardItem({ item, onClick }: Props) {
         <div className="flex items-center justify-between">
           <div>
             <p className={`  text-buttongreen`}>{title}</p>
-            <p className=" text-gray-400  ">{createdAt}</p>
+            <p className=" text-gray-400  ">{moment().format("MMM Do YY")}</p>
           </div>
           <img src={projecticon} />
         </div>

@@ -2,12 +2,13 @@ import styles from "../style";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { projects } from "../constants";
-import { GeneralListModel } from "../types";
+
+import { NewModel } from "../types";
+import { useAppSelector } from "../rtk/hooks";
 
 interface Props {
-  item: GeneralListModel;
-  setItem: (val: GeneralListModel) => void;
+  item: NewModel;
+  setItem: (val: NewModel) => void;
 }
 
 const SideNewsItem = ({ item, setItem }: Props) => (
@@ -29,6 +30,7 @@ const SideNewsItem = ({ item, setItem }: Props) => (
   </div>
 );
 const CooperationDetails = () => {
+  const { projects } = useAppSelector((state) => state.project);
   const params = useLocation();
   const { state } = params.state;
   const [item, setItem] = useState(state);

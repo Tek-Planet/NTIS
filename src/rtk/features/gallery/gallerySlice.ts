@@ -1,55 +1,55 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { NewModel } from "../../../types";
+import { GalleryModel } from "../../../types";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { uploadImage } from "../../../constants";
 
 type InitialState = {
-  projects: NewModel[];
+  gallery: GalleryModel[];
   isFetching: boolean;
   isLoading: boolean;
 };
 
 const initialState: InitialState = {
-  projects: [],
+  gallery: [],
   isFetching: false,
   isLoading: false,
 };
 
-export const fetchProjects = createAsyncThunk(
-  "project/fetchProjects",
+export const fetchGallery = createAsyncThunk(
+  "gallery/fetchGallery",
   async () => {
-    let projects: any = [];
+    let gallery: any = [];
 
     try {
-      const querySnapshot = await getDocs(collection(db, "projects"));
+      const querySnapshot = await getDocs(collection(db, "gallery"));
       querySnapshot.forEach((doc) => {
         var item = doc.data();
         item.id = doc.id;
-        projects.push(item);
+        gallery.push(item);
       });
 
-      return projects;
+      return gallery;
     } catch (error) {
       console.log(error);
-      return projects;
+      return gallery;
     }
   }
 );
 
-export const addProject = createAsyncThunk(
-  "project/addProject",
-  async (project: any) => {
+export const addGallery = createAsyncThunk(
+  "gallery/addGallery",
+  async (gallery: any) => {
     try {
-      if (project.image)
-        project.image = await uploadImage(project.image, project.image.name);
+      if (gallery.image)
+        gallery.image = await uploadImage(gallery.image, gallery.image.name);
 
       // You can now use `imageurl` for further processing or store it in your Redux state
-      const docRef = await addDoc(collection(db, "projects"), project);
-      project.id = docRef.id;
+      const docRef = await addDoc(collection(db, "gallery"), gallery);
+      gallery.id = docRef.id;
 
       // Assuming you want to return `imageurl` as the result of the async action
-      return project;
+      return gallery;
     } catch (e) {
       console.error("Error adding document: ", e);
       // You might want to handle the error here or rethrow it.
@@ -58,33 +58,33 @@ export const addProject = createAsyncThunk(
   }
 );
 
-const projectSlice = createSlice({
-  name: "project",
+const gallerySlice = createSlice({
+  name: "gallery",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     // fetching new case
     builder.addCase(
-      fetchProjects.fulfilled,
-      (state, action: PayloadAction<NewModel[]>) => {
-        state.projects = action.payload;
+      fetchGallery.fulfilled,
+      (state, action: PayloadAction<GalleryModel[]>) => {
+        state.gallery = action.payload;
         state.isFetching = false;
       }
     );
-    builder.addCase(fetchProjects.pending, (state) => {
+    builder.addCase(fetchGallery.pending, (state) => {
       state.isFetching = true;
     });
 
     // adding project cases
 
-    builder.addCase(addProject.fulfilled, (state, action) => {
-      state.projects = [...initialState.projects, action.payload];
+    builder.addCase(addGallery.fulfilled, (state, action) => {
+      state.gallery = [...initialState.gallery, action.payload];
       state.isLoading = false;
     });
-    builder.addCase(addProject.pending, (state) => {
+    builder.addCase(addGallery.pending, (state) => {
       state.isLoading = true;
     });
   },
 });
 
-export default projectSlice.reducer;
+export default gallerySlice.reducer;
