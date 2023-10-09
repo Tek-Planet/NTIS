@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GalleryModel } from "../../../types";
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "../../../firebase";
 import { uploadImage } from "../../../constants";
 
@@ -22,7 +28,8 @@ export const fetchGallery = createAsyncThunk(
     let gallery: any = [];
 
     try {
-      const querySnapshot = await getDocs(collection(db, "gallery"));
+      const q = query(collection(db, "gallery"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         var item = doc.data();
         item.id = doc.id;
@@ -45,6 +52,7 @@ export const addGallery = createAsyncThunk(
         gallery.image = await uploadImage(gallery.image, gallery.image.name);
 
       // You can now use `imageurl` for further processing or store it in your Redux state
+
       const docRef = await addDoc(collection(db, "gallery"), gallery);
       gallery.id = docRef.id;
 

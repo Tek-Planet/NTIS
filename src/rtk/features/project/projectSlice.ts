@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NewModel } from "../../../types";
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "../../../firebase";
 import { uploadImage } from "../../../constants";
 
@@ -22,7 +28,10 @@ export const fetchProjects = createAsyncThunk(
     let projects: any = [];
 
     try {
-      const querySnapshot = await getDocs(collection(db, "projects"));
+      const q = query(collection(db, "projects"), orderBy("createdAt", "desc"));
+
+      const querySnapshot = await getDocs(q);
+
       querySnapshot.forEach((doc) => {
         var item = doc.data();
         item.id = doc.id;
