@@ -6,3 +6,4 @@ export { default as CreateNewsModal } from "./CreateNewsModal";
 export { default as DashBoardModal } from "./DashBoardModal";
 export { default as CreateProjectModal } from "./CreateProjectModal";
 export { default as CreateGalleryModal } from "./CreateGalleryModal";
+export { default as CreateTechnologyModal } from "./CreateTechnologyModal";

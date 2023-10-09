@@ -1,4 +1,4 @@
-import { BlogCardItem, CreateProjectModal } from "../../components/admin";
+import { CreateTechnologyModal } from "../../components/admin";
 
 import styles from "../../style";
 
@@ -6,10 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
-import { Button, CustomLoader, TechnologyCard } from "../../components";
+import { CustomLoader, TechnologyCard } from "../../components";
 import { plus } from "../../assets";
 
-import { saveBlog } from "../handlers/api";
 import { fetchTechnology } from "../../rtk/features/technology/technologySlice";
 
 const TechnologyManager = () => {
@@ -35,7 +34,7 @@ const TechnologyManager = () => {
       dispatch(fetchTechnology());
     }
   }, []);
-  console.log(technology);
+
   return (
     <div className="flex flex-col relative">
       <div className="fixed flex  items-center  right-4 bottom-5  bg-buttongreen rounded-full h-10 w-10 md:h-14 sm:w-14 border-2 z-50">
@@ -69,7 +68,7 @@ const TechnologyManager = () => {
           </div>
         )}
         {/* create new button  */}
-        <CreateProjectModal isOpen={isOpen} closeModal={closeModal} />
+        <CreateTechnologyModal isOpen={isOpen} closeModal={closeModal} />
       </div>
     </div>
   );

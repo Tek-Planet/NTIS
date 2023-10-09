@@ -73,13 +73,10 @@ const projectSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     // fetching new case
-    builder.addCase(
-      fetchProjects.fulfilled,
-      (state, action: PayloadAction<NewModel[]>) => {
-        state.projects = action.payload;
-        state.isFetching = false;
-      }
-    );
+    builder.addCase(fetchProjects.fulfilled, (state, action) => {
+      state.projects = action.payload;
+      state.isFetching = false;
+    });
     builder.addCase(fetchProjects.pending, (state) => {
       state.isFetching = true;
     });

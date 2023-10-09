@@ -13,7 +13,7 @@ interface Props {
 }
 
 const CreateGalleryModal = ({ isOpen, closeModal }: Props) => {
-  const { isLoading } = useAppSelector((state) => state.project);
+  const { isLoading } = useAppSelector((state) => state.gallery);
   const alert = useAlert();
   const [title, setTitle] = useState("");
 

@@ -48,7 +48,7 @@ const CustomTextInput = (props: Props) => {
           type={inputType}
           step="0.1"
           placeholder={placeholder}
-          className="p-[8px] py-3   rounded-lg  outline-none  bg-transparent font-epilogue   text-[14px] placeholder:text-[#4b5264]  sm:min-w-[300px] border"
+          className="p-[8px] py-3   rounded-lg  outline-none  bg-transparent font-epilogue   text-[14px] placeholder:text-[#4b5264]  sm:min-w-[200px] border"
         />
       )}
     </label>
