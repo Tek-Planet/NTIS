@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../../rtk/features/user/userSlice";
 import { LoginModel } from "../../types";
 import { useAppDispatch } from "../../rtk/hooks";
+import { logo } from "../../assets";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -57,9 +58,12 @@ const Login = () => {
             initial={{ x: "-100vw" }}
             animate={{ x: 0 }}
             transition={{ type: "spring", stiffness: 35 }}
+            className="flex flex-col   items-center  pt-10"
           >
+            <img src={logo} className="flex animate-bounce h-14 w-14   " />
+
             <p
-              className={` ${styles.heading2} p-5 text-backgroudgreen text-center`}
+              className={` ${styles.heading3} py-3 text-backgroudgreen text-center`}
             >
               Welcome Back
             </p>

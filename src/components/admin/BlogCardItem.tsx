@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 import { hoverVariant } from "../../variants";
 import { NewModel } from "../../types";
-import { bin } from "../../assets";
+import { bin, pencil } from "../../assets";
 import CustomImageButton from "../CustomImageButton";
 
 interface Props {
   item: NewModel;
   onClick: (val: NewModel) => void;
-  onDelete: (val: any) => void;
+  onDelete: (val: NewModel) => void;
+  onEdit: (val: NewModel) => void;
 }
 
-function BlogCardItem({ item, onClick, onDelete }: Props) {
+function BlogCardItem({ item, onClick, onDelete, onEdit }: Props) {
   const { content, title, image } = item;
   return (
     <motion.div
@@ -34,6 +35,7 @@ function BlogCardItem({ item, onClick, onDelete }: Props) {
         </p>
 
         <div className={`flex justify-between  text-linkactive  p-2 `}>
+          <CustomImageButton onclick={() => onEdit(item)} image={pencil} />
           <CustomImageButton onclick={() => onDelete(item)} image={bin} />
 
           <motion.button

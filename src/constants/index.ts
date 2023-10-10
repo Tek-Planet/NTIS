@@ -511,7 +511,7 @@ export const deleteImage = async (imageUrl: string) => {
   }
 };
 
-const getPathName = (imageUrl: string) => {
+export const getPathName = (imageUrl: string) => {
   const url = new URL(imageUrl);
   const path = decodeURIComponent(url.pathname);
 

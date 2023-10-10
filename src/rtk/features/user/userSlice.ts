@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { UserState, LoginModel } from "../../../types";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auths } from "../../../firebase";
 
 const initialState: UserState = {
@@ -46,6 +46,7 @@ const userSlice = createSlice({
     },
 
     logoutUser: (state) => {
+      signOut(auths);
       state.authenticated = false;
     },
     setScreenSize: (state, action) => {

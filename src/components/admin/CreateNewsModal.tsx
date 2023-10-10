@@ -5,33 +5,63 @@ import { CustomLoader, CustomTextInput } from "..";
 import { Button } from "..";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { NewModel } from "../../types";
-import { addNews } from "../../rtk/features/news/newsSlice";
+import { addNews, editNews } from "../../rtk/features/news/newsSlice";
 import { useAlert } from "react-alert";
 interface Props {
   isOpen: boolean;
+  item: NewModel;
   closeModal: () => void;
 }
 
-const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
+const CreateNewsModal = ({ isOpen, closeModal, item }: Props) => {
   const { isLoading } = useAppSelector((state) => state.news);
   const alert = useAlert();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [file, setFile] = useState<any>("");
+  const [title, setTitle] = useState(item?.title ? item?.title : "");
+  const [content, setContent] = useState(item?.content ? item?.content : "");
+  const [file, setFile] = useState<any>(null);
   const dispatch = useAppDispatch();
 
   const signIn = async (e: any) => {
     e.preventDefault();
-    const body: NewModel = {
-      title: title,
-      content: content,
-      image: file,
-      createdAt: new Date().getTime().toString(),
-    };
 
-    const response = await dispatch(addNews(body));
-    if (response.payload)
-      alert.show("News added successfully!", { type: "success" });
+    let body: NewModel = {};
+    // if the item is not null we are in edit mode
+    if (item) {
+      body.id = item.id;
+      body.title = title;
+      body.content = content;
+      // if the user choose new file then include the file object
+      if (file) {
+        body.image = file;
+        body.imageName = item.imageName;
+      }
+    }
+    // then it a new news
+    else {
+      body = {
+        title: title,
+        content: content,
+        image: file,
+        imageName: file.name,
+        createdAt: new Date().getTime().toString(),
+      };
+    }
+
+    // we choose action to call based on the mode we are
+    const response: any = item
+      ? await dispatch(editNews(body))
+      : await dispatch(addNews(body));
+    if (response.payload) {
+      alert.show(
+        item ? "News edited successfully!" : "News added successfully!",
+        { type: item ? "info" : "success" }
+      );
+      closeModal();
+    } else {
+      alert.show(item ? "Error editing record!" : "Error adding record!", {
+        type: "error",
+      });
+    }
   };
 
   return (
@@ -65,7 +95,7 @@ const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
                   as="h3"
                   className="text-sm sm:text-lg  font-medium leading-6 text-gray-900 max-w-[250px] sm:max-w-[400px] w-full"
                 >
-                  Add News
+                  {item ? "Edit News" : "Add News"}
                 </Dialog.Title>
                 {isLoading && <CustomLoader />}
                 <form
@@ -82,7 +112,7 @@ const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
                   />
 
                   <CustomTextInput
-                    required
+                    required={item ? false : true}
                     inputType="file"
                     handleChange={setFile}
                   />

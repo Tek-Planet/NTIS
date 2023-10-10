@@ -8,10 +8,10 @@ import {
   query,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
-import { db, storage } from "../../../firebase";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { deleteImage } from "../../../constants";
+import { db } from "../../../firebase";
+import { deleteImage, getPathName, uploadImage } from "../../../constants";
 
 type InitialState = {
   news: NewModel[];
@@ -44,19 +44,7 @@ export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
 
 export const addNews = createAsyncThunk("news/addNews", async (news: any) => {
   try {
-    // if upload file if any
-    const storageRef = ref(storage, `/files/${news.image.name}`);
-
-    // progress can be paused and resumed. It also exposes progress updates.
-    // Receives the storage reference and the file to upload.
-    const uploadTask = uploadBytesResumable(storageRef, news.image);
-
-    const snapshot = await uploadTask;
-
-    // Get the download URL after the upload is complete
-    const imageurl = await getDownloadURL(snapshot.ref);
-
-    news.image = imageurl;
+    news.image = await uploadImage(news.image, news.image.name);
 
     // You can now use `imageurl` for further processing or store it in your Redux state
     const docRef = await addDoc(collection(db, "news"), news);
@@ -85,6 +73,25 @@ export const deleteNews = createAsyncThunk(
     }
   }
 );
+
+export const editNews = createAsyncThunk("news/editNews", async (news: any) => {
+  try {
+    // if we have image upload image for
+    if (news.image) {
+      news.image = await uploadImage(news.image, news.imageName);
+    }
+
+    const docRef = doc(db, "news", news.id);
+    await updateDoc(docRef, news);
+
+    // Assuming you want to return `imageurl` as the result of the async action
+    return news;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    // You might want to handle the error here or rethrow it.
+    throw e;
+  }
+});
 
 const newsSlice = createSlice({
   name: "news",
@@ -128,6 +135,27 @@ const newsSlice = createSlice({
     });
     builder.addCase(deleteNews.pending, (state) => {
       state.isFetching = true;
+    });
+
+    // Assuming you have a Redux toolkit reducer
+    builder.addCase(editNews.fulfilled, (state, action) => {
+      const editedNews = action.payload; // Assuming the action payload contains the edited news item
+
+      // Find the index of the existing item with the same ID
+      const index = state.news.findIndex(
+        (newsItem) => newsItem.id === editedNews.id
+      );
+
+      if (index !== -1) {
+        // Replace the existing item with the edited news item
+        state.news[index] = editedNews;
+      }
+
+      state.isFetching = false;
+    });
+
+    builder.addCase(editNews.pending, (state) => {
+      state.isLoading = true;
     });
   },
 });

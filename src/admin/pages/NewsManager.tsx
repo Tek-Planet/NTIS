@@ -20,7 +20,7 @@ const NewsManager = () => {
   const { news, isFetching } = useAppSelector((state) => state.news);
   const [isOpen, setIsOpen] = useState(false);
   const [confirmModal, setConfirmModal] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState<any>(null);
+  const [itemToModify, setItemToModify] = useState<any>(null);
 
   const dispatch = useAppDispatch();
 
@@ -36,9 +36,15 @@ const NewsManager = () => {
     console.log(response.payload);
   };
 
+  const handleEdit = async (item: NewModel) => {
+    setItemToModify(item);
+    setIsOpen(true);
+  };
+
   function closeModal() {
     setIsOpen(false);
     setConfirmModal(false);
+    setItemToModify(null);
   }
 
   useEffect(() => {
@@ -74,19 +80,28 @@ const NewsManager = () => {
                 item={item}
                 onDelete={() => {
                   setConfirmModal(true);
-                  setItemToDelete(item);
+                  setItemToModify(item);
+                }}
+                onEdit={() => {
+                  handleEdit(item);
                 }}
               />
             ))}
           </div>
         )}
         {/* create new button  */}
-        {isOpen && <CreateNewsModal isOpen={isOpen} closeModal={closeModal} />}
+        {isOpen && (
+          <CreateNewsModal
+            item={itemToModify}
+            isOpen={isOpen}
+            closeModal={closeModal}
+          />
+        )}
         {confirmModal && (
           <ConfirmationModal
             isOpen={confirmModal}
             closeModal={closeModal}
-            onContinue={() => handleDelete(itemToDelete)}
+            onContinue={() => handleDelete(itemToModify)}
           />
         )}
       </div>

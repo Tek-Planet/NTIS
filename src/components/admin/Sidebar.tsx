@@ -23,7 +23,7 @@ const Sidebar = () => {
   return (
     <div
       style={{ zIndex: 100 }}
-      className=" h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 shadow-lg "
+      className=" h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto  shadow-lg "
     >
       {activeMenu && (
         <>
@@ -55,7 +55,7 @@ const Sidebar = () => {
             transition={{ type: "spring", stiffness: 35 }}
             className=" "
           >
-            <ul className="flex flex-col list-none gap-5 p-5">
+            <ul className="flex flex-col list-none gap-5 p-5 pt-14">
               {adminNavLinks.map((nav) => {
                 return (
                   <motion.li
