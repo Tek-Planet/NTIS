@@ -71,7 +71,7 @@ function TechnologyCard({ item, onClick }: Props) {
         onClick={() => {
           onClick(item);
         }}
-        className={`flex flex-row-reverse  text-linkactive  p-2 `}
+        className={`flex flex-row-reverse  text-linkactive  p-2 cursor-pointer `}
       >
         <span className="capitalize text-sm  md:text-md ">See Details</span>
       </div>

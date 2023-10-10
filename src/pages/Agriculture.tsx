@@ -6,7 +6,7 @@ import { fetchTechnology } from "../rtk/features/technology/technologySlice";
 import { useAppSelector, useAppDispatch } from "../rtk/hooks";
 
 import { CustomLoader, TechnologyCard } from "../components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Agriculture = () => {
   const { technology, isFetching } = useAppSelector(
@@ -37,6 +37,14 @@ const Agriculture = () => {
     }
   }, [name, technology]);
 
+  let navigate = useNavigate();
+
+  const handleNavigate = (item: any) => {
+    navigate(`/technologies/${item.publicationKind}/${item.title}`, {
+      state: { state: item },
+    });
+  };
+
   return (
     <motion.div
       initial={{ x: "100vw" }}
@@ -49,7 +57,11 @@ const Agriculture = () => {
       {filteredList?.length > 0 && (
         <div className={`flex flex-wrap mt-2`}>
           {filteredList.map((item) => (
-            <TechnologyCard key={item.id} onClick={() => {}} item={item} />
+            <TechnologyCard
+              key={item.id}
+              onClick={handleNavigate}
+              item={item}
+            />
           ))}
         </div>
       )}

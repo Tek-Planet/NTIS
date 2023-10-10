@@ -23,6 +23,7 @@ import {
   ServicesDetails,
   Statistics,
   Technologies,
+  TechnologyDetails,
   Vision,
 } from "./pages";
 import {
@@ -103,6 +104,10 @@ const App = () => (
         <Route path="/" element={<Technologies />}>
           <Route path="/technologies/" element={<Agriculture />} />
           <Route path="/technologies/:name" element={<Agriculture />} />
+          <Route
+            path="/technologies/:name/:name"
+            element={<TechnologyDetails />}
+          />
         </Route>
 
         <Route path="/contactus" element={<ContactUs />} />
