@@ -1,4 +1,8 @@
-import { BlogCardItem, CreateProjectModal } from "../../components/admin";
+import {
+  BlogCardItem,
+  ConfirmationModal,
+  CreateProjectModal,
+} from "../../components/admin";
 
 import styles from "../../style";
 
@@ -8,22 +12,43 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { CustomLoader } from "../../components";
 import { plus } from "../../assets";
-import { fetchProjects } from "../../rtk/features/project/projectSlice";
+import {
+  deleteProject,
+  fetchProjects,
+} from "../../rtk/features/project/projectSlice";
+
+import { NewModel } from "../../types";
+import { useAlert } from "react-alert";
 
 const ProjectsManager = () => {
   let navigate = useNavigate();
   const { projects, isFetching } = useAppSelector((state) => state.project);
   const [isOpen, setIsOpen] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<any>(null);
+  const alert = useAlert();
+
   const dispatch = useAppDispatch();
 
-  const handleNavigate = (item: any) => {
-    navigate(`/aboutus/news/${item.title}`, {
-      state: { state: item },
+  const handleNavigate = (item: NewModel) => {
+    navigate(`/app/projects/${item.title}`, {
+      state: { state: item, type: "project" },
     });
+  };
+
+  const handleDelete = async (item: NewModel) => {
+    try {
+      setConfirmModal(false);
+      await dispatch(deleteProject(item));
+      alert.show("item Deleted!", { type: "success" });
+    } catch (error) {
+      alert.show("Unable to delete item!", { type: "error" });
+    }
   };
 
   function closeModal() {
     setIsOpen(false);
+    setConfirmModal(false);
   }
 
   useEffect(() => {
@@ -48,24 +73,34 @@ const ProjectsManager = () => {
           <p className={`  ${styles.heading2} text-center  te`}>Projects</p>
         </div>
 
-        {/* <Button
-          text="click me"
-          onclick={() => {
-            saveBlog();
-          }}
-        /> */}
-
         {isFetching && <CustomLoader />}
 
         {projects && (
           <div className={`flex flex-wrap mt-2`}>
             {projects.map((item) => (
-              <BlogCardItem key={item.id} onClick={() => {}} item={item} />
+              <BlogCardItem
+                key={item.id}
+                onClick={handleNavigate}
+                item={item}
+                onDelete={() => {
+                  setConfirmModal(true);
+                  setItemToDelete(item);
+                }}
+              />
             ))}
           </div>
         )}
         {/* create new button  */}
-        <CreateProjectModal isOpen={isOpen} closeModal={closeModal} />
+        {isOpen && (
+          <CreateProjectModal isOpen={isOpen} closeModal={closeModal} />
+        )}
+        {confirmModal && (
+          <ConfirmationModal
+            isOpen={confirmModal}
+            closeModal={closeModal}
+            onContinue={() => handleDelete(itemToDelete)}
+          />
+        )}
       </div>
     </div>
   );

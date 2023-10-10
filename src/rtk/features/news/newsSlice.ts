@@ -6,9 +6,12 @@ import {
   addDoc,
   orderBy,
   query,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { deleteImage } from "../../../constants";
 
 type InitialState = {
   news: NewModel[];
@@ -68,6 +71,21 @@ export const addNews = createAsyncThunk("news/addNews", async (news: any) => {
   }
 });
 
+export const deleteNews = createAsyncThunk(
+  "news/deleteNews",
+  async (news: any) => {
+    try {
+      if (news?.image) await deleteImage(news.image);
+      await deleteDoc(doc(db, "news", news.id));
+      return news;
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      // You might want to handle the error here or rethrow it.
+      throw e;
+    }
+  }
+);
+
 const newsSlice = createSlice({
   name: "news",
   initialState,
@@ -100,6 +118,16 @@ const newsSlice = createSlice({
     });
     builder.addCase(addNews.pending, (state) => {
       state.isLoading = true;
+    });
+    // delete dection
+    builder.addCase(deleteNews.fulfilled, (state, action) => {
+      state.news = state.news.filter(
+        (newsItem) => newsItem.id !== action.payload.id
+      );
+      state.isFetching = false;
+    });
+    builder.addCase(deleteNews.pending, (state) => {
+      state.isFetching = true;
     });
   },
 });

@@ -2,13 +2,23 @@ import styles from "../style";
 import { Blogs, Carousal, Hero, Research, Services } from "../components";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchNews } from "../rtk/features/news/newsSlice";
+import { useAppSelector, useAppDispatch } from "../rtk/hooks";
 
 const Home = () => {
+  const { news } = useAppSelector((state) => state.news);
+  const dispatch = useAppDispatch();
+
   let navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate(`/aboutus/news`);
   };
+
+  useEffect(() => {
+    if (news.length === 0) dispatch(fetchNews());
+  }, []);
   return (
     <motion.div
       id="home"

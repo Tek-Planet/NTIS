@@ -30,8 +30,9 @@ const SideNewsItem = ({ item, setItem }: Props) => (
 );
 const NewsDetails = () => {
   const params = useLocation();
-  const { state } = params.state;
+  const { state, type } = params.state;
   const { news } = useAppSelector((state) => state.news);
+  const { projects } = useAppSelector((state) => state.project);
 
   const [item, setItem] = useState(state);
 
@@ -60,14 +61,33 @@ const NewsDetails = () => {
           </div>
 
           {/* right */}
-          <div className=" lg:max-w-[300px] w-full  p-2">
-            {news.map((project, index) => {
-              if (project.id !== item.id)
-                return (
-                  <SideNewsItem key={index} item={project} setItem={setItem} />
-                );
-            })}
-          </div>
+          {type === "news" ? (
+            <div className=" lg:max-w-[300px] w-full  p-2">
+              {news.map((project, index) => {
+                if (project.id !== item.id)
+                  return (
+                    <SideNewsItem
+                      key={index}
+                      item={project}
+                      setItem={setItem}
+                    />
+                  );
+              })}
+            </div>
+          ) : (
+            <div className=" lg:max-w-[300px] w-full  p-2">
+              {projects.map((project, index) => {
+                if (project.id !== item.id)
+                  return (
+                    <SideNewsItem
+                      key={index}
+                      item={project}
+                      setItem={setItem}
+                    />
+                  );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>

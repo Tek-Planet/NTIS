@@ -1,4 +1,9 @@
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import {
   ai,
   aiicon,
@@ -483,5 +488,41 @@ export const uploadImage = async (image: any, imageName: string) => {
     console.error("Error uploading: ", e);
 
     throw e;
+  }
+};
+
+export const deleteImage = async (imageUrl: string) => {
+  try {
+    const path = await getPathName(imageUrl);
+
+    if (!path) {
+      return { message: "Not valid path" };
+    }
+    // delete the image if the path is valide
+    const desertRef = ref(storage, path);
+
+    // Delete the file
+    await deleteObject(desertRef);
+    return { message: "success" };
+  } catch (error) {
+    console.error("Error deleting image: ", error);
+
+    return { message: "error" };
+  }
+};
+
+const getPathName = (imageUrl: string) => {
+  const url = new URL(imageUrl);
+  const path = decodeURIComponent(url.pathname);
+
+  // Split the path by "o/" and take the second part
+  const parts = path.split("o/");
+  if (parts.length === 2) {
+    const actualPath = parts[1];
+
+    return actualPath;
+  } else {
+    console.error("Invalid URL format");
+    return null;
   }
 };

@@ -113,6 +113,7 @@ const App = () => (
         <Route path="/contactus" element={<ContactUs />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
+
       {/* admin routes */}
       <Route path="/login" element={<Login />} />
       <Route
@@ -123,8 +124,16 @@ const App = () => (
 
         <Route path={`/${adminRootPath}/news`} element={<NewsManager />} />
         <Route
+          path={`/${adminRootPath}/news/:name`}
+          element={<NewsDetails />}
+        />
+        <Route
           path={`/${adminRootPath}/projects`}
           element={<ProjectsManager />}
+        />
+        <Route
+          path={`/${adminRootPath}/projects/:name`}
+          element={<NewsDetails />}
         />
         <Route
           path={`/${adminRootPath}/gallery`}

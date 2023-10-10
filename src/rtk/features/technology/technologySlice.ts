@@ -6,9 +6,11 @@ import {
   addDoc,
   orderBy,
   query,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { uploadImage } from "../../../constants";
+import { deleteImage, uploadImage } from "../../../constants";
 
 type InitialState = {
   technology: any[];
@@ -72,6 +74,21 @@ export const addTechnology = createAsyncThunk(
   }
 );
 
+export const deleteTechnology = createAsyncThunk(
+  "technology/deleteTechnology",
+  async (technology: any) => {
+    try {
+      if (technology?.image) await deleteImage(technology.image);
+      await deleteDoc(doc(db, "technology", technology.id));
+      return technology;
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      // You might want to handle the error here or rethrow it.
+      throw e;
+    }
+  }
+);
+
 const technologySlice = createSlice({
   name: "technology",
   initialState,
@@ -94,6 +111,17 @@ const technologySlice = createSlice({
     });
     builder.addCase(addTechnology.pending, (state) => {
       state.isLoading = true;
+    });
+
+    // delete section
+    builder.addCase(deleteTechnology.fulfilled, (state, action) => {
+      state.technology = state.technology.filter(
+        (technologyItem) => technologyItem.id !== action.payload.id
+      );
+      state.isFetching = false;
+    });
+    builder.addCase(deleteTechnology.pending, (state) => {
+      state.isFetching = true;
     });
   },
 });

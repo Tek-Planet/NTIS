@@ -1,4 +1,4 @@
-import { CreateGalleryModal } from "../../components/admin";
+import { ConfirmationModal, CreateGalleryModal } from "../../components/admin";
 
 import styles from "../../style";
 
@@ -6,15 +6,34 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { CustomLoader, GalleryCardItem } from "../../components";
 import { plus } from "../../assets";
-import { fetchGallery } from "../../rtk/features/gallery/gallerySlice";
+import {
+  deleteGallery,
+  fetchGallery,
+} from "../../rtk/features/gallery/gallerySlice";
+import { useAlert } from "react-alert";
+import { GalleryModel } from "../../types";
 
 const GalleryManager = () => {
   const { gallery, isFetching } = useAppSelector((state) => state.gallery);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<any>(null);
+  const alert = useAlert();
+
+  const handleDelete = async (item: GalleryModel) => {
+    try {
+      setConfirmModal(false);
+      await dispatch(deleteGallery(item));
+      alert.show("item Deleted!", { type: "success" });
+    } catch (error) {
+      alert.show("Unable to delete item!", { type: "error" });
+    }
+  };
 
   function closeModal() {
     setIsOpen(false);
+    setConfirmModal(false);
   }
 
   useEffect(() => {
@@ -51,12 +70,28 @@ const GalleryManager = () => {
         {gallery && (
           <div className={`flex flex-wrap mt-2`}>
             {gallery.map((item) => (
-              <GalleryCardItem key={item.id} item={item} />
+              <GalleryCardItem
+                onDelete={() => {
+                  setConfirmModal(true);
+                  setItemToDelete(item);
+                }}
+                key={item.id}
+                item={item}
+              />
             ))}
           </div>
         )}
         {/* create new button  */}
-        <CreateGalleryModal isOpen={isOpen} closeModal={closeModal} />
+        {isOpen && (
+          <CreateGalleryModal isOpen={isOpen} closeModal={closeModal} />
+        )}
+        {confirmModal && (
+          <ConfirmationModal
+            isOpen={confirmModal}
+            closeModal={closeModal}
+            onContinue={() => handleDelete(itemToDelete)}
+          />
+        )}
       </div>
     </div>
   );

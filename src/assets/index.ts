@@ -43,3 +43,4 @@ export { default as page404 } from "./page404.png";
 export { default as plus } from "./plus.png";
 export { default as pencil } from "./pencil.png";
 export { default as shutdown } from "./shutdown.png";
+export { default as bin } from "./bin.png";

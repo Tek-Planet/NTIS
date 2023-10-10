@@ -20,3 +20,4 @@ export { default as CustomLoader } from "./CustomLoader";
 export { default as CustomError } from "./CustomError";
 export { default as TechnologyCard } from "./TechnologyCard";
 export { default as CustomDropDown } from "./CustomDropDown";
+export { default as CustomImageButton } from "./CustomImageButton";

@@ -6,9 +6,11 @@ import {
   addDoc,
   orderBy,
   query,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { uploadImage } from "../../../constants";
+import { deleteImage, uploadImage } from "../../../constants";
 
 type InitialState = {
   gallery: GalleryModel[];
@@ -66,6 +68,21 @@ export const addGallery = createAsyncThunk(
   }
 );
 
+export const deleteGallery = createAsyncThunk(
+  "gallery/deleteGallery",
+  async (gallery: any) => {
+    try {
+      if (gallery?.image) await deleteImage(gallery.image);
+      await deleteDoc(doc(db, "gallery", gallery.id));
+      return gallery;
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      // You might want to handle the error here or rethrow it.
+      throw e;
+    }
+  }
+);
+
 const gallerySlice = createSlice({
   name: "gallery",
   initialState,
@@ -91,6 +108,17 @@ const gallerySlice = createSlice({
     });
     builder.addCase(addGallery.pending, (state) => {
       state.isLoading = true;
+    });
+
+    // delete section
+    builder.addCase(deleteGallery.fulfilled, (state, action) => {
+      state.gallery = state.gallery.filter(
+        (galleryItem) => galleryItem.id !== action.payload.id
+      );
+      state.isFetching = false;
+    });
+    builder.addCase(deleteGallery.pending, (state) => {
+      state.isFetching = true;
     });
   },
 });

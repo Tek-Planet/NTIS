@@ -10,9 +10,10 @@ import { addGallery } from "../../rtk/features/gallery/gallerySlice";
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
+  onContinue: (val: any) => void;
 }
 
-const CreateGalleryModal = ({ isOpen, closeModal }: Props) => {
+const ConfirmationModal = ({ isOpen, closeModal, onContinue }: Props) => {
   const { isLoading } = useAppSelector((state) => state.gallery);
   const alert = useAlert();
   const [title, setTitle] = useState("");
@@ -67,41 +68,28 @@ const CreateGalleryModal = ({ isOpen, closeModal }: Props) => {
                   as="h3"
                   className="text-sm sm:text-lg  font-medium leading-6 text-gray-900 max-w-[250px] sm:max-w-[400px] w-full"
                 >
-                  Add New Image
+                  Are you sure you want to delete this Item
                 </Dialog.Title>
                 {isLoading && <CustomLoader />}
-                <form
-                  onSubmit={signIn}
-                  className=" flex flex-col gap-3 my-3 text-xs sm:text-sm"
-                >
-                  <CustomTextInput
-                    required={false}
-                    placeholder="caption"
-                    inputType="text"
-                    value={title}
-                    handleChange={setTitle}
+                <div className=" flex  gap-3 my-3 mt-10">
+                  <Button
+                    onclick={closeModal}
+                    styles={"text-primary w-1/2 p-2 "}
+                    text="Cancel"
                   />
 
-                  <CustomTextInput
-                    required
-                    inputType="file"
-                    handleChange={setFile}
+                  <Button
+                    onclick={onContinue}
+                    styles={"text-primary w-1/2 p-2  bg-red-500  "}
+                    text="Continue"
                   />
-
-                  <div className="flex  justify-center">
-                    <Button
-                      type="submit"
-                      styles={"text-primary w-1/2 p-2 "}
-                      text="Submit"
-                    />
-                  </div>
-                </form>
+                </div>
 
                 <div className="mt-4">
                   <button
                     type="button"
                     className=" absolute top-5 right-5  rounded-full border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={closeModal}
+                    onClick={() => closeModal()}
                   >
                     X
                   </button>
@@ -115,4 +103,4 @@ const CreateGalleryModal = ({ isOpen, closeModal }: Props) => {
   );
 };
 
-export default CreateGalleryModal;
+export default ConfirmationModal;

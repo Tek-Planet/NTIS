@@ -1,4 +1,8 @@
-import { BlogCardItem, CreateNewsModal } from "../../components/admin";
+import {
+  BlogCardItem,
+  ConfirmationModal,
+  CreateNewsModal,
+} from "../../components/admin";
 
 import styles from "../../style";
 
@@ -6,24 +10,35 @@ import { useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
-import { fetchNews } from "../../rtk/features/news/newsSlice";
+import { deleteNews, fetchNews } from "../../rtk/features/news/newsSlice";
 import { CustomLoader } from "../../components";
 import { plus } from "../../assets";
+import { NewModel } from "../../types";
 
 const NewsManager = () => {
   let navigate = useNavigate();
   const { news, isFetching } = useAppSelector((state) => state.news);
   const [isOpen, setIsOpen] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<any>(null);
+
   const dispatch = useAppDispatch();
 
-  const handleNavigate = (item: any) => {
-    navigate(`/aboutus/news/${item.title}`, {
-      state: { state: item },
+  const handleNavigate = (item: NewModel) => {
+    navigate(`/app/news/${item.title}`, {
+      state: { state: item, type: "news" },
     });
+  };
+
+  const handleDelete = async (item: NewModel) => {
+    setConfirmModal(false);
+    var response = await dispatch(deleteNews(item));
+    console.log(response.payload);
   };
 
   function closeModal() {
     setIsOpen(false);
+    setConfirmModal(false);
   }
 
   useEffect(() => {
@@ -53,12 +68,27 @@ const NewsManager = () => {
         {news && (
           <div className={`flex flex-wrap mt-2`}>
             {news.map((item) => (
-              <BlogCardItem key={item.id} onClick={() => {}} item={item} />
+              <BlogCardItem
+                key={item.id}
+                onClick={handleNavigate}
+                item={item}
+                onDelete={() => {
+                  setConfirmModal(true);
+                  setItemToDelete(item);
+                }}
+              />
             ))}
           </div>
         )}
         {/* create new button  */}
-        <CreateNewsModal isOpen={isOpen} closeModal={closeModal} />
+        {isOpen && <CreateNewsModal isOpen={isOpen} closeModal={closeModal} />}
+        {confirmModal && (
+          <ConfirmationModal
+            isOpen={confirmModal}
+            closeModal={closeModal}
+            onContinue={() => handleDelete(itemToDelete)}
+          />
+        )}
       </div>
     </div>
   );
