@@ -33,7 +33,7 @@ const CreateNewsModal = ({ isOpen, closeModal, item }: Props) => {
       // if the user choose new file then include the file object
       if (file) {
         body.image = file;
-        body.imageName = item.imageName;
+        body.imageName = item?.imageName ? item.imageName : file.name;
       }
     }
     // then it a new news

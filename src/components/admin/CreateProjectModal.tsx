@@ -6,34 +6,64 @@ import { Button } from "..";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { NewModel } from "../../types";
 import { useAlert } from "react-alert";
-import { addProject } from "../../rtk/features/project/projectSlice";
+import {
+  addProject,
+  editProject,
+} from "../../rtk/features/project/projectSlice";
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
+  item: NewModel;
 }
 
-const CreateProjectModal = ({ isOpen, closeModal }: Props) => {
+const CreateProjectModal = ({ isOpen, closeModal, item }: Props) => {
   const { isLoading } = useAppSelector((state) => state.project);
   const alert = useAlert();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [file, setFile] = useState<any>("");
+  const [title, setTitle] = useState(item?.title ? item?.title : "");
+  const [content, setContent] = useState(item?.content ? item?.content : "");
+  const [file, setFile] = useState<any>(null);
   const dispatch = useAppDispatch();
 
   const signIn = async (e: any) => {
     e.preventDefault();
-    const body: NewModel = {
-      title: title,
-      content: content,
-      image: file,
-      imageName: file.name,
-      createdAt: new Date().getTime().toString(),
-    };
 
-    const response = await dispatch(addProject(body));
+    let body: NewModel = {};
+
+    if (item) {
+      body.id = item.id;
+      body.title = title;
+      body.content = content;
+      // if the user choose new file then include the file object
+      if (file) {
+        body.image = file;
+        body.imageName = item?.imageName ? item.imageName : file.name;
+      }
+    }
+    // then it a new news
+    else {
+      body = {
+        title: title,
+        content: content,
+        image: file,
+        imageName: file.name,
+        createdAt: new Date().getTime().toString(),
+      };
+    }
+
+    const response: any = item
+      ? await dispatch(editProject(body))
+      : await dispatch(addProject(body));
+
     if (response.payload) {
-      alert.show("Project added successfully!", { type: "success" });
+      alert.show(
+        item ? "Project edited successfully!" : "Project added successfully!",
+        { type: item ? "info" : "success" }
+      );
       closeModal();
+    } else {
+      alert.show(item ? "Error editing record!" : "Error adding record!", {
+        type: "error",
+      });
     }
   };
 
@@ -68,7 +98,7 @@ const CreateProjectModal = ({ isOpen, closeModal }: Props) => {
                   as="h3"
                   className="text-sm sm:text-lg  font-medium leading-6 text-gray-900 max-w-[250px] sm:max-w-[400px] w-full"
                 >
-                  Add New Project
+                  {item ? "Edit Project" : " Add New Project"}
                 </Dialog.Title>
                 {isLoading && <CustomLoader />}
                 <form
@@ -85,7 +115,7 @@ const CreateProjectModal = ({ isOpen, closeModal }: Props) => {
                   />
 
                   <CustomTextInput
-                    required
+                    required={item ? false : true}
                     inputType="file"
                     handleChange={setFile}
                   />

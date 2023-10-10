@@ -25,7 +25,7 @@ const ProjectsManager = () => {
   const { projects, isFetching } = useAppSelector((state) => state.project);
   const [isOpen, setIsOpen] = useState(false);
   const [confirmModal, setConfirmModal] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState<any>(null);
+  const [itemToModify, setItemToModify] = useState<any>(null);
   const alert = useAlert();
 
   const dispatch = useAppDispatch();
@@ -46,11 +46,16 @@ const ProjectsManager = () => {
     }
   };
 
+  const handleEdit = async (item: NewModel) => {
+    setItemToModify(item);
+    setIsOpen(true);
+  };
+
   function closeModal() {
     setIsOpen(false);
     setConfirmModal(false);
+    setItemToModify(null);
   }
-
   useEffect(() => {
     if (projects.length === 0) {
       dispatch(fetchProjects());
@@ -84,7 +89,10 @@ const ProjectsManager = () => {
                 item={item}
                 onDelete={() => {
                   setConfirmModal(true);
-                  setItemToDelete(item);
+                  setItemToModify(item);
+                }}
+                onEdit={() => {
+                  handleEdit(item);
                 }}
               />
             ))}
@@ -92,13 +100,17 @@ const ProjectsManager = () => {
         )}
         {/* create new button  */}
         {isOpen && (
-          <CreateProjectModal isOpen={isOpen} closeModal={closeModal} />
+          <CreateProjectModal
+            item={itemToModify}
+            isOpen={isOpen}
+            closeModal={closeModal}
+          />
         )}
         {confirmModal && (
           <ConfirmationModal
             isOpen={confirmModal}
             closeModal={closeModal}
-            onContinue={() => handleDelete(itemToDelete)}
+            onContinue={() => handleDelete(itemToModify)}
           />
         )}
       </div>
