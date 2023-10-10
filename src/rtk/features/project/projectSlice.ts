@@ -86,19 +86,22 @@ export const deleteProject = createAsyncThunk(
 );
 
 export const editProject = createAsyncThunk(
-  "news/editProject",
-  async (news: any) => {
+  "technology/editProject",
+  async (technology: any) => {
     try {
       // if we have image upload image for
-      if (news.image) {
-        news.image = await uploadImage(news.image, news.imageName);
+      if (technology.image) {
+        technology.image = await uploadImage(
+          technology.image,
+          technology.imageName
+        );
       }
 
-      const docRef = doc(db, "projects", news.id);
-      await updateDoc(docRef, news);
+      const docRef = doc(db, "projects", technology.id);
+      await updateDoc(docRef, technology);
 
       // Assuming you want to return `imageurl` as the result of the async action
-      return news;
+      return technology;
     } catch (e) {
       console.error("Error adding document: ", e);
       // You might want to handle the error here or rethrow it.

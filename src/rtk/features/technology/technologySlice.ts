@@ -8,6 +8,7 @@ import {
   query,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { deleteImage, uploadImage } from "../../../constants";
@@ -89,6 +90,31 @@ export const deleteTechnology = createAsyncThunk(
   }
 );
 
+export const editTechnology = createAsyncThunk(
+  "technology/editTechnology",
+  async (technology: any) => {
+    try {
+      // if we have image upload image for
+      if (technology.image) {
+        technology.image = await uploadImage(
+          technology.image,
+          technology.imageName
+        );
+      }
+
+      const docRef = doc(db, "technology", technology.id);
+      await updateDoc(docRef, technology);
+
+      // Assuming you want to return `imageurl` as the result of the async action
+      return technology;
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      // You might want to handle the error here or rethrow it.
+      throw e;
+    }
+  }
+);
+
 const technologySlice = createSlice({
   name: "technology",
   initialState,
@@ -122,6 +148,27 @@ const technologySlice = createSlice({
     });
     builder.addCase(deleteTechnology.pending, (state) => {
       state.isFetching = true;
+    });
+
+    // edit section
+    builder.addCase(editTechnology.fulfilled, (state, action) => {
+      const editedProject = action.payload; // Assuming the action payload contains the edited news item
+
+      // Find the index of the existing item with the same ID
+      const index = state.technology.findIndex(
+        (technologyItem) => technologyItem.id === editedProject.id
+      );
+
+      if (index !== -1) {
+        // Replace the existing item with the edited news item
+        state.technology[index] = editedProject;
+      }
+
+      state.isFetching = false;
+    });
+
+    builder.addCase(editTechnology.pending, (state) => {
+      state.isLoading = true;
     });
   },
 });
