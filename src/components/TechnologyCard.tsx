@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
 import { hoverVariant } from "../variants";
-import { bin } from "../assets";
+import { bin, pencil } from "../assets";
 import CustomImageButton from "./CustomImageButton";
 
 interface Props {
   item: any;
   onClick: (val: any) => void;
   onDelete: (val: any) => void;
+  onEdit: (val: any) => void;
+  isAdmin?: boolean;
 }
 
-function TechnologyCard({ item, onClick, onDelete }: Props) {
+function TechnologyCard({ item, onClick, onDelete, onEdit, isAdmin }: Props) {
   const {
     content,
     title,
@@ -67,7 +69,13 @@ function TechnologyCard({ item, onClick, onDelete }: Props) {
       </p>
 
       <div className={`flex justify-between  text-linkactive  p-2 `}>
-        <CustomImageButton onclick={() => onDelete(item)} image={bin} />
+        {isAdmin && (
+          <CustomImageButton onclick={() => onEdit(item)} image={pencil} />
+        )}
+
+        {isAdmin && (
+          <CustomImageButton onclick={() => onDelete(item)} image={bin} />
+        )}
 
         <motion.button
           whileHover={{

@@ -164,7 +164,7 @@ const technologySlice = createSlice({
         state.technology[index] = editedProject;
       }
 
-      state.isFetching = false;
+      state.isLoading = false;
     });
 
     builder.addCase(editTechnology.pending, (state) => {

@@ -33,7 +33,7 @@ const TechnologyManager = () => {
 
   const [filteredList, setFiltered] = useState<any[]>([]);
   const [confirmModal, setConfirmModal] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState<any>(null);
+  const [itemToModify, setItemToModify] = useState<any>(null);
   const alert = useAlert();
 
   const handleNavigate = (item: any) => {
@@ -58,9 +58,15 @@ const TechnologyManager = () => {
     }
   };
 
+  const handleEdit = async (item: NewModel) => {
+    setItemToModify(item);
+    setIsOpen(true);
+  };
+
   function closeModal() {
     setIsOpen(false);
     setConfirmModal(false);
+    setItemToModify(null);
   }
 
   useEffect(() => {
@@ -112,8 +118,12 @@ const TechnologyManager = () => {
                   item={item}
                   onDelete={() => {
                     setConfirmModal(true);
-                    setItemToDelete(item);
+                    setItemToModify(item);
                   }}
+                  onEdit={() => {
+                    handleEdit(item);
+                  }}
+                  isAdmin
                 />
               );
             })}
@@ -128,13 +138,17 @@ const TechnologyManager = () => {
         </div>
         {/* create new button  */}
         {isOpen && (
-          <CreateTechnologyModal isOpen={isOpen} closeModal={closeModal} />
+          <CreateTechnologyModal
+            item={itemToModify}
+            isOpen={isOpen}
+            closeModal={closeModal}
+          />
         )}
         {confirmModal && (
           <ConfirmationModal
             isOpen={confirmModal}
             closeModal={closeModal}
-            onContinue={() => handleDelete(itemToDelete)}
+            onContinue={() => handleDelete(itemToModify)}
           />
         )}
       </div>

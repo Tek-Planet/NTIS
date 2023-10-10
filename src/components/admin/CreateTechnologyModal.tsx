@@ -7,66 +7,125 @@ import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { Menus, NewModel } from "../../types";
 import { useAlert } from "react-alert";
 
-import { addTechnology } from "../../rtk/features/technology/technologySlice";
+import {
+  addTechnology,
+  editTechnology,
+} from "../../rtk/features/technology/technologySlice";
 import { technologyMenu } from "../../constants";
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
+  item: any;
 }
 
-const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
+const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
   const { isLoading } = useAppSelector((state) => state.technology);
   const alert = useAlert();
-  const [title, setTitle] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-  const [office, setOffice] = useState<string>("");
-  const [applicationNumber, setApplicationNumber] = useState<string>("");
-  const [publicationNumber, setPublicationNumber] = useState<string>("");
-  const [publicationKind, setPublicationKind] = useState<Menus>(
-    technologyMenu[0]
+  const [title, setTitle] = useState<string>(item?.title ? item?.title : "");
+  const [content, setContent] = useState<string>(
+    item?.content ? item?.content : ""
   );
-  const [ipc, setipc] = useState<string>("");
-  const [applicant, setApplicant] = useState<string>("");
-  const [cpc, setcpc] = useState<string>("");
-  const [inventors, setInventors] = useState<string>("");
-  const [agents, setAgents] = useState<string>("");
-  const [note, setNote] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [claims, setClaims] = useState<string>("");
+  const [office, setOffice] = useState<string>(
+    item?.office ? item?.office : ""
+  );
+  const [applicationNumber, setApplicationNumber] = useState<string>(
+    item?.applicationNumber ? item?.applicationNumber : ""
+  );
+  const [publicationNumber, setPublicationNumber] = useState<string>(
+    item?.publicationNumber ? item?.publicationNumber : ""
+  );
+  const [publicationKind, setPublicationKind] = useState<Menus>(
+    item?.publicationKind
+      ? { id: item?.publicationKind, title: item?.publicationKind }
+      : technologyMenu[0]
+  );
+  const [ipc, setipc] = useState<string>(item?.ipc ? item?.ipc : "");
+  const [applicant, setApplicant] = useState<string>(
+    item?.applicant ? item?.applicant : ""
+  );
+  const [cpc, setcpc] = useState<string>(item?.cpc ? item?.cpc : "");
+  const [inventors, setInventors] = useState<string>(
+    item?.inventors ? item?.inventors : ""
+  );
+  const [agents, setAgents] = useState<string>(
+    item?.agents ? item?.agents : ""
+  );
+  const [note, setNote] = useState<string>(item?.note ? item?.note : "");
+  const [description, setDescription] = useState<string>(
+    item?.description ? item?.description : ""
+  );
+  const [claims, setClaims] = useState<string>(
+    item?.claims ? item?.claims : ""
+  );
   const [file, setFile] = useState<any>("");
 
   const dispatch = useAppDispatch();
 
   const submit = async (e: any) => {
     e.preventDefault();
-    const body = {
-      title,
-      office,
-      applicationNumber,
-      publicationNumber,
-      publicationKind: publicationKind.title,
-      ipc,
-      cpc,
-      applicant,
-      inventors,
-      agents,
-      note,
-      content,
-      description,
-      claims,
-      image: file,
-      imageName: file.name,
-      createdAt: new Date().getTime().toString(),
-    };
 
+    let body: any = {};
+    if (item) {
+      body = {
+        id: item.id,
+        title,
+        office,
+        applicationNumber,
+        publicationNumber,
+        publicationKind: publicationKind.title,
+        ipc,
+        cpc,
+        applicant,
+        inventors,
+        agents,
+        note,
+        content,
+        description,
+        claims,
+      };
+
+      if (file) {
+        body.image = file;
+        body.imageName = item?.imageName ? item.imageName : file.name;
+      }
+    }
+    // then it a new news
+    else {
+      body = {
+        title,
+        office,
+        applicationNumber,
+        publicationNumber,
+        publicationKind: publicationKind.title,
+        ipc,
+        cpc,
+        applicant,
+        inventors,
+        agents,
+        note,
+        content,
+        description,
+        claims,
+        image: file,
+        imageName: file.name,
+        createdAt: new Date().getTime().toString(),
+      };
+    }
     // console.log(body);
+    const response: any = item
+      ? await dispatch(editTechnology(body))
+      : await dispatch(addTechnology(body));
 
-    const response = await dispatch(addTechnology(body));
     if (response.payload) {
-      alert.show("Added successfully!", { type: "success" });
+      alert.show(
+        item ? "Record edited successfully!" : "Record added successfully!",
+        { type: item ? "info" : "success" }
+      );
       closeModal();
     } else {
-      alert.show("Error adding record!", { type: "error" });
+      alert.show(item ? "Error editing record!" : "Error adding record!", {
+        type: "error",
+      });
     }
   };
 
@@ -234,7 +293,7 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                   />
 
                   <CustomTextInput
-                    required
+                    required={item ? false : true}
                     inputType="file"
                     handleChange={setFile}
                   />
