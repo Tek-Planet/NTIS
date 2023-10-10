@@ -45,7 +45,9 @@ const userSlice = createSlice({
       state.loading = false;
     },
 
-    logoutUser: (state, action) => {},
+    logoutUser: (state) => {
+      state.authenticated = false;
+    },
     setScreenSize: (state, action) => {
       state.screenSize = action.payload;
     },

@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import { hoverVariant } from "../../variants";
 import { menu, shutdown } from "../../assets";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import {
+  logoutUser,
   setActiveMenu,
   setScreenSize,
 } from "../../rtk/features/user/userSlice";
+import CustomImageButton from "../CustomImageButton";
 
 const Navbar = () => {
   const { screenSize, activeMenu } = useAppSelector((state) => state.user);
@@ -42,17 +43,15 @@ const Navbar = () => {
           whileHover={"hover"}
           src={menu}
           alt="menu"
-          // className="w-[70px] h-[70px] object-center "
         />
       </button>
 
-      <motion.img
-        variants={hoverVariant}
-        whileHover={"hover"}
-        src={shutdown}
-        alt="menu"
-        className="h-8 w-8 mr-2"
-      />
+      <div className="mr-2">
+        <CustomImageButton
+          image={shutdown}
+          onclick={() => dispatch(logoutUser())}
+        />
+      </div>
     </nav>
   );
 };
