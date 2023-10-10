@@ -144,6 +144,11 @@ const App = () => (
           path={`/${adminRootPath}/technology`}
           element={<TechnologyManager />}
         />
+
+        <Route
+          path={`/${adminRootPath}/technology/:name`}
+          element={<TechnologyDetails />}
+        />
       </Route>
     </Routes>
   </BrowserRouter>

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { hoverVariant } from "../../variants";
 import { NewModel } from "../../types";
 import { bin } from "../../assets";
+import CustomImageButton from "../CustomImageButton";
 
 interface Props {
   item: NewModel;
@@ -33,15 +34,7 @@ function BlogCardItem({ item, onClick, onDelete }: Props) {
         </p>
 
         <div className={`flex justify-between  text-linkactive  p-2 `}>
-          <motion.button
-            onClick={() => onDelete(item)}
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
-          >
-            <img src={bin} className="h-6" />
-          </motion.button>
+          <CustomImageButton onclick={() => onDelete(item)} image={bin} />
 
           <motion.button
             whileHover={{

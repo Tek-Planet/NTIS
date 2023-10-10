@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
 import { hoverVariant } from "../variants";
+import { bin } from "../assets";
+import CustomImageButton from "./CustomImageButton";
 
 interface Props {
   item: any;
   onClick: (val: any) => void;
+  onDelete: (val: any) => void;
 }
 
-function TechnologyCard({ item, onClick }: Props) {
+function TechnologyCard({ item, onClick, onDelete }: Props) {
   const {
     content,
     title,
-    image,
     office,
     applicationNumber,
     publicationNumber,
@@ -20,9 +22,6 @@ function TechnologyCard({ item, onClick }: Props) {
   } = item;
   return (
     <motion.div
-      onClick={() => {
-        onClick(item);
-      }}
       variants={hoverVariant}
       whileHover={"hover"}
       className="flex flex-col gap-y-1 p-2 md:w-[47%] lg:w-[33%] xl:w-[32%] w-full justify-between  rounded-[20px]  bg-white    mr-3 mb-3  lg:h-[480px] shadow-lg"
@@ -67,13 +66,22 @@ function TechnologyCard({ item, onClick }: Props) {
         Inventors : <span className="font-thin"> {inventors}</span>
       </p>
 
-      <div
-        onClick={() => {
-          onClick(item);
-        }}
-        className={`flex flex-row-reverse  text-linkactive  p-2 cursor-pointer `}
-      >
-        <span className="capitalize text-sm  md:text-md ">See Details</span>
+      <div className={`flex justify-between  text-linkactive  p-2 `}>
+        <CustomImageButton onclick={() => onDelete(item)} image={bin} />
+
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+            boxShadow: "0px 0px 8px rgb(255,255,255)",
+          }}
+          onClick={() => {
+            onClick(item);
+          }}
+        >
+          <span className="capitalize text-sm  md:text-md cursor-pointer">
+            See Details
+          </span>
+        </motion.button>
       </div>
     </motion.div>
   );

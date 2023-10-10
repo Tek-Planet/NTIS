@@ -1,4 +1,7 @@
-import { CreateTechnologyModal } from "../../components/admin";
+import {
+  ConfirmationModal,
+  CreateTechnologyModal,
+} from "../../components/admin";
 
 import styles from "../../style";
 
@@ -9,9 +12,12 @@ import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { CustomDropDown, CustomLoader, TechnologyCard } from "../../components";
 import { plus } from "../../assets";
 
-import { fetchTechnology } from "../../rtk/features/technology/technologySlice";
-import { technologyMenu } from "../../constants";
-import { Menus } from "../../types";
+import {
+  deleteTechnology,
+  fetchTechnology,
+} from "../../rtk/features/technology/technologySlice";
+import { Menus, NewModel } from "../../types";
+import { useAlert } from "react-alert";
 
 const TechnologyManager = () => {
   let navigate = useNavigate();
@@ -26,18 +32,15 @@ const TechnologyManager = () => {
   });
 
   const [filteredList, setFiltered] = useState<any[]>([]);
-
-  const [filter, setfilter] = useState<string>("");
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<any>(null);
+  const alert = useAlert();
 
   const handleNavigate = (item: any) => {
-    navigate(`/aboutus/news/${item.title}`, {
+    navigate(`/app/technology/${item.title}`, {
       state: { state: item },
     });
   };
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   useEffect(() => {
     if (technology.length === 0) {
@@ -45,17 +48,30 @@ const TechnologyManager = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (publicationKind.title === "All") setfilter("");
-  //   else setfilter(publicationKind.title);
-  // }, [publicationKind]);
+  const handleDelete = async (item: NewModel) => {
+    try {
+      setConfirmModal(false);
+      await dispatch(deleteTechnology(item));
+      alert.show("item Deleted!", { type: "success" });
+    } catch (error) {
+      alert.show("Unable to delete item!", { type: "error" });
+    }
+  };
+
+  function closeModal() {
+    setIsOpen(false);
+    setConfirmModal(false);
+  }
 
   useEffect(() => {
     if (technology.length > 0) {
       // Use the name to filter items in the technology list
-      const newList: any = technology.filter((item) =>
-        item.publicationKind.includes(publicationKind.title)
-      );
+      const newList: any =
+        publicationKind.title === "All"
+          ? technology
+          : technology.filter((item) =>
+              item.publicationKind.includes(publicationKind.title)
+            );
 
       // Set the filtered list in the state
       setFiltered(newList);
@@ -90,18 +106,37 @@ const TechnologyManager = () => {
           <div className={`flex flex-wrap mt-2`}>
             {filteredList.map((item: any) => {
               return (
-                <TechnologyCard key={item.id} onClick={() => {}} item={item} />
+                <TechnologyCard
+                  key={item.id}
+                  onClick={() => handleNavigate(item)}
+                  item={item}
+                  onDelete={() => {
+                    setConfirmModal(true);
+                    setItemToDelete(item);
+                  }}
+                />
               );
             })}
           </div>
         )}
         <div>
           {!isFetching && filteredList?.length === 0 && (
-            <p className={`${styles.textSize} m-3`}>Nothing to see here</p>
+            <p className={`${styles.textSize} m-3`}>
+              Nothing post under {publicationKind.title}
+            </p>
           )}
         </div>
         {/* create new button  */}
-        <CreateTechnologyModal isOpen={isOpen} closeModal={closeModal} />
+        {isOpen && (
+          <CreateTechnologyModal isOpen={isOpen} closeModal={closeModal} />
+        )}
+        {confirmModal && (
+          <ConfirmationModal
+            isOpen={confirmModal}
+            closeModal={closeModal}
+            onContinue={() => handleDelete(itemToDelete)}
+          />
+        )}
       </div>
     </div>
   );
