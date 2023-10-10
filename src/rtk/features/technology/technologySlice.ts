@@ -89,7 +89,7 @@ const technologySlice = createSlice({
     // adding technology cases
 
     builder.addCase(addTechnology.fulfilled, (state, action) => {
-      state.technology = [...initialState.technology, action.payload];
+      state.technology = [...state.technology, action.payload];
       state.isLoading = false;
     });
     builder.addCase(addTechnology.pending, (state) => {

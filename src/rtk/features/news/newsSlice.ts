@@ -13,11 +13,13 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 type InitialState = {
   news: NewModel[];
   isFetching: boolean;
+  isLoading: boolean;
 };
 
 const initialState: InitialState = {
   news: [],
   isFetching: false,
+  isLoading: false,
 };
 
 export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
@@ -93,11 +95,11 @@ const newsSlice = createSlice({
     // adding news cases
 
     builder.addCase(addNews.fulfilled, (state, action) => {
-      state.news = [...initialState.news, action.payload];
-      state.isFetching = false;
+      state.news = [...state.news, action.payload];
+      state.isLoading = false;
     });
     builder.addCase(addNews.pending, (state) => {
-      state.isFetching = true;
+      state.isLoading = true;
     });
   },
 });

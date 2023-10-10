@@ -13,7 +13,7 @@ interface Props {
 }
 
 const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
-  const { isFetching } = useAppSelector((state) => state.news);
+  const { isLoading } = useAppSelector((state) => state.news);
   const alert = useAlert();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -67,7 +67,7 @@ const CreateNewsModal = ({ isOpen, closeModal }: Props) => {
                 >
                   Add News
                 </Dialog.Title>
-                {isFetching && <CustomLoader />}
+                {isLoading && <CustomLoader />}
                 <form
                   onSubmit={signIn}
                   className=" flex flex-col gap-3 my-3 text-xs sm:text-sm"

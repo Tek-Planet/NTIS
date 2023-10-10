@@ -84,7 +84,7 @@ const projectSlice = createSlice({
     // adding project cases
 
     builder.addCase(addProject.fulfilled, (state, action) => {
-      state.projects = [...initialState.projects, action.payload];
+      state.projects = [...state.projects, action.payload];
       state.isLoading = false;
     });
     builder.addCase(addProject.pending, (state) => {

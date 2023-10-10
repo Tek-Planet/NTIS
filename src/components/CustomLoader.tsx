@@ -9,7 +9,7 @@ const CustomLoader = () => {
         display: "flex",
         justifyContent: "center",
         zIndex: 1000,
-        top: 300,
+        top: 180,
       }}
     >
       <div

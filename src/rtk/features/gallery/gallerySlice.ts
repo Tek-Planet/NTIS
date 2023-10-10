@@ -86,7 +86,7 @@ const gallerySlice = createSlice({
     // adding project cases
 
     builder.addCase(addGallery.fulfilled, (state, action) => {
-      state.gallery = [...initialState.gallery, action.payload];
+      state.gallery = [...state.gallery, action.payload];
       state.isLoading = false;
     });
     builder.addCase(addGallery.pending, (state) => {
