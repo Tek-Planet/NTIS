@@ -4,10 +4,11 @@ import { Fragment, useState } from "react";
 import { CustomDropDown, CustomLoader, CustomTextInput } from "..";
 import { Button } from "..";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
-import { NewModel } from "../../types";
+import { Menus, NewModel } from "../../types";
 import { useAlert } from "react-alert";
 
 import { addTechnology } from "../../rtk/features/technology/technologySlice";
+import { technologyMenu } from "../../constants";
 interface Props {
   isOpen: boolean;
   closeModal: () => void;
@@ -16,25 +17,56 @@ interface Props {
 const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
   const { isLoading } = useAppSelector((state) => state.technology);
   const alert = useAlert();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [office, setOffice] = useState<string>("");
+  const [applicationNumber, setApplicationNumber] = useState<string>("");
+  const [publicationNumber, setPublicationNumber] = useState<string>("");
+  const [publicationKind, setPublicationKind] = useState<Menus>(
+    technologyMenu[0]
+  );
+  const [ipc, setipc] = useState<string>("");
+  const [applicant, setApplicant] = useState<string>("");
+  const [cpc, setcpc] = useState<string>("");
+  const [inventors, setInventors] = useState<string>("");
+  const [agents, setAgents] = useState<string>("");
+  const [note, setNote] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [claims, setClaims] = useState<string>("");
   const [file, setFile] = useState<any>("");
+
   const dispatch = useAppDispatch();
 
-  const signIn = async (e: any) => {
+  const submit = async (e: any) => {
     e.preventDefault();
-    const body: NewModel = {
-      title: title,
-      content: content,
+    const body = {
+      title,
+      office,
+      applicationNumber,
+      publicationNumber,
+      publicationKind: publicationKind.title,
+      ipc,
+      cpc,
+      applicant,
+      inventors,
+      agents,
+      note,
+      content,
+      description,
+      claims,
       image: file,
       imageName: file.name,
       createdAt: new Date().getTime().toString(),
     };
 
+    // console.log(body);
+
     const response = await dispatch(addTechnology(body));
     if (response.payload) {
-      alert.show("Project added successfully!", { type: "success" });
+      alert.show("Added successfully!", { type: "success" });
       closeModal();
+    } else {
+      alert.show("Error adding record!", { type: "error" });
     }
   };
 
@@ -73,7 +105,7 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                 </Dialog.Title>
                 {isLoading && <CustomLoader />}
                 <form
-                  onSubmit={signIn}
+                  onSubmit={submit}
                   className=" flex flex-col gap-3 my-3 text-xs sm:text-sm"
                 >
                   {/* firsr wor */}
@@ -90,16 +122,16 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                       required
                       placeholder="Office"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={office}
+                      handleChange={setOffice}
                     />
 
                     <CustomTextInput
                       required
                       placeholder="Application Number"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={applicationNumber}
+                      handleChange={setApplicationNumber}
                     />
                   </div>
                   {/* decond row */}
@@ -108,20 +140,15 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                       required
                       placeholder="Publication Number"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
-                    />
-
-                    <CustomTextInput
-                      required
-                      placeholder="Application Number"
-                      inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={publicationNumber}
+                      handleChange={setPublicationNumber}
                     />
                   </div>
 
-                  <CustomDropDown />
+                  <CustomDropDown
+                    selected={publicationKind}
+                    setSelected={setPublicationKind}
+                  />
 
                   {/* third row */}
                   <div className="flex flex-col gap-2 md:flex-row">
@@ -129,24 +156,24 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                       required
                       placeholder="IPC"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={ipc}
+                      handleChange={setipc}
                     />
 
                     <CustomTextInput
                       required
                       placeholder="CPC"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={cpc}
+                      handleChange={setcpc}
                     />
 
                     <CustomTextInput
                       required
                       placeholder="Applicant"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={applicant}
+                      handleChange={setApplicant}
                     />
                   </div>
                   {/* FOurth row */}
@@ -155,24 +182,24 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                       required
                       placeholder="Inventors"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={inventors}
+                      handleChange={setInventors}
                     />
 
                     <CustomTextInput
                       required
                       placeholder="Agents"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={agents}
+                      handleChange={setAgents}
                     />
 
                     <CustomTextInput
                       required
                       placeholder="Note"
                       inputType="text"
-                      value={title}
-                      handleChange={setTitle}
+                      value={note}
+                      handleChange={setNote}
                     />
                   </div>
 
@@ -191,8 +218,8 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                     placeholder="Description"
                     inputType="text"
                     isTextArea={true}
-                    value={content}
-                    handleChange={setContent}
+                    value={description}
+                    handleChange={setDescription}
                     row={8}
                   />
 
@@ -201,8 +228,8 @@ const CreateTechnologyModal = ({ isOpen, closeModal }: Props) => {
                     placeholder="Claims"
                     inputType="text"
                     isTextArea={true}
-                    value={content}
-                    handleChange={setContent}
+                    value={claims}
+                    handleChange={setClaims}
                     row={5}
                   />
 

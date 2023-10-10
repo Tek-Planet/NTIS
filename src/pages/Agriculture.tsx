@@ -1,11 +1,12 @@
 import styles from "../style";
 
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchTechnology } from "../rtk/features/technology/technologySlice";
 import { useAppSelector, useAppDispatch } from "../rtk/hooks";
-import { BlogCardItem } from "../components/admin";
+
 import { CustomLoader, TechnologyCard } from "../components";
+import { useParams } from "react-router-dom";
 
 const Agriculture = () => {
   const { technology, isFetching } = useAppSelector(
@@ -14,11 +15,28 @@ const Agriculture = () => {
 
   const dispatch = useAppDispatch();
 
+  const [filteredList, setFiltered] = useState<any[]>([]);
+
+  const { name = "Agriculture and food processing" } = useParams();
+
   useEffect(() => {
     if (technology.length === 0) {
       dispatch(fetchTechnology());
     }
   }, []);
+
+  useEffect(() => {
+    if (technology.length > 0) {
+      // Use the name to filter items in the technology list
+      const newList: any = technology.filter((item) =>
+        item.publicationKind.includes(name)
+      );
+
+      // Set the filtered list in the state
+      setFiltered(newList);
+    }
+  }, [name, technology]);
+
   return (
     <motion.div
       initial={{ x: "100vw" }}
@@ -26,15 +44,20 @@ const Agriculture = () => {
       transition={{ type: "spring", stiffness: 35 }}
       className={`flex flex-col mt-5  mx-0 lg:ml-10`}
     >
-      <div className="flex flex-col   "></div>
       {isFetching && <CustomLoader />}
 
-      {technology && (
+      {filteredList?.length > 0 && (
         <div className={`flex flex-wrap mt-2`}>
-          {technology.map((item) => (
+          {filteredList.map((item) => (
             <TechnologyCard key={item.id} onClick={() => {}} item={item} />
           ))}
         </div>
+      )}
+
+      {!isFetching && filteredList?.length === 0 && (
+        <p className={`${styles.textSize} mt-2 font-light opacity-50`}>
+          Nothing to see here
+        </p>
       )}
     </motion.div>
   );

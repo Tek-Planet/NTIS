@@ -1,7 +1,6 @@
-import { infoPartners, NTISList, strategy, vision } from "../constants";
+import { strategy, vision } from "../constants";
 import styles from "../style";
 
-import { Button, NTISCardItem } from "../components";
 import { motion } from "framer-motion";
 import { caretright } from "../assets";
 

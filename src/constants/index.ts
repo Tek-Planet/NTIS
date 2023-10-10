@@ -176,12 +176,12 @@ export const technologyMenu: Menus[] = [
   { id: "technologies/agriculture", title: "Agriculture and food processing" },
   {
     id: "technologies/vision",
-    title: "environment, waste management and circular economy",
+    title: "Environment, waste management and circular economy",
   },
   { id: "technologies/implementation", title: "Manufacturing" },
   {
     id: "technologies/programdetails",
-    title: "information and communication technology (ICT)",
+    title: "Information and communication technology (ICT)",
   },
   { id: "technologies/services", title: "Renewable energy" },
   { id: "technologies/gallery", title: "Health and Pharmaceuticals" },

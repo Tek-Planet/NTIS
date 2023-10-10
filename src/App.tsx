@@ -100,9 +100,9 @@ const App = () => (
           <Route path="/aboutus/news/:name" element={<NewsDetails />} />
         </Route>
 
-        <Route path="/technologies/" element={<Technologies />}>
+        <Route path="/" element={<Technologies />}>
           <Route path="/technologies/" element={<Agriculture />} />
-          <Route path="/technologies/agriculture" element={<Agriculture />} />
+          <Route path="/technologies/:name" element={<Agriculture />} />
         </Route>
 
         <Route path="/contactus" element={<ContactUs />} />

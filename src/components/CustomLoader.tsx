@@ -4,12 +4,12 @@ const CustomLoader = () => {
       style={{
         width: "100%",
         height: "100vh",
-        position: "fixed",
+        position: "absolute",
         backgroundColor: "transparent",
         display: "flex",
         justifyContent: "center",
-
         zIndex: 1000,
+        top: 300,
       }}
     >
       <div

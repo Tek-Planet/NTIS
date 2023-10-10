@@ -13,7 +13,7 @@ function MainServiceCardItem({ item }: Props) {
     <motion.div
       variants={hoverVariant}
       whileHover={"hover"}
-      className="flex flex-col gap-3 md:w-[47%] lg:w-[30%] xl:w-[33%] w-full p-3 m-0 md:mr-4 lg:mr-5 mb-3 rounded-[20px] bg-white  shadow-md shadow-gray-150"
+      className="flex flex-col gap-3 md:w-[47%] lg:w-[30%] xl:w-[31%] w-full p-3 m-0 md:mr-4 lg:mr-5 mb-3 rounded-[20px] bg-white  shadow-md shadow-gray-150"
     >
       <img src={img} alt={"pp"} className="w-16 h-16" />
 

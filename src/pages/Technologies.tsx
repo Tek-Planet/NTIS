@@ -47,7 +47,7 @@ const Tehcnologies = () => {
                       key={nav.id}
                     >
                       <NavLink
-                        to={`/${nav.id}`}
+                        to={`technologies/${nav.title}`}
                         className={({ isActive }) =>
                           isActive ? activeLink : normalLink
                         }
@@ -93,7 +93,7 @@ const Tehcnologies = () => {
                         }}
                       >
                         <NavLink
-                          to={`/${nav.id}`}
+                          to={`technologies/${nav.title}`}
                           className={({ isActive }) =>
                             isActive ? activeLink : normalLinkMobile
                           }

@@ -11,7 +11,7 @@ import { db } from "../../../firebase";
 import { uploadImage } from "../../../constants";
 
 type InitialState = {
-  technology: NewModel[];
+  technology: any[];
   isFetching: boolean;
   isLoading: boolean;
   categoty: string;
@@ -78,13 +78,10 @@ const technologySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     // fetching new case
-    builder.addCase(
-      fetchTechnology.fulfilled,
-      (state, action: PayloadAction<NewModel[]>) => {
-        state.technology = action.payload;
-        state.isFetching = false;
-      }
-    );
+    builder.addCase(fetchTechnology.fulfilled, (state, action) => {
+      state.technology = action.payload;
+      state.isFetching = false;
+    });
     builder.addCase(fetchTechnology.pending, (state) => {
       state.isFetching = true;
     });

@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import { hoverVariant } from "../variants";
-import { NewModel } from "../types";
 
 interface Props {
-  item: NewModel;
-  onClick: (val: NewModel) => void;
+  item: any;
+  onClick: (val: any) => void;
 }
 
 function TechnologyCard({ item, onClick }: Props) {
@@ -26,7 +25,7 @@ function TechnologyCard({ item, onClick }: Props) {
       }}
       variants={hoverVariant}
       whileHover={"hover"}
-      className="flex flex-col gap-y-1 p-2 md:w-[47%] lg:w-[33%] xl:w-[30%] w-full justify-between  rounded-[20px]  bg-white    mr-3 mb-3  lg:h-[480px] shadow-lg"
+      className="flex flex-col gap-y-1 p-2 md:w-[47%] lg:w-[33%] xl:w-[32%] w-full justify-between  rounded-[20px]  bg-white    mr-3 mb-3  lg:h-[480px] shadow-lg"
     >
       {/* <div className="flex flex-row">
         <img

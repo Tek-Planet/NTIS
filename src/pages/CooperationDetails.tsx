@@ -61,7 +61,7 @@ const CooperationDetails = () => {
           {/* left */}
           <div className="flex-1 flex flex-col gap-5">
             <img
-              src={item?.img}
+              src={item?.image}
               alt="image"
               className="w-full h-[410px] object-cover rounded-xl"
             />
