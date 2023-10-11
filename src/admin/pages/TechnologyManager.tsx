@@ -97,7 +97,9 @@ const TechnologyManager = () => {
       </div>
       <div id="clients" className={` flex  flex-col  mt-4  `}>
         <div className="flex flex-col md:flex-row  sm:mb-10 mb-6 ">
-          <p className={`  ${styles.heading2} text-center  te`}>Technologies</p>
+          <p className={`  ${styles.heading2} text-center  te`}>
+            Technology Areas
+          </p>
           <div className="w-full  lg:max-w-md">
             <CustomDropDown
               selected={publicationKind}

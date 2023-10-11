@@ -70,7 +70,7 @@ export const navLinks: Menus[] = [
 export const adminNavLinks: Menus[] = [
   {
     id: adminRootPath + "/",
-    title: "Dashboard",
+    title: "Home Page",
   },
 
   {
