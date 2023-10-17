@@ -1,4 +1,4 @@
-import { infoPartners, NTISList } from "../constants";
+import { handleOpenLinkInNewTab, infoPartners, NTISList } from "../constants";
 import styles from "../style";
 
 import { NTISCardItem } from "../components";
@@ -46,7 +46,13 @@ const NHIS = () => {
         </p>
 
         {infoPartners.map((item) => (
-          <div key={item.id} className=" sm:flex justify-between border p-3 ">
+          <div
+            onClick={() => {
+              handleOpenLinkInNewTab(item.id);
+            }}
+            key={item.id}
+            className=" sm:flex justify-between border p-3 cursor-pointer "
+          >
             <p className={`${styles.textSize}  font-light`}>{item.title}</p>
             <p className={`${styles.textSize}  font-thin opacity-50`}>
               {item.content}

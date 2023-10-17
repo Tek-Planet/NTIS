@@ -30,6 +30,7 @@ import {
   DashBoard,
   GalleryManager,
   Login,
+  MessageManager,
   NewsManager,
   ProjectsManager,
   TechnologyManager,
@@ -148,6 +149,11 @@ const App = () => (
         <Route
           path={`/${adminRootPath}/technology/:name`}
           element={<TechnologyDetails />}
+        />
+
+        <Route
+          path={`/${adminRootPath}/messages`}
+          element={<MessageManager />}
         />
       </Route>
     </Routes>

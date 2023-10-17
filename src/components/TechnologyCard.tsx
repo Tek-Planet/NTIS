@@ -18,7 +18,6 @@ function TechnologyCard({ item, onClick, onDelete, onEdit, isAdmin }: Props) {
     office,
     applicationNumber,
     publicationNumber,
-    applicationDate,
     applicant,
     inventors,
   } = item;
@@ -28,14 +27,6 @@ function TechnologyCard({ item, onClick, onDelete, onEdit, isAdmin }: Props) {
       whileHover={"hover"}
       className="flex flex-col gap-y-1 p-2 md:w-[47%] lg:w-[33%] xl:w-[32%] w-full justify-between  rounded-[20px]  bg-white    mr-3 mb-3  lg:h-[480px] shadow-lg"
     >
-      {/* <div className="flex flex-row">
-        <img
-          src={image}
-          alt={"pp"}
-          className="w-[100%] h-64 object-cover rounded-[20px]"
-        />
-      </div> */}
-
       <p className="font-poppins font-bold text-[12px] sm:text-[14px]  ">
         {title}
       </p>
@@ -56,9 +47,6 @@ function TechnologyCard({ item, onClick, onDelete, onEdit, isAdmin }: Props) {
         Publication Number :{" "}
         <span className="font-thin"> {publicationNumber}</span>
       </p>
-      {/* <p className="font-poppins font-bold text-[12px] sm:text-[14px]  ">
-        Application Date : <span className="font-thin"> {applicationDate}</span>
-      </p> */}
 
       <p className="font-poppins font-bold text-[12px] sm:text-[14px]  ">
         Applicants : <span className="font-thin"> {applicant}</span>

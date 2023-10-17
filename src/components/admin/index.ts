@@ -8,3 +8,4 @@ export { default as CreateProjectModal } from "./CreateProjectModal";
 export { default as CreateGalleryModal } from "./CreateGalleryModal";
 export { default as CreateTechnologyModal } from "./CreateTechnologyModal";
 export { default as ConfirmationModal } from "./ConfirmationModal";
+export { default as ViewMessageModal } from "./ViewMessageModal";

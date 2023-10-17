@@ -16,9 +16,12 @@ import {
   knowledgeicon,
   lab,
   laptop,
+  location,
+  mail,
   meeting,
   moseum,
   office,
+  phone,
   present,
   selfie,
   solar,
@@ -91,6 +94,11 @@ export const adminNavLinks: Menus[] = [
     id: adminRootPath + "/technology",
     title: "Technology",
   },
+
+  {
+    id: adminRootPath + "/messages",
+    title: "Messages",
+  },
 ];
 
 export const services: GeneralListModel[] = [
@@ -127,43 +135,6 @@ export const services: GeneralListModel[] = [
     Data analysis is not just about historical assessment; it also aids in predictive modeling, helping anticipate future developments and uncertainties. With the rise of big data and advanced analytics, it has become increasingly sophisticated, leveraging machine learning and artificial intelligence to uncover hidden insights.
     
     In essence, data analysis is the key to unlocking the potential within data. It empowers us to uncover valuable insights, drive innovation, and solve complex problems, ultimately guiding our decision-making processes and shaping our understanding of the world.`,
-  },
-];
-
-export const lastest: GeneralListModel[] = [
-  {
-    id: "feedback-1",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-
-    img: blog,
-  },
-  {
-    id: "feedback-2",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-
-    img: blog,
-  },
-  {
-    id: "feedback-3",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-    img: lab,
-  },
-
-  {
-    id: "feedback-4",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-    img: bond,
-  },
-
-  {
-    id: "feedback-5",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Tortor viverra quam justo quis varius sodales at mauris et. Ipsum vel senectus mauris augue massa. Sapien pulvinar molestie orci senectus.",
-    img: solar,
   },
 ];
 
@@ -212,53 +183,53 @@ export const NTISList: Menus[] = [
 
 export const infoPartners: GeneralListModel[] = [
   {
-    id: "1",
+    id: "https://statsghana.gov.gh",
     title: "GSS",
     content: "Ghana Statistical Service",
   },
   {
-    id: "2",
+    id: "https://gtec.edu.gh",
     title: "GTEC",
     content: "Ghana Tertiary Education Commission",
   },
   {
-    id: "3",
+    id: "https://unevoc.unesco.org/home/Explore+the+UNEVOC+Network/centre=2988",
     title: "CTVET",
     content: "Council for Technical and Vocational Education and Training",
   },
   {
-    id: "4",
+    id: "https://rgd.gov.gh/Industrial%20Property.html",
     title: "RGD",
     content:
       "Registrar Generals Department. GIPO - Ghana Intellectual Property Office",
   },
   {
-    id: "5",
+    id: "https://www.venturecapitalghana.com.gh",
     title: "VCTF",
     content: "Venture Capital Trust Fund",
   },
   {
-    id: "6",
+    id: "https://cordis.europa.eu/project/id/957339",
     title: "Overseas Institutes",
     content: "EU (CORDIS), Japan (KAKEN)",
   },
   {
-    id: "7",
+    id: "https://www.gepaghana.org",
     title: "GEPA",
     content: "Ghana Export Promotion Authority",
   },
   {
-    id: "8",
+    id: "https://www.cagd.gov.gh",
     title: "CAGD - ",
     content: "Controller and Accountant General Department",
   },
   {
-    id: "8",
+    id: "https://mofep.gov.gh",
     title: "MoF",
     content: "Ministry of Finance",
   },
   {
-    id: "8",
+    id: "https://agighana.org/ghana-industrial-summit-exhibition-2023/",
     title: "AGI",
     content: "Association of Ghana Industries",
   },
@@ -527,3 +498,24 @@ export const getPathName = (imageUrl: string) => {
 };
 
 export const dashBaordUrl = "https://83.229.69.76:91/webLogin.aspx";
+
+export const contactInfo: GeneralListModel[] = [
+  {
+    id: "1",
+    title: "Location",
+    content: "Qasimia, Street No 2 , 3rd floor",
+    img: location,
+  },
+  {
+    id: "2",
+    title: "Email",
+    content: "info@stimis.com",
+    img: mail,
+  },
+  {
+    id: "3",
+    title: "Phone",
+    content: "+9792929292",
+    img: phone,
+  },
+];

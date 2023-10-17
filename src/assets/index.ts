@@ -44,3 +44,6 @@ export { default as plus } from "./plus.png";
 export { default as pencil } from "./pencil.png";
 export { default as shutdown } from "./shutdown.png";
 export { default as bin } from "./bin.png";
+export { default as location } from "./location.png";
+export { default as mail } from "./mail.png";
+export { default as phone } from "./phone.png";
