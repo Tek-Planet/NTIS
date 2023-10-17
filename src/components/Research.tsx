@@ -1,57 +1,8 @@
-import { useRef } from "react";
 import styles from "../style";
 
 import { Graph } from ".";
 
 const Research = () => {
-  const sliderRef = useRef(null);
-
-  var settings = {
-    dots: false,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    // rtl: true,
-    arrows: false,
-    centerMode: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          // infinite: false,
-          // dots: true,
-        },
-      },
-      {
-        breakpoint: 820,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          // infinite: false,
-          // dots: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-
-          // infinite: false,
-          // dots: true,
-        },
-      },
-
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
-    ],
-  };
-
   return (
     <div id="clients" className={`flex flex-col h-screen ${styles.marginY} `}>
       <div className="flex flex-col items-center sm:mb-10 mb-6 ">
@@ -61,12 +12,6 @@ const Research = () => {
       </div>
 
       <Graph />
-
-      {/* <Slider ref={sliderRef} {...settings}>
-        <ResearchCardItem item={feedback[0]} />
-        <ResearchCardItem item={feedback[1]} />
-        <ResearchCardItem item={feedback[2]} />
-      </Slider> */}
     </div>
   );
 };

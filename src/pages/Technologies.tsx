@@ -52,7 +52,7 @@ const Tehcnologies = () => {
                           isActive ? activeLink : normalLink
                         }
                       >
-                        <span className="capitalize  text-sm ">
+                        <span className="capitalize  text-sm font-bold">
                           {nav.title}
                         </span>
                       </NavLink>
@@ -98,7 +98,7 @@ const Tehcnologies = () => {
                             isActive ? activeLink : normalLinkMobile
                           }
                         >
-                          <span className="capitalize  text-sm ">
+                          <span className="capitalize  text-sm  font-bold">
                             {nav.title}
                           </span>
                         </NavLink>

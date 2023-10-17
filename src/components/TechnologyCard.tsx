@@ -56,9 +56,9 @@ function TechnologyCard({ item, onClick, onDelete, onEdit, isAdmin }: Props) {
         Publication Number :{" "}
         <span className="font-thin"> {publicationNumber}</span>
       </p>
-      <p className="font-poppins font-bold text-[12px] sm:text-[14px]  ">
+      {/* <p className="font-poppins font-bold text-[12px] sm:text-[14px]  ">
         Application Date : <span className="font-thin"> {applicationDate}</span>
-      </p>
+      </p> */}
 
       <p className="font-poppins font-bold text-[12px] sm:text-[14px]  ">
         Applicants : <span className="font-thin"> {applicant}</span>

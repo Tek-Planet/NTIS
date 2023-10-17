@@ -5,6 +5,7 @@ import dashBoardReducer from "./features/dashBoard/dashBoardSlice";
 import projectReducer from "./features/project/projectSlice";
 import galleryReducer from "./features/gallery/gallerySlice";
 import technologyReducer from "./features/technology/technologySlice";
+import messageReducer from "./features/message/messageSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     project: projectReducer,
     gallery: galleryReducer,
     technology: technologyReducer,
+    message: messageReducer,
   },
 
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),

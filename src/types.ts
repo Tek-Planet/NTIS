@@ -56,3 +56,11 @@ export interface GalleryModel {
   imageName?: string;
   createdAt: number;
 }
+
+export interface MessageModel {
+  id?: string;
+  name?: string;
+  email?: string;
+  content?: string;
+  createdAt: number;
+}

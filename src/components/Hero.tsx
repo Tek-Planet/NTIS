@@ -1,4 +1,4 @@
-import { handleOpenLinkInNewTab } from "../constants";
+import { dashBaordUrl, handleOpenLinkInNewTab } from "../constants";
 import { useAppSelector } from "../rtk/hooks";
 import styles from "../style";
 import Button from "./Button";
@@ -25,7 +25,7 @@ const Hero = () => {
 
         <Button
           onclick={() => {
-            handleOpenLinkInNewTab();
+            handleOpenLinkInNewTab(dashBaordUrl);
           }}
           styles={"text-primary  lg:max-w-1/2 p-2 mt-4  lg:text-[20px]"}
           text="Visit the STI-MIS Dashboard"

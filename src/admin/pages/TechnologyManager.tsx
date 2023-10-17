@@ -5,8 +5,6 @@ import {
 
 import styles from "../../style";
 
-import { useNavigate } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
 import { CustomDropDown, CustomLoader, TechnologyCard } from "../../components";
@@ -18,9 +16,9 @@ import {
 } from "../../rtk/features/technology/technologySlice";
 import { Menus, NewModel } from "../../types";
 import { useAlert } from "react-alert";
+import { handleOpenLinkInNewTab } from "../../constants";
 
 const TechnologyManager = () => {
-  let navigate = useNavigate();
   const { technology, isFetching } = useAppSelector(
     (state) => state.technology
   );
@@ -37,9 +35,7 @@ const TechnologyManager = () => {
   const alert = useAlert();
 
   const handleNavigate = (item: any) => {
-    navigate(`/app/technology/${item.title}`, {
-      state: { state: item },
-    });
+    handleOpenLinkInNewTab(item.source);
   };
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { Fragment, useState } from "react";
 import { CustomDropDown, CustomLoader, CustomTextInput } from "..";
 import { Button } from "..";
 import { useAppDispatch, useAppSelector } from "../../rtk/hooks";
-import { Menus, NewModel } from "../../types";
+import { Menus } from "../../types";
 import { useAlert } from "react-alert";
 
 import {
@@ -39,7 +39,7 @@ const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
       ? { id: item?.publicationKind, title: item?.publicationKind }
       : technologyMenu[0]
   );
-  const [ipc, setipc] = useState<string>(item?.ipc ? item?.ipc : "");
+  const [source, setSource] = useState<string>(item?.ipc ? item?.ipc : "");
   const [applicant, setApplicant] = useState<string>(
     item?.applicant ? item?.applicant : ""
   );
@@ -73,15 +73,16 @@ const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
         applicationNumber,
         publicationNumber,
         publicationKind: publicationKind.title,
-        ipc,
-        cpc,
+        // ipc,
+        // cpc,
         applicant,
         inventors,
-        agents,
-        note,
+        // agents,
+        // note,
         content,
-        description,
-        claims,
+        // description,
+        // claims,
+        source,
       };
 
       if (file) {
@@ -97,17 +98,18 @@ const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
         applicationNumber,
         publicationNumber,
         publicationKind: publicationKind.title,
-        ipc,
-        cpc,
+        // ipc,
+        // cpc,
         applicant,
         inventors,
-        agents,
-        note,
+        // agents,
+        // note,
         content,
-        description,
-        claims,
-        image: file,
-        imageName: file.name,
+        // description,
+        // claims,
+        // image: file,
+        // imageName: file.name,
+        source,
         createdAt: new Date().getTime().toString(),
       };
     }
@@ -195,36 +197,44 @@ const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
                   </div>
                   {/* decond row */}
                   <div className="flex flex-col gap-2 md:flex-row">
+                    <CustomDropDown
+                      selected={publicationKind}
+                      setSelected={setPublicationKind}
+                    />
+
+                    <CustomTextInput
+                      required
+                      placeholder="Inventors"
+                      inputType="text"
+                      value={inventors}
+                      handleChange={setInventors}
+                    />
+                  </div>
+
+                  {/* third row */}
+                  <div className="flex flex-col gap-2 md:flex-row">
+                    {/* <CustomTextInput
+                      required
+                      placeholder="IPC"
+                      inputType="text"
+                      value={ipc}
+                      handleChange={setipc}
+                    /> */}
+
+                    {/* <CustomTextInput
+                      required
+                      placeholder="CPC"
+                      inputType="text"
+                      value={cpc}
+                      handleChange={setcpc}
+                    /> */}
+
                     <CustomTextInput
                       required
                       placeholder="Publication Number"
                       inputType="text"
                       value={publicationNumber}
                       handleChange={setPublicationNumber}
-                    />
-                  </div>
-
-                  <CustomDropDown
-                    selected={publicationKind}
-                    setSelected={setPublicationKind}
-                  />
-
-                  {/* third row */}
-                  <div className="flex flex-col gap-2 md:flex-row">
-                    <CustomTextInput
-                      required
-                      placeholder="IPC"
-                      inputType="text"
-                      value={ipc}
-                      handleChange={setipc}
-                    />
-
-                    <CustomTextInput
-                      required
-                      placeholder="CPC"
-                      inputType="text"
-                      value={cpc}
-                      handleChange={setcpc}
                     />
 
                     <CustomTextInput
@@ -237,29 +247,21 @@ const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
                   </div>
                   {/* FOurth row */}
                   <div className="flex flex-col gap-2 md:flex-row">
-                    <CustomTextInput
-                      required
-                      placeholder="Inventors"
-                      inputType="text"
-                      value={inventors}
-                      handleChange={setInventors}
-                    />
-
-                    <CustomTextInput
+                    {/* <CustomTextInput
                       required
                       placeholder="Agents"
                       inputType="text"
                       value={agents}
                       handleChange={setAgents}
-                    />
+                    /> */}
 
-                    <CustomTextInput
+                    {/* <CustomTextInput
                       required
                       placeholder="Note"
                       inputType="text"
                       value={note}
                       handleChange={setNote}
-                    />
+                    /> */}
                   </div>
 
                   <CustomTextInput
@@ -274,15 +276,23 @@ const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
 
                   <CustomTextInput
                     required
+                    placeholder="source link"
+                    inputType="text"
+                    value={note}
+                    handleChange={setSource}
+                  />
+
+                  {/* <CustomTextInput
+                    required
                     placeholder="Description"
                     inputType="text"
                     isTextArea={true}
                     value={description}
                     handleChange={setDescription}
                     row={8}
-                  />
+                  /> */}
 
-                  <CustomTextInput
+                  {/* <CustomTextInput
                     required
                     placeholder="Claims"
                     inputType="text"
@@ -290,13 +300,13 @@ const CreateTechnologyModal = ({ isOpen, closeModal, item }: Props) => {
                     value={claims}
                     handleChange={setClaims}
                     row={5}
-                  />
+                  /> */}
 
-                  <CustomTextInput
+                  {/* <CustomTextInput
                     required={item ? false : true}
                     inputType="file"
                     handleChange={setFile}
-                  />
+                  /> */}
 
                   <div className="flex  justify-center">
                     <Button

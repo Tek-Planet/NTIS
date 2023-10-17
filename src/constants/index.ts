@@ -459,8 +459,7 @@ export const mainServices: GeneralListModel[] = [
   },
 ];
 
-export const handleOpenLinkInNewTab = () => {
-  const urlToOpen = "https://83.229.69.76:91/webLogin.aspx";
+export const handleOpenLinkInNewTab = (urlToOpen: string) => {
   window.open(urlToOpen, "_blank");
 };
 
@@ -526,3 +525,5 @@ export const getPathName = (imageUrl: string) => {
     return null;
   }
 };
+
+export const dashBaordUrl = "https://83.229.69.76:91/webLogin.aspx";

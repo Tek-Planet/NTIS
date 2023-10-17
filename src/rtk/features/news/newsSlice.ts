@@ -11,7 +11,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { deleteImage, getPathName, uploadImage } from "../../../constants";
+import { deleteImage, uploadImage } from "../../../constants";
 
 type InitialState = {
   news: NewModel[];

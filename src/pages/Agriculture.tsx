@@ -6,7 +6,8 @@ import { fetchTechnology } from "../rtk/features/technology/technologySlice";
 import { useAppSelector, useAppDispatch } from "../rtk/hooks";
 
 import { CustomLoader, TechnologyCard } from "../components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { handleOpenLinkInNewTab } from "../constants";
 
 const Agriculture = () => {
   const { technology, isFetching } = useAppSelector(
@@ -37,12 +38,8 @@ const Agriculture = () => {
     }
   }, [name, technology]);
 
-  let navigate = useNavigate();
-
   const handleNavigate = (item: any) => {
-    navigate(`/technologies/${item.publicationKind}/${item.title}`, {
-      state: { state: item },
-    });
+    handleOpenLinkInNewTab(item.source);
   };
 
   return (
@@ -61,6 +58,8 @@ const Agriculture = () => {
               key={item.id}
               onClick={handleNavigate}
               item={item}
+              onDelete={() => {}}
+              onEdit={() => {}}
             />
           ))}
         </div>
