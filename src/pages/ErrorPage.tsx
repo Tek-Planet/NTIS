@@ -1,11 +1,9 @@
-import { useRouteError } from "react-router-dom";
 import { Button } from "../components";
 
 import { useNavigate } from "react-router-dom";
 import { page404 } from "../assets";
 
 export default function ErrorPage() {
-  // const error = useRouteError();
   let navigate = useNavigate();
 
   return (
@@ -14,9 +12,7 @@ export default function ErrorPage() {
         <div className="flex flex-col justify-center items-center space-y-5">
           <h1 className="text-6xl text-dauntlessBlue font-bold">404</h1>
           <p className="text-xl">Page not found</p>
-          {/* <p className="text-gray-400">
-              <i>{error.statusText || error.message}</i>
-            </p> */}
+
           <Button onclick={() => navigate("/")} text="Home" />
         </div>
         <div className="hidden md:flex">

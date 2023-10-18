@@ -20,6 +20,7 @@ const Agriculture = () => {
 
   const { name = "Agriculture and food processing" } = useParams();
 
+  // get data if its empty
   useEffect(() => {
     if (technology.length === 0) {
       dispatch(fetchTechnology());
@@ -38,6 +39,7 @@ const Agriculture = () => {
     }
   }, [name, technology]);
 
+  // open the link in a another tab
   const handleNavigate = (item: any) => {
     handleOpenLinkInNewTab(item.source);
   };

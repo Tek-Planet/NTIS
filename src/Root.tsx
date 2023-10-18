@@ -7,7 +7,7 @@ import { useAppSelector } from "./rtk/hooks";
 
 const Root = () => {
   const { loading } = useAppSelector((state) => state.user);
-
+  // return loading screen
   if (loading) return <Splash />;
 
   return (
@@ -18,12 +18,14 @@ const Root = () => {
       }}
       className="bg-primary w-full overflow-hidden"
     >
+      {/* general navbar  */}
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
         </div>
       </div>
 
+      {/* container for other app content */}
       <div>
         <Outlet />
       </div>
@@ -31,6 +33,7 @@ const Root = () => {
       <div
         className={`bg-backgroudgreen ${styles.paddingX} ${styles.flexCenter} mt-10`}
       >
+        {/* general footer */}
         <div className={`${styles.boxWidth}`}>
           <Footer />
         </div>

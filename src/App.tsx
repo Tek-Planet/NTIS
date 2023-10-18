@@ -53,6 +53,7 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     try {
+      // check if the user is logged
       onAuthStateChanged(auths, async (user) => {
         let authUser: any = null;
         if (user) {
@@ -82,6 +83,7 @@ const App = () => (
   <BrowserRouter>
     <ScrollToTop />
     <Routes>
+      {/* app user routes */}
       <Route path="/" element={<Root />}>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

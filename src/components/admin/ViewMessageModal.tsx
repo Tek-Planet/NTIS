@@ -53,7 +53,7 @@ const ViewMessageModal = ({ isOpen, closeModal, item }: Props) => {
                     {item?.email}
                   </p>
                   <p className="font-poppins  text-[12px] sm:text-[14px]  ">
-                    {moment(item.creatdAt).format("DD/MM/YYYY hh:mm a")}
+                    {moment(item.createdAt).format("DD/MM/YYYY hh:mm a")}
                   </p>
                   <p className="font-poppins font-normal text-[12px] sm:text-[14px] my-3 ">
                     {item?.content}

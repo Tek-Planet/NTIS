@@ -8,26 +8,15 @@ import {
   ai,
   aiicon,
   analyze,
-  award,
-  blog,
-  bond,
   chemistry,
   dataicon,
   knowledgeicon,
-  lab,
   laptop,
   location,
   mail,
-  meeting,
-  moseum,
   office,
   phone,
-  present,
-  selfie,
-  solar,
-  speaker,
   spreadicon,
-  stadium,
   supporticon,
 } from "../assets";
 import { storage } from "../firebase";
@@ -430,10 +419,12 @@ export const mainServices: GeneralListModel[] = [
   },
 ];
 
+// open any given link in new tab
 export const handleOpenLinkInNewTab = (urlToOpen: string) => {
   window.open(urlToOpen, "_blank");
 };
 
+// upload image
 export function isObjectEmpty(obj: any) {
   if (!obj || Object.keys(obj).length === 0) return true;
   else return false;
@@ -461,6 +452,7 @@ export const uploadImage = async (image: any, imageName: string) => {
   }
 };
 
+// delete image from storag
 export const deleteImage = async (imageUrl: string) => {
   try {
     const path = await getPathName(imageUrl);
@@ -481,6 +473,7 @@ export const deleteImage = async (imageUrl: string) => {
   }
 };
 
+//get image path from the naem
 export const getPathName = (imageUrl: string) => {
   const url = new URL(imageUrl);
   const path = decodeURIComponent(url.pathname);
@@ -499,6 +492,7 @@ export const getPathName = (imageUrl: string) => {
 
 export const dashBaordUrl = "https://83.229.69.76:91/webLogin.aspx";
 
+// constant info
 export const contactInfo: GeneralListModel[] = [
   {
     id: "1",

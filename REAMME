@@ -1,0 +1,16 @@
+step to set up the project.
+
+Extract the zip content
+
+Navigate to the root folder directory then run in terminal
+
+npm install
+or
+yarn install
+
+to run the project
+run
+
+npm run dev
+
+check the terminal and generated local url and open in browser

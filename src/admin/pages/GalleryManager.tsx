@@ -21,6 +21,7 @@ const GalleryManager = () => {
   const [itemToDelete, setItemToDelete] = useState<any>(null);
   const alert = useAlert();
 
+  // delete item
   const handleDelete = async (item: GalleryModel) => {
     try {
       setConfirmModal(false);

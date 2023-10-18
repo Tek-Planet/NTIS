@@ -2,7 +2,7 @@ import { statshero } from "../assets";
 import styles from "../style";
 import { motion } from "framer-motion";
 import { Button } from "../components";
-import { handleOpenLinkInNewTab } from "../constants";
+import { dashBaordUrl, handleOpenLinkInNewTab } from "../constants";
 
 const Projects = () => {
   return (
@@ -27,7 +27,7 @@ const Projects = () => {
       <div className="mt-10">
         <Button
           onclick={() => {
-            handleOpenLinkInNewTab();
+            handleOpenLinkInNewTab(dashBaordUrl);
           }}
           styles={"text-primary w-full p-2"}
           text="View Projects"

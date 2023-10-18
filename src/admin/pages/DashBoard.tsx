@@ -21,6 +21,7 @@ const Dashboard = () => {
     setIsOpen(false);
   }
 
+  // fetch data if need be
   useEffect(() => {
     if (isObjectEmpty(dashboardItem)) dispatch(fetchDashboard());
   }, []);

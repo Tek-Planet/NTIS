@@ -45,6 +45,7 @@ const ContactUs = () => {
       content,
       createdAt: new Date().getTime(),
     };
+
     let response: any = await dispatch(addMessage(body));
     if (!response.payload) {
       alert.show("Unable to send your message please try again later", {

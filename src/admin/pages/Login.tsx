@@ -31,16 +31,19 @@ const Login = () => {
     }
     setLoading(true);
     setError("");
+    // type the login body
     const body: LoginModel = {
       UserName: email,
       Password: password,
     };
+    // login user in
     let response: any = await dispatch(loginUser(body));
     if (!response.payload) {
       setError(response.error.code);
       setLoading(false);
       return;
     }
+    // on sucess move to next screen
     navigate(state?.prev ? state?.prev : "/app");
   };
 

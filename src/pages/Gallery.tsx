@@ -37,7 +37,7 @@ const Gallery = () => {
 
       <div className={`flex flex-wrap`}>
         {gallery.map((item) => (
-          <GalleryCardItem item={item} />
+          <GalleryCardItem item={item} onDelete={() => {}} />
         ))}
       </div>
     </motion.div>
