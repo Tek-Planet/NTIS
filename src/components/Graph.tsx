@@ -5,7 +5,9 @@ import { handleOpenLinkInNewTab, dashBaordUrl } from "../constants";
 
 const Carousal = () => {
   return (
-    <section className={`flex justify-center items-center mt-8 md:mt-5`}>
+    <section
+      className={`flex justify-center items-center mt-8 md:mt-5 cursor-pointer`}
+    >
       <motion.div
         onClick={() => handleOpenLinkInNewTab(dashBaordUrl)}
         initial={{ y: "100vw" }}

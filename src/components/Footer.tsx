@@ -16,6 +16,7 @@ const Footer = () => {
 
         {/* second  */}
         <div className="flex-[1.8] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
+          {/* contanct section */}
           <div className={`flex  flex-col md:my-0 my-4 max-w-[350px]`}>
             <h4 className="font-poppins font-light text-white text-[14px] opacity-70 leading-[27px] mb-2 ">
               Post Office Box M232 Ministries, Accra Ghana
@@ -47,7 +48,7 @@ const Footer = () => {
           </div>
 
           {/* third */}
-          <div className={`flex gap-2 md:my-0  min-w-[100px]`}>
+          <div className={`flex gap-2 my-5  min-w-[100px] `}>
             <img src={facebook} alt="fb" className=" object-contain" />
             <img src={twitter} alt="fb" className=" object-contain" />
             <img src={instagram} alt="fb" className=" object-contain" />

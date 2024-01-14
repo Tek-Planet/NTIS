@@ -41,7 +41,7 @@ const Hero = () => {
         <p
           className={` md:p-0 sm:max-w-[300px] lg:max-w-[400px]  font-thin mt-5 md:mt-0 lg:mt-5 leading-6`}
         >
-          {dashboardItem.subTitle}
+          {dashboardItem?.subTitle}
         </p>
       </motion.div>
     </section>

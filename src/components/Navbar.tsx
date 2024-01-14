@@ -30,6 +30,7 @@ const Navbar = () => {
       </NavLink>
       <ul className="list-none lg:flex hidden gap-5 justify-end items-center flex-1">
         {navLinks.map((nav, index) => {
+          const [isHovered, setIsHovered] = useState(false);
           if (nav.id === "contactus")
             return (
               <motion.li
@@ -44,6 +45,85 @@ const Navbar = () => {
                 <NavLink
                   to={`/${nav.id}`}
                   className={` text-white text-center p-2`}
+                >
+                  <span className="capitalize  text-sm ">{nav.title}</span>
+                </NavLink>
+              </motion.li>
+            );
+          else if (nav.title === "Resources")
+            return (
+              <motion.li
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                onFocus={() => setIsHovered(true)}
+                onBlur={() => setIsHovered(false)}
+                key={index.toString()}
+                whileHover={
+                  {
+                    // scale: 1.2,
+                    // originY: 0,
+                    // color: "#FF9810",
+                  }
+                }
+                transition={{ type: "spring", stiffness: 150 }}
+              >
+                <NavLink
+                  to={`/${nav.id}`}
+                  className={({ isActive }) =>
+                    isActive ? activeLink : normalLink
+                  }
+                >
+                  <span className="capitalize  text-sm ">{nav.title}</span>
+                </NavLink>
+
+                {isHovered && nav.subNav && (
+                  <div className="bg-white absolute shadow-lg rounded-lg p-2 w-48 z-50 ">
+                    {nav.subNav.map((nav, index) => {
+                      return (
+                        <motion.li
+                          key={index.toString()}
+                          whileHover={{
+                            scale: 1.2,
+                            originX: 0,
+                            color: "#FF9810",
+                          }}
+                          transition={{ type: "spring", stiffness: 150 }}
+                          className="mt-2"
+                        >
+                          <NavLink
+                            to={`/${nav.id}`}
+                            className={({ isActive }) =>
+                              isActive ? activeLink : normalLink
+                            }
+                          >
+                            <span className="capitalize  text-sm ">
+                              {nav.title}
+                            </span>
+                          </NavLink>
+                        </motion.li>
+                      );
+                    })}
+                  </div>
+                )}
+              </motion.li>
+            );
+          else if (nav.title === "Dashboard")
+            return (
+              <motion.li
+                key={index.toString()}
+                whileHover={{
+                  scale: 1.2,
+                  originY: 0,
+                  color: "#FF9810",
+                }}
+                transition={{ type: "spring", stiffness: 150 }}
+              >
+                <NavLink
+                  target="_blank"
+                  to={`${nav.id}`}
+                  className={({ isActive }) =>
+                    isActive ? activeLink : normalLink
+                  }
                 >
                   <span className="capitalize  text-sm ">{nav.title}</span>
                 </NavLink>

@@ -1,10 +1,20 @@
 import styles from "../style";
-import { Blogs, Carousal, Hero, Research, Services } from "../components";
+import {
+  Blogs,
+  Carousal,
+  Hero,
+  Partners,
+  Research,
+  Services,
+} from "../components";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchNews } from "../rtk/features/news/newsSlice";
 import { useAppSelector, useAppDispatch } from "../rtk/hooks";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+import { graph, statshero } from "../assets";
 
 const Home = () => {
   const { news } = useAppSelector((state) => state.news);
@@ -37,7 +47,32 @@ const Home = () => {
       {/* carousal */}
       <div className={` ${styles.flexStart}`}>
         <div className={`${styles.boxWidth} `}>
-          <Carousal onclick={handleNavigate} placeholder="Explore More" />
+          <Carousel
+            showThumbs={false}
+            autoPlay={true}
+            infiniteLoop
+            interval={3000}
+            showArrows={false}
+            showStatus={false}
+          >
+            <Carousal
+              image={statshero}
+              onclick={handleNavigate}
+              placeholder="Explore More"
+            />
+
+            <Carousal
+              image={graph}
+              onclick={handleNavigate}
+              placeholder="Explore More"
+            />
+
+            <Carousal onclick={handleNavigate} placeholder="Explore More" />
+          </Carousel>
+
+          <p className={` ${styles.heading2} text-center `}>
+            STI Information for social transformation
+          </p>
         </div>
       </div>
 
@@ -59,6 +94,12 @@ const Home = () => {
       <div className={`bg-backgroudgreen  ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Blogs />
+        </div>
+      </div>
+
+      <div className={`  ${styles.flexCenter}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Partners />
         </div>
       </div>
     </motion.div>

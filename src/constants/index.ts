@@ -22,26 +22,13 @@ import {
 import { storage } from "../firebase";
 import { GeneralListModel, Menus } from "../types";
 
+export const dashBaordUrl = "https://83.229.69.76:91/webLogin.aspx";
+
 export const adminRootPath = "app";
 export const navLinks: Menus[] = [
   {
     id: "home",
-    title: "Homepage",
-  },
-
-  {
-    id: "cooperation",
-    title: "Cooperation",
-  },
-
-  {
-    id: "statistics",
-    title: "Statistics",
-  },
-
-  {
-    id: "projects",
-    title: "projects",
+    title: "Home",
   },
 
   {
@@ -50,8 +37,45 @@ export const navLinks: Menus[] = [
   },
 
   {
+    id: "cooperation",
+    title: "Resources",
+    subNav: [
+      {
+        id: "cooperation",
+        title: "Cooperation",
+      },
+      {
+        id: "projects",
+        title: "projects",
+      },
+      {
+        id: "policies",
+        title: "Policies",
+      },
+      {
+        id: "guidelines",
+        title: "Standard & Guidelines",
+      },
+      {
+        id: "framework",
+        title: "Frameworks",
+      },
+    ],
+  },
+
+  {
+    id: dashBaordUrl,
+    title: "Dashboard",
+  },
+
+  // {
+  //   id: "statistics",
+  //   title: "Statistics",
+  // },
+
+  {
     id: "technologies",
-    title: "Technology Areas",
+    title: "Technology Innovations",
   },
 
   {
@@ -490,8 +514,6 @@ export const getPathName = (imageUrl: string) => {
   }
 };
 
-export const dashBaordUrl = "https://83.229.69.76:91/webLogin.aspx";
-
 // constant info
 export const contactInfo: GeneralListModel[] = [
   {
@@ -511,5 +533,43 @@ export const contactInfo: GeneralListModel[] = [
     title: "Phone",
     content: "+9792929292",
     img: phone,
+  },
+];
+
+export const externalLinks: GeneralListModel[] = [
+  {
+    id: "https://mesti.gov.gh",
+    title: "MESTI",
+    img: "https://mesti.gov.gh/wp-content/uploads/2020/02/cropped-cropped-cropped-MESTI-logo-3-300x300.png",
+  },
+
+  {
+    id: "https://mesti.gov.gh/wp-content/uploads/2022/08/CSIR.jpg",
+    title: "CSIR",
+    img: "https://mesti.gov.gh/wp-content/uploads/2022/08/CSIR.jpg",
+  },
+
+  {
+    id: "https://mesti.gov.gh/wp-content/uploads/2022/08/EPA.jpg",
+    title: "EPA",
+    img: "https://mesti.gov.gh/wp-content/uploads/2022/08/EPA.jpg",
+  },
+
+  {
+    id: "https://mesti.gov.gh/wp-content/uploads/2022/08/GAE.jpg",
+    title: "GAE",
+    img: "https://mesti.gov.gh/wp-content/uploads/2022/08/GAE.jpg",
+  },
+
+  {
+    id: "https://mesti.gov.gh/wp-content/uploads/2022/08/NRA.jpg",
+    title: "NRA",
+    img: "https://mesti.gov.gh/wp-content/uploads/2022/08/NRA.jpg",
+  },
+
+  {
+    id: "https://mesti.gov.gh/wp-content/uploads/2022/08/NBA.jpg",
+    title: "NBA",
+    img: "https://mesti.gov.gh/wp-content/uploads/2022/08/NBA.jpg",
   },
 ];
