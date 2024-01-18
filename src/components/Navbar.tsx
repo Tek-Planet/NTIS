@@ -4,7 +4,7 @@ import { navLinks } from "../constants";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { hoverVariant } from "../variants";
-import { menu, close, logo } from "../assets";
+import { menu, close, logo, caret } from "../assets";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -78,7 +78,7 @@ const Navbar = () => {
 
                 {isHovered && nav.subNav && (
                   <div className="bg-white absolute shadow-lg rounded-lg p-2 w-48 z-50 ">
-                    {nav.subNav.map((nav, index) => {
+                    {nav.subNav.map((nav: any, index: number) => {
                       return (
                         <motion.li
                           key={index.toString()}
@@ -168,7 +168,41 @@ const Navbar = () => {
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col gap-3">
             {navLinks.map((nav, index) => {
-              return (
+              return nav.subNav ? (
+                <motion.li key={index.toString()} onClick={() => {}}>
+                  <div className={"flex items-center"}>
+                    <span
+                      className={`capitalize  text-sm ${normalLinkMobile} mb-2`}
+                    >
+                      {nav.title}
+                    </span>
+                    <img src={caret} alt="" />
+                  </div>
+                  {
+                    <ul className=" ml-3 list-none flex justify-end items-start flex-1 flex-col gap-3">
+                      {nav?.subNav.map((nav: any, index: number) => (
+                        <li
+                          key={index.toString()}
+                          onClick={() => {
+                            setToggle(!toggle);
+                          }}
+                        >
+                          <NavLink
+                            to={`/${nav.id}`}
+                            className={({ isActive }) =>
+                              isActive ? activeLink : normalLinkMobile
+                            }
+                          >
+                            <span className="capitalize  text-sm ">
+                              {nav.title}
+                            </span>
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  }
+                </motion.li>
+              ) : (
                 <motion.li
                   whileHover={{
                     scale: 1.2,

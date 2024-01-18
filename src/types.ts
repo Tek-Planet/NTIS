@@ -2,6 +2,7 @@ export type Menus = {
   id: string;
   title: string;
   img?: string;
+  subNav?: any;
 };
 
 export type GeneralListModel = {
