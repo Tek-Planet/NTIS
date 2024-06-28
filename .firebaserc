@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "projectmanagement-2d19a"
+    "default": "lautech-clone"
   },
   "hosting": {
     "target": "nits-gh",

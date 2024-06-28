@@ -1,35 +1,93 @@
-import styles from "../style";
+import React, { useState, useEffect } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { ict, inaugural } from '../assets';
+import { motion, AnimatePresence } from 'framer-motion';
 
-import { motion } from "framer-motion";
-import { useAppSelector } from "../rtk/hooks";
+const Carousal = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const images = [ict, inaugural]; // Add your images here
 
-type Props = {
-  placeholder: string;
-  image?: string;
-  onclick?: () => void;
-};
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000); // Change slide every 5 seconds
 
-const Carousal = (props: Props) => {
-  const { dashboardItem } = useAppSelector((state) => state.dashboard);
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, [currentIndex]); // Re-run effect when currentIndex changes
 
-  const { placeholder, onclick, image } = props;
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const variants = {
+    initial: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: "spring", stiffness: 50 },
+        opacity: { duration: 0.5 },
+      },
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+      transition: {
+        x: { type: "spring", stiffness: 50 },
+        opacity: { duration: 0.5 },
+      },
+    }),
+  };
+
   return (
-    <section className={`flex justify-center items-center mt-8 md:mt-5`}>
+    <section className={`flex justify-center w-full items-center relative`}>
       <motion.div
-        onClick={() => {
-          if (onclick) onclick();
-        }}
-        initial={{ y: "100vw" }}
+        initial={{ y: '100vw' }}
         animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 35 }}
-        className={`bg-center bg-cover h-[80vh] my-6 object-scale-down rounded-2xl w-full ${styles.marginX}`}
-        style={{
-          backgroundImage: `url( ${image ? image : dashboardItem?.image})`,
-        }}
+        transition={{ type: 'spring', stiffness: 35 }}
+        className={`bg-cover h-[80vh] my-6 object-center w-full flex items-center justify-center overflow-hidden`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="absolute flex items-center  justify-center right-10 md:right-20 top-[-30px] bg-buttongreen  rounded-full h-20 w-20 border-2">
-          <p className={` text-[10px] text-white  `}>{placeholder}</p>
-        </div>
+        <AnimatePresence custom={currentIndex}>
+          <motion.img
+            key={currentIndex}
+            src={images[currentIndex]}
+            alt={`slide-${currentIndex}`}
+            className="w-full h-full object-center absolute"
+            custom={currentIndex}
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          />
+        </AnimatePresence>
+        {isHovered && (
+          <>
+            <motion.button
+              onClick={handlePrev}
+              className="absolute left-4 bg-white text-black p-2"
+              whileHover={{ scale: 1.2 }}
+            >
+              <FaChevronLeft size={20} />
+            </motion.button>
+            <motion.button
+              onClick={handleNext}
+              className="absolute right-4 bg-white text-black p-2"
+              whileHover={{ scale: 1.2 }}
+            >
+              <FaChevronRight size={20} />
+            </motion.button>
+          </>
+        )}
       </motion.div>
     </section>
   );

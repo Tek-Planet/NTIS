@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-import { Splash } from "../pages";
+import { Splash } from "../../pages";
 import { useAppSelector } from "../rtk/hooks";
 
 type Props = {

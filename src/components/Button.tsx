@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { motion } from "framer-motion";
 
 interface ButtonProps {
@@ -11,7 +12,7 @@ interface ButtonProps {
 }
 
 const Button = (props: ButtonProps) => {
-  let {
+  const {
     styles,
     text,
     type = "button",
@@ -27,7 +28,7 @@ const Button = (props: ButtonProps) => {
       }}
       disabled={disabled}
       type={type}
-      className={`${styles} bg-buttongreen py-3 px-3 md:py-4 md:px-6 font-poppins font-medium text-[14px] 
+      className={`${styles} bg-[#BF9F61] text-white py-3 px-3 md:py-4 md:px-6 font-poppins font-medium text-[14px] 
     rounded-[10px] outline-none `}
       whileHover={{
         scale: 1.1,

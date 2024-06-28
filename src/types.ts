@@ -1,4 +1,5 @@
 export type Menus = {
+  subNav: boolean;
   id: string;
   title: string;
   img?: string;

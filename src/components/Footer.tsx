@@ -1,69 +1,95 @@
+import React, { useState } from 'react';
+import { FaTelegramPlane } from "react-icons/fa";
 import styles from "../style";
-import { arrowup, facebook, instagram, logo, twitter } from "../assets";
-import { navLinks } from "../constants";
-import { NavLink } from "react-router-dom";
+import { info, staff, studentPortal, unit } from '../constants';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (email === '') {
+      alert('Please enter your email.');
+    } else {
+      // Handle the form submission
+      console.log('Email submitted:', email);
+    }
+  };
+
   return (
-    <section
-      className={`  ${styles.flexCenter} ${styles.paddingY} flex-col relative`}
-    >
-      <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full `}>
-        {/* first potion */}
-        <div className="flex-[0.4] flex justify-center w-full md:justify-start mr-10">
-          <img src={logo} alt="hoobank" className="w-32 h-32" />
-        </div>
-
-        {/* second  */}
-        <div className="flex-[1.8] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
-          {/* contanct section */}
-          <div className={`flex  flex-col md:my-0 my-4 max-w-[350px]`}>
-            <h4 className="font-poppins font-light text-white text-[14px] opacity-70 leading-[27px] mb-2 ">
-              Post Office Box M232 Ministries, Accra Ghana
-            </h4>
-
-            <h4 className="font-poppins font-light text-white text-[14px] opacity-70 leading-[27px] mb-2 ">
-              Digital Address: GA-107-3073
-            </h4>
-
-            <h4 className="font-poppins font-light text-white text-[14px] opacity-70 leading-[27px] mb-2 ">
-              Email : info@mesti.gov.gh
-            </h4>
-
-            <h4 className="font-poppins font-light text-white text-[14px] opacity-70 leading-[27px] mb-2 ">
-              Tel : +233 302-662626 | +233 303-963 459
-            </h4>
+    <section className={`${styles.flexCenter} flex flex-col gap-6 relative`}>
+      <div className='flex flex-col w-full'>
+        <form onSubmit={handleSubmit} className={`flex md:flex-row my-6 lg:items-center flex-col gap-6 w-full`}>
+          <h1 className="text-gray-300 font-medium text-xs">SUBSCRIBE TO OUR NEWSLETTER</h1>
+          <input
+            type="email"
+            className="border-none outline-none w-[300px] p-2"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <p className="text-gray-300 text-xs">Stay informed by subscribing to our newsletter.</p>
+          <button
+            className="rounded-none bg-red-600 items-center text-white p-2 w-[60px] justify-center flex"
+            type="submit"
+          >
+            <FaTelegramPlane size={24}/>
+          </button>
+        </form>
+          <hr className='border-b-[2%] border-[#3c3939] gap-4 w-full'/>
+      </div>
+      <div className='grid gap-14 w-full md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 mb-6 grid-cols-1'>
+          <div className='flex flex-col'>
+            <h1 className='text-white font-semibold text-sm'>UNITS AND SERVICES</h1>
+          <hr className='border-b-[2%] my-2 border-red-500'/>
+            <ul className='list-none flex flex-col gap-3'>
+              {unit.map((nav) => (
+                <NavLink to={`/${nav.id}`}>
+                    <li className='text-zinc-400 font-normal hover:text-red-600 text-xs'>
+                        {nav.title}
+                    </li>
+                </NavLink>
+              ))}
+            </ul>
           </div>
-
-          <div className={`flex flex-col ss:my-0 min-w-[100px]`}>
-            {navLinks.map((footerlink) => (
-              <NavLink
-                to={`/${footerlink.id}`}
-                key={footerlink.title}
-                className="font-poppins text-white opacity-70 font-medium text-[18px] leading-[27px] mb-2 "
-              >
-                {footerlink.title}
-              </NavLink>
-            ))}
+          <div className='flex flex-col items-start gap-3 justify-start'>
+            <h1 className='text-zinc-400'>INFO</h1>
+            <ul className='flex flex-col gap-3 list-disc'>
+              {info.map((nav) => (
+                <NavLink to={`/${nav.id}`}>
+                    <li className='text-zinc-400 font-normal hover:text-red-600 text-xs'>
+                        {nav.title}
+                    </li>
+                </NavLink>
+              ))}
+            </ul>
           </div>
-
-          {/* third */}
-          <div className={`flex gap-2 my-5  min-w-[100px] `}>
-            <img src={facebook} alt="fb" className=" object-contain" />
-            <img src={twitter} alt="fb" className=" object-contain" />
-            <img src={instagram} alt="fb" className=" object-contain" />
+          <div className='flex flex-col items-start gap-3 justify-start'>
+            <h1 className='text-zinc-400'>STUDENT PORTALS</h1>
+            <ul className='flex flex-col gap-3 list-disc'>
+              {studentPortal.map((nav) => (
+                <NavLink to={`/${nav.id}`}>
+                    <li className='text-zinc-400 font-normal hover:text-red-600 text-xs'>
+                        {nav.title}
+                    </li>
+                </NavLink>
+              ))}
+            </ul>
           </div>
-        </div>
-        {/* big screen */}
-        <div
-          onClick={() => {}}
-          className=" flex absolute  items-center  justify-center right-0 sm:right-10  top-[-18px]  sm:top-[-30px] bg-buttongreen  rounded-full h-10 w-10 md:h-14 sm:w-14 border-2"
-        >
-          <a href={`#home`}>
-            <img src={arrowup} />
-          </a>
-        </div>
-        {/* mobile */}
+          <div className='flex flex-col'>
+            <h1 className='text-white font-semibold text-sm'>STAFF</h1>
+              <hr className='border-b-[2%] my-2 border-red-500'/>
+            <ul className='flex flex-col gap-3 list-disc'>
+              {staff.map((nav) => (
+                <NavLink to={`/${nav.id}`}>
+                    <li className='text-zinc-400 font-normal hover:text-red-600 text-xs'>
+                        {nav.title}
+                    </li>
+                </NavLink>
+              ))}
+            </ul>
+          </div>
       </div>
     </section>
   );

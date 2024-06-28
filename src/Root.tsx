@@ -1,15 +1,10 @@
 import styles from "./style";
-import { Footer, Navbar } from "./components";
+import { Footer, Navbar, Time } from "./components";
 import { motion } from "framer-motion";
 import { Outlet } from "react-router-dom";
-import { Splash } from "./pages";
-import { useAppSelector } from "./rtk/hooks";
+
 
 const Root = () => {
-  const { loading } = useAppSelector((state) => state.user);
-  // return loading screen
-  if (loading) return <Splash />;
-
   return (
     <motion.div
       transition={{
@@ -19,9 +14,10 @@ const Root = () => {
       className="bg-primary w-full overflow-hidden"
     >
       {/* general navbar  */}
+          <Time />
+          <Navbar />
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
-          <Navbar />
         </div>
       </div>
 
@@ -31,7 +27,7 @@ const Root = () => {
       </div>
 
       <div
-        className={`bg-backgroudgreen ${styles.paddingX} ${styles.flexCenter} mt-10`}
+        className={`bg-[#252429] ${styles.paddingX} ${styles.flexCenter} mt-10`}
       >
         {/* general footer */}
         <div className={`${styles.boxWidth}`}>
